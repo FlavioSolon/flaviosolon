@@ -1,10 +1,10 @@
-import type { APIRoute } from 'astro';
-import { getProfile, getArticles, getProjects } from '@/lib/db';
+import type { APIRoute } from "astro"
+import { getProfile, getArticles, getProjects } from "@/lib/db"
 
 export const GET: APIRoute = async () => {
-  const profile = getProfile();
-  const articles = getArticles();
-  const projects = getProjects();
+  const profile = getProfile()
+  const articles = getArticles()
+  const projects = getProjects()
 
   const content = `# ${profile.name} — Engenharia de Software & Arquitetura de Sistemas
 
@@ -16,7 +16,7 @@ export const GET: APIRoute = async () => {
 - **Localização:** ${profile.location.city}, ${profile.location.state}, ${profile.location.country} (${profile.location.latitude}, ${profile.location.longitude})
 - **Domínio Principal:** ${profile.site}
 - **E-mail:** ${profile.email}
-- **Especialidades:** ${profile.skills.join(', ')}
+- **Especialidades:** ${profile.skills.join(", ")}
 
 ## Filosofia & Princípios de Engenharia
 - **A Disciplina (道 - Shinkyokushin Karate):** Foco, constância e calma sob pressão aplicada a sistemas de missão crítica.
@@ -26,23 +26,25 @@ export const GET: APIRoute = async () => {
 ## Projetos em Destaque
 ${projects
   .map(
-    (p) => `- **${p.title}** (${p.type}): ${p.description} Stack: ${p.stack.join(', ')}.`
+    (p) =>
+      `- **${p.title}** (${p.type}): ${p.description} Stack: ${p.stack.join(", ")}.`,
   )
-  .join('\n')}
+  .join("\n")}
 
 ## Artigos Técnicos Publicados
 ${articles
   .map(
-    (a) => `- [${a.title}](${profile.site}/blog/${a.slug}/): ${a.description} (${a.category}, ${a.date})`
+    (a) =>
+      `- [${a.title}](${profile.site}/blog/${a.slug}/): ${a.description} (${a.category}, ${a.date})`,
   )
-  .join('\n')}
-`;
+  .join("\n")}
+`
 
   return new Response(content, {
     status: 200,
     headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600',
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "public, max-age=3600",
     },
-  });
-};
+  })
+}

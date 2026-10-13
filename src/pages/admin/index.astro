@@ -4,8 +4,14 @@ import AdminApp from '@/components/svelte/admin/AdminApp.svelte';
 import { verifySessionToken, COOKIE_NAME } from '@/lib/auth';
 import { getArticles, getProjects, getMedia, getProfile } from '@/lib/db';
 
-const token = Astro.cookies.get(COOKIE_NAME)?.value;
-if (!verifySessionToken(token)) {
+// In development server, verify session cookie; in static build, redirect to login
+let isAuthorized = false;
+if (import.meta.env.DEV) {
+  const token = Astro.cookies.get(COOKIE_NAME)?.value;
+  isAuthorized = verifySessionToken(token);
+}
+
+if (!isAuthorized) {
   return Astro.redirect('/admin/login');
 }
 

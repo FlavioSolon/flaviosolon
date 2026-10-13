@@ -1,0 +1,45 @@
+# Regras Globais de Segurança e Boas Práticas
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+  X-Robots-Tag: all
+
+# Cache imutável para assets estáticos gerados pelo Astro com hash de conteúdo
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache e permissões CORS para IA / AEO / Motores de Busca
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=86400
+
+# Headers para Sitemaps
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+/sitemap-index.xml
+  Content-Type: application/xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+/sitemap-0.xml
+  Content-Type: application/xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+# Favicon e Uploads
+/favicon.svg
+  Cache-Control: public, max-age=86400
+
+/uploads/*
+  Cache-Control: public, max-age=2592000

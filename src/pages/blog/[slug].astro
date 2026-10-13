@@ -1,10 +1,23 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { getProfile, getArticleBySlug, getArticles } from '@/lib/db';
+import { getProfile, getArticleBySlug, getArticles, type Article } from '@/lib/db';
+
+export async function getStaticPaths() {
+  const articles = getArticles(false);
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+type Props = {
+  article: Article;
+};
 
 const { slug } = Astro.params;
 const profile = getProfile();
-const article = getArticleBySlug(slug as string);
+const props = Astro.props as Props;
+const article = props.article || getArticleBySlug(slug as string);
 
 if (!article) {
   return Astro.redirect('/blog/');

@@ -1,5 +1,5 @@
 {
-  "name": "figma-make-app",
+  "name": "flaviosolon-com",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -7,13 +7,13 @@
     "dev": "astro dev --port 8443 --host",
     "build": "astro build",
     "preview": "astro preview --port 8443 --host",
-    "start": "node ./dist/server/entry.mjs",
+    "preview:cf": "npx wrangler pages dev dist",
     "format": "oxfmt"
   },
   "dependencies": {
     "@astrojs/node": "11.1.7",
+    "@astrojs/sitemap": "^3.7.4",
     "@astrojs/svelte": "9.0.1",
-    "@sveltejs/kit": "3.0.1",
     "astro": "7.3.5",
     "sharp": "0.35.5",
     "svelte": "5.57.2"
@@ -25,6 +25,7 @@
     "oxfmt": "^0.2.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.0",
-    "vite": "^8.0.5"
+    "vite": "^8.0.5",
+    "wrangler": "^4.150.0"
   }
 }

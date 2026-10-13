@@ -1,9 +1,9 @@
-import type { APIRoute } from 'astro';
-import { getProfile } from '@/lib/db';
+import type { APIRoute } from "astro"
+import { getProfile } from "@/lib/db"
 
 export const GET: APIRoute = async () => {
-  const profile = getProfile();
-  const siteUrl = profile.site.replace(/\/$/, '');
+  const profile = getProfile()
+  const siteUrl = profile.site.replace(/\/$/, "")
 
   const robots = `# Robots.txt otimizado para SEO, AEO e motores de busca generativos
 User-agent: *
@@ -38,14 +38,15 @@ Disallow: /admin/
 Disallow: /api/
 
 # Sitemap Canônico
+Sitemap: ${siteUrl}/sitemap-index.xml
 Sitemap: ${siteUrl}/sitemap.xml
-`;
+`
 
   return new Response(robots, {
     status: 200,
     headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-      'Cache-Control': 'public, max-age=86400',
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "public, max-age=86400",
     },
-  });
-};
+  })
+}

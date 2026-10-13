@@ -1,0 +1,12 @@
+# Cloudflare Pages _redirects
+# Nota de Arquitetura:
+# Redirecionamentos entre domínios (ex: www.flaviosolon.com -> flaviosolon.com)
+# devem ser configurados no Cloudflare Dashboard em "Rules > Redirect Rules".
+# No arquivo _redirects, todos os caminhos de origem DEVEM ser relativos (iniciando com /).
+
+# Regras exatas (alta prioridade)
+/projetos /#cases 301
+
+# Regras com splat / wildcards
+/artigos/* /blog/:splat 301
+/posts/* /blog/:splat 301
