@@ -22,17 +22,11 @@ export const GET: APIRoute = async () => {
     },
     ...articles.map((a) => ({
       url: `${siteUrl}/blog/${a.slug}/`,
-      priority: "0.8",
-      changefreq: "monthly",
+      priority: '0.8',
+      changefreq: 'monthly',
       lastmod: a.date,
     })),
-    ...projects.map((p) => ({
-      url: `${siteUrl}/#case-${p.id}`,
-      priority: "0.7",
-      changefreq: "monthly",
-      lastmod: new Date().toISOString().split("T")[0],
-    })),
-  ]
+  ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
