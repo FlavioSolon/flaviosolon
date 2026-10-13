@@ -1,0 +1,20 @@
+{
+	"pid": 48972,
+	"port": 8444,
+	"url": "http://localhost:8444",
+	"urls": {
+		"local": [
+			"http://localhost:8444/"
+		],
+		"network": [
+			"http://10.34.92.70:8444/",
+			"http://172.28.0.1:8444/"
+		],
+		"networkInterfaceNames": [
+			"wlp0s20f3",
+			"br-146ef61b3b46"
+		]
+	},
+	"background": false,
+	"startedAt": "2026-10-13T18:00:35.919Z"
+}

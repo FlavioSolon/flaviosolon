@@ -1,0 +1,11 @@
+{
+  "title": "Meu portifolio",
+  "description": "Showcase your expertise as a full-stack software engineer with a unique portfolio that highlights innovative projects and technical skills, optimized for search engines.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

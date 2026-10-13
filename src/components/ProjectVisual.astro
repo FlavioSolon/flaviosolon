@@ -1,0 +1,113 @@
+---
+interface Props {
+  type: string;
+  coverImage?: string;
+  coverImageWebp?: string;
+  coverImageAvif?: string;
+  title?: string;
+}
+
+const { type, coverImage, coverImageWebp, coverImageAvif, title = '' } = Astro.props;
+---
+
+<div class={`project-visual ${type}`} aria-hidden="true">
+  {coverImage ? (
+    <picture class="project-cover-picture">
+      {coverImageAvif && <source srcset={coverImageAvif} type="image/avif" />}
+      {coverImageWebp && <source srcset={coverImageWebp} type="image/webp" />}
+      <img src={coverImage} alt={title} loading="lazy" decoding="async" class="project-cover-img" />
+    </picture>
+  ) : type === 'finance' ? (
+    <div class="mini-app">
+      <div class="mini-top">
+        <b>
+          <span class="tiny-square"></span> cotinhas
+        </b>
+        <span>Visão geral ···</span>
+      </div>
+      <div class="mini-greeting">
+        Pequenos passos. Grandes conquistas.
+      </div>
+      <div class="balance">
+        <small>Total arrecadado</small>
+        <strong>
+          R$ 12.450<span>,00</span>
+        </strong>
+        <i>↗ Tudo começa com uma cotinha.</i>
+      </div>
+      <div class="mini-bottom">
+        <span>
+          Viagem em família <b>78%</b>
+          <em></em>
+        </span>
+        <span>
+          Nosso próximo capítulo <b>42%</b>
+          <em></em>
+        </span>
+      </div>
+    </div>
+  ) : type === 'receipt' ? (
+    <div class="receipt-composition">
+      <div class="receipt-brand">
+        no<span>capricho</span>
+        <small>Simples. Rápido. Bem-feito.</small>
+      </div>
+      <div class="receipt-paper">
+        <div>
+          RECIBO <b>Nº 00128</b>
+        </div>
+        <strong>R$ 1.500,00</strong>
+        <p>
+          Recebemos de João Silva<br />a importância acima referente aos<br />serviços prestados.
+        </p>
+        <div class="receipt-sign">Flávio Sólon</div>
+        <small>Assinatura do responsável</small>
+      </div>
+      <div class="pdf-badge">↙ PDF pronto. Sem complicação.</div>
+    </div>
+  ) : type === 'map' ? (
+    <div class="map-app">
+      <div class="map-sidebar">
+        <b>
+          cec<span>rastreamento</span>
+        </b>
+        <small>VISÃO GERAL</small>
+        <p>◈ Dashboard</p>
+        <p class="chosen">◎ Rastreamento</p>
+        <p>▤ Veículos</p>
+        <p>◷ Histórico</p>
+        <div>
+          <i></i> 24 veículos online
+        </div>
+      </div>
+      <div class="map-grid">
+        <svg viewBox="0 0 300 180">
+          <path d="M-20 130 L50 105 L80 140 L125 95 L165 110 L220 35 L310 50"></path>
+          <circle cx="125" cy="95" r="6"></circle>
+          <circle cx="220" cy="35" r="6"></circle>
+        </svg>
+        <span class="map-pin">◎</span>
+        <div class="map-status">
+          <i></i> Frota conectada <b>24/24</b>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div class="extra-preview">
+      <span>
+        {type === 'editorial' ? 'academia.tech' : 'CORE / ENGINE'}
+      </span>
+      <strong>
+        {type === 'editorial'
+          ? 'Conhecimento que vai além.'
+          : 'Complexidade sob controle.'}
+      </strong>
+      <div class="preview-bars">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+    </div>
+  )}
+</div>

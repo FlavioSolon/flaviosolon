@@ -1,0 +1,19 @@
+[
+  {
+    "id": "test-image-965f05f7f11da0ab",
+    "name": "test-image",
+    "originalName": "test-image.png",
+    "webpUrl": "/uploads/test-image-965f05f7f11da0ab.webp",
+    "avifUrl": "/uploads/test-image-965f05f7f11da0ab.avif",
+    "fallbackUrl": "/uploads/test-image-965f05f7f11da0ab.jpg",
+    "thumbnailUrl": "/uploads/test-image-965f05f7f11da0ab-thumb.webp",
+    "width": 600,
+    "height": 400,
+    "originalSize": 6061,
+    "webpSize": 520,
+    "avifSize": 511,
+    "savingsPercent": 92,
+    "createdAt": "2026-10-13T17:58:27.023Z",
+    "altText": "Teste de Arquitetura e Imagem em Manaus"
+  }
+]

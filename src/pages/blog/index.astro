@@ -1,0 +1,81 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import MobileNav from '@/components/svelte/MobileNav.svelte';
+import BlogSearch from '@/components/svelte/BlogSearch.svelte';
+import { getProfile, getArticles } from '@/lib/db';
+
+const profile = getProfile();
+const articles = getArticles();
+---
+
+<Layout path="/blog/">
+  <div class="site-shell blog-shell">
+    <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+    <header class="header">
+      <a class="wordmark" href="/">
+        flávio sólon<span class="logo-dot">.</span>
+        <span class="wordmark-sub">SOFTWARE ENGINEER</span>
+      </a>
+      <nav class="blog-nav" aria-label="Navegação principal">
+        <a href="/">Portfólio</a>
+        <a href="/blog/" aria-current="page">Artigos</a>
+      </nav>
+      <a
+        class="header-contact"
+        href={profile.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp ↗
+      </a>
+    </header>
+
+    <main id="main">
+      <section class="journal-hero">
+        <div class="eyebrow">
+          <span>JOURNAL</span> / DA MISSÃO AO CÓDIGO
+        </div>
+        <h1>
+          Conhecimento<br />
+          <span>com propósito.</span>
+        </h1>
+        <p>
+          Notas sobre engenharia, decisões de arquitetura e tecnologia a serviço
+          de pessoas. Da Amazônia para quem constrói em qualquer lugar.
+        </p>
+
+        <!-- Svelte 5 Reactive Search Island -->
+        <BlogSearch client:load articles={articles} />
+      </section>
+
+      <section class="journal-contact">
+        <h2>
+          Uma boa conversa também constrói<span>.</span>
+        </h2>
+        <a
+          class="button button-copper"
+          href={profile.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Conversar no WhatsApp ↗
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      <a class="footer-logo" href="/">
+        flávio sólon<span>.</span>
+      </a>
+      <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      <div>
+        {profile.socials.map((s) => (
+          <a href={s.url} target="_blank" rel="noopener noreferrer">
+            {s.name} ↗
+          </a>
+        ))}
+      </div>
+    </footer>
+  </div>
+</Layout>

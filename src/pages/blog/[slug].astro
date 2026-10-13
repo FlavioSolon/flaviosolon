@@ -1,0 +1,181 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getProfile, getArticleBySlug, getArticles } from '@/lib/db';
+
+const { slug } = Astro.params;
+const profile = getProfile();
+const article = getArticleBySlug(slug as string);
+
+if (!article) {
+  return Astro.redirect('/blog/');
+}
+
+function formatDate(value: string) {
+  try {
+    return new Date(`${value}T12:00:00Z`).toLocaleDateString('pt-BR', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC',
+    });
+  } catch {
+    return value;
+  }
+}
+---
+
+<Layout path={`/blog/${article.slug}/`}>
+  <div class="site-shell blog-shell">
+    <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+    <header class="header">
+      <a class="wordmark" href="/">
+        flávio sólon<span class="logo-dot">.</span>
+        <span class="wordmark-sub">SOFTWARE ENGINEER</span>
+      </a>
+      <nav class="blog-nav" aria-label="Navegação principal">
+        <a href="/">Portfólio</a>
+        <a href="/blog/">Artigos</a>
+      </nav>
+      <a
+        class="header-contact"
+        href={profile.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp ↗
+      </a>
+    </header>
+
+    <main id="main">
+      <article class="reading-page">
+        <nav class="breadcrumbs" aria-label="Caminho da página">
+          <a href="/">Início</a>
+          <span>/</span>
+          <a href="/blog/">Artigos</a>
+          <span>/</span>
+          <span>Leitura</span>
+        </nav>
+
+        <header class="reading-header">
+          <div class="eyebrow">{article.category}</div>
+          <h1>{article.title}</h1>
+          <p>{article.description}</p>
+          <div class="article-meta">
+            <a href="/#essencia">{profile.name}</a>
+            <time datetime={article.date}>{formatDate(article.date)}</time>
+            <span>{article.readingTime} de leitura</span>
+          </div>
+
+          <!-- GEO Geographic Reference Badge -->
+          {article.geoContext && (
+            <div class="geo-tag">
+              <span class="geo-dot"></span>
+              <span>{article.geoContext} (Manaus, Amazonas, Brasil)</span>
+            </div>
+          )}
+
+          <!-- AEO (Answer Engine Optimization) Direct Answer Box -->
+          {article.aeoSummary && (
+            <aside class="aeo-box" aria-label="Síntese Executiva para Resposta Rápida e IAs">
+              <div class="aeo-box-header">
+                <span class="aeo-label">
+                  ⚡ SÍNTESE EXECUTIVA & RESPOSTA DIRETA
+                </span>
+                <span class="aeo-badge">AEO / IA READY</span>
+              </div>
+              <p class="aeo-summary aeo-direct-answer">
+                {article.aeoSummary}
+              </p>
+            </aside>
+          )}
+
+          {article.coverImage && (
+            <div style="margin-top: 32px; border: 1px solid #28362d; border-radius: 4px; overflow: hidden;">
+              <picture>
+                {article.coverImageAvif && <source srcset={article.coverImageAvif} type="image/avif" />}
+                {article.coverImageWebp && <source srcset={article.coverImageWebp} type="image/webp" />}
+                <img
+                  src={article.coverImage}
+                  alt={article.title}
+                  style="width: 100%; height: auto; max-height: 480px; object-fit: cover;"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+          )}
+        </header>
+
+        <div class="reading-layout">
+          <aside class="article-toc">
+            <span class="eyebrow">NESTE ARTIGO</span>
+            <nav aria-label="Índice do artigo">
+              {article.sections.map((s, i) => (
+                <a href={`#secao-${i}`}>{s.title}</a>
+              ))}
+            </nav>
+          </aside>
+
+          <div class="article-prose">
+            {article.sections.map((s, i) => (
+              <section id={`secao-${i}`}>
+                <h2>{s.title}</h2>
+                {s.paragraphs.map((p) => (
+                  <p>{p}</p>
+                ))}
+              </section>
+            ))}
+
+            <div class="author-note">
+              <strong>{profile.name}</strong>
+              <p>
+                Engenharia de software em Manaus, com atuação remota.
+                Desenvolvimento com propósito e impacto real.
+              </p>
+              <a
+                href={profile.socials[0]?.url || profile.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Conectar no LinkedIn ↗
+              </a>
+            </div>
+
+            <a class="article-read" href="/blog/">
+              ← Todos os artigos
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <section class="journal-contact">
+        <h2>
+          Uma boa conversa também constrói<span>.</span>
+        </h2>
+        <a
+          class="button button-copper"
+          href={profile.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Conversar no WhatsApp ↗
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      <a class="footer-logo" href="/">
+        flávio sólon<span>.</span>
+      </a>
+      <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      <div>
+        {profile.socials.map((s) => (
+          <a href={s.url} target="_blank" rel="noopener noreferrer">
+            {s.name} ↗
+          </a>
+        ))}
+      </div>
+    </footer>
+  </div>
+</Layout>

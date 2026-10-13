@@ -1,0 +1,57 @@
+{
+  "name": "Flávio Sólon",
+  "site": "https://flaviosolon.com",
+  "email": "solondutra73@gmail.com",
+  "whatsapp": "https://api.whatsapp.com/send/?phone=5592984167784&text&type=phone_number&app_absent=0",
+  "phone": "+55 92 98416-7784",
+  "title": "Full-Stack Software Engineer & Systems Architect",
+  "tagline": "Da missão ao código — Desenvolvimento com propósito e impacto real.",
+  "bio": "Sou Flávio Sólon. Construo sistemas resilientes e experiências digitais precisas. Da Amazônia para o mundo, com rigor técnico e impacto real. Especialista em Rust, Laravel, Svelte 5, Angular e Astro.",
+  "location": {
+    "city": "Manaus",
+    "state": "Amazonas",
+    "country": "Brasil",
+    "countryCode": "BR",
+    "regionCode": "BR-AM",
+    "latitude": -3.119028,
+    "longitude": -60.021731,
+    "postalCode": "69000-000"
+  },
+  "socials": [
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/fl%C3%A1vio-s-8941b9212/",
+      "username": "flávio-s-8941b9212"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://www.instagram.com/flaviosolon_/",
+      "username": "@flaviosolon_"
+    },
+    {
+      "name": "X",
+      "url": "https://x.com/flaviosolon_",
+      "username": "@flaviosolon_"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/flaviosolon",
+      "username": "flaviosolon"
+    }
+  ],
+  "skills": [
+    "Rust",
+    "Laravel",
+    "PHP",
+    "Svelte 5",
+    "SvelteKit",
+    "Angular",
+    "Astro",
+    "TypeScript",
+    "Arquitetura de Software",
+    "Sistemas Distribuídos",
+    "Micro-SaaS",
+    "PostgreSQL",
+    "Tailwind CSS"
+  ]
+}

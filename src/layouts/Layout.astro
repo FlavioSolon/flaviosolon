@@ -1,0 +1,73 @@
+---
+import '@/index.css';
+import { generateSeo } from '@/lib/seo';
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article' | 'profile';
+}
+
+const { title: customTitle, description: customDescription, path: customPath, ogImage: customOgImage, ogType: customOgType } = Astro.props;
+
+const currentPath = customPath || Astro.url.pathname;
+const seo = generateSeo(currentPath);
+
+const finalTitle = customTitle ? `${customTitle} | Flávio Sólon` : seo.title;
+const finalDescription = customDescription || seo.description;
+const finalOgImage = customOgImage || seo.ogImage;
+const finalOgType = customOgType || seo.ogType;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{finalTitle}</title>
+    <meta name="description" content={finalDescription} />
+    <meta name="author" content="Flávio Sólon" />
+    <meta name="theme-color" content="#0B0D0E" />
+    <link rel="canonical" href={seo.canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- GEO & Local Relevance (Manaus, Amazonas, Brasil) -->
+    <meta name="geo.region" content={seo.geo.region} />
+    <meta name="geo.placename" content={seo.geo.placename} />
+    <meta name="geo.position" content={seo.geo.position} />
+    <meta name="ICBM" content={seo.geo.icbm} />
+
+    <!-- Open Graph (WhatsApp, LinkedIn, Social Networks) -->
+    <meta property="og:site_name" content="Flávio Sólon — Da missão ao código" />
+    <meta property="og:type" content={finalOgType} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content={seo.canonicalUrl} />
+    <meta property="og:title" content={finalTitle} />
+    <meta property="og:description" content={finalDescription} />
+    <meta property="og:image" content={finalOgImage} />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@flaviosolon_" />
+    <meta name="twitter:creator" content="@flaviosolon_" />
+    <meta name="twitter:title" content={finalTitle} />
+    <meta name="twitter:description" content={finalDescription} />
+    <meta name="twitter:image" content={finalOgImage} />
+
+    <!-- Performance & Typography Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Syne:wght@400;500;600;650;700;750;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+
+    <!-- JSON-LD Structured Data Graph for SEO, AEO & GEO -->
+    <script type="application/ld+json" set:html={JSON.stringify(seo.jsonLd).replaceAll('<', '\\u003c')} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

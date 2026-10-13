@@ -1,0 +1,257 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import MobileNav from '@/components/svelte/MobileNav.svelte';
+import ProjectFilter from '@/components/svelte/ProjectFilter.svelte';
+import PillarTabs from '@/components/svelte/PillarTabs.svelte';
+import { getProfile, getProjects, getFaqs, getArticles } from '@/lib/db';
+
+const profile = getProfile();
+const projects = getProjects();
+const faqs = getFaqs();
+const articles = getArticles();
+---
+
+<Layout path="/">
+  <div class="site-shell">
+    <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+    <MobileNav client:load whatsappUrl={profile.whatsapp} currentPath="/" />
+
+    <main id="main">
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <div class="hero-content">
+          <div class="availability">
+            <i></i> DISPONÍVEL PARA NOVOS PROJETOS <span>2026</span>
+          </div>
+          <h1>
+            Da missão<br />
+            <span>ao código.</span>
+          </h1>
+          <div class="hero-manifesto">
+            Desenvolvimento com propósito<br />
+            e impacto real.
+          </div>
+          <p>
+            Sou {profile.name}. Construo sistemas resilientes e experiências digitais precisas.
+            Da Amazônia para o mundo, com rigor técnico e impacto real.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-copper" href="#projetos">
+              Explorar projetos <span aria-hidden="true">↗</span>
+            </a>
+            <a class="text-link" href="#essencia">
+              Além do código <span>↓</span>
+            </a>
+          </div>
+          <div class="hero-location">
+            <span class="location-icon">⌖</span> {profile.location.city.toUpperCase()}, {profile.location.country.toUpperCase()}
+            <span class="location-line"></span> ATUAÇÃO GLOBAL
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <picture>
+            <source srcset="https://images.unsplash.com/photo-1610413260327-ac5ffe5e0146?auto=format&fit=crop&w=1000&q=85&fm=avif" type="image/avif" />
+            <source srcset="https://images.unsplash.com/photo-1610413260327-ac5ffe5e0146?auto=format&fit=crop&w=1000&q=85&fm=webp" type="image/webp" />
+            <img
+              src="https://images.unsplash.com/photo-1610413260327-ac5ffe5e0146?auto=format&fit=crop&w=1000&q=85"
+              alt="Vista aérea da floresta amazônica e de seu rio — base e inspiração de Flávio Sólon em Manaus"
+              fetchpriority="high"
+              width="1000"
+              height="600"
+              decoding="async"
+            />
+          </picture>
+          <div class="art-shade"></div>
+          <div class="art-coordinate">
+            03°06′ S &nbsp; 60°01′ W <span>AMAZÔNIA / BRASIL</span>
+          </div>
+          <svg class="orbit-art" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+            <g transform="translate(250 245)">
+              <circle r="169"></circle>
+              <circle r="122"></circle>
+              <ellipse rx="169" ry="65" transform="rotate(-38)"></ellipse>
+              <ellipse rx="169" ry="65" transform="rotate(38)"></ellipse>
+              <ellipse rx="65" ry="169"></ellipse>
+              <path d="M-201 0H201M0-205V205" class="orbit-axis"></path>
+              <circle r="8" class="orbit-center"></circle>
+              <circle cx="133" cy="-105" r="5" class="orbit-point"></circle>
+            </g>
+          </svg>
+          <div class="art-note">
+            <span>01 / ORIGEM & DIREÇÃO</span>
+            <p>
+              Raízes profundas.<br />
+              Horizontes sem limites.
+            </p>
+          </div>
+          <div class="art-corner">
+            FS —<br />
+            EST. MANAUS
+          </div>
+          <a
+            class="photo-credit"
+            href="https://unsplash.com/@kiyoshi_jpg"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Fotografia: Andres Medina
+          </a>
+        </div>
+      </section>
+
+      <!-- STACK STRIP -->
+      <div class="stack-strip">
+        <span class="mono stack-intro">FERRAMENTAS, NÃO LIMITES</span>
+        {['Rust', 'Laravel', 'Svelte 5', 'Angular', 'Astro'].map((s, i) => (
+          <span class="stack-name">
+            <span class="stack-icon">{['⚙', '◇', '≋', '△', 'Λ'][i]}</span>
+            {s}
+          </span>
+        ))}
+        <span class="stack-end">PRECISÃO EM CADA CAMADA ↗</span>
+      </div>
+
+      <!-- PROJECTS SECTION (SVELTE 5 REACTIVE ISLAND) -->
+      <section class="projects section" id="projetos">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">
+              <span>01</span> / ENGENHARIA EM PRÁTICA
+            </div>
+            <h2>
+              Ideias em produção<span>.</span>
+            </h2>
+          </div>
+          <p>
+            Problemas reais. Decisões conscientes.<br />
+            Software que entrega além da tela.
+          </p>
+        </div>
+
+        <ProjectFilter client:load projects={projects} email={profile.email} />
+      </section>
+
+      <!-- ESSENCE SECTION (SVELTE 5 REACTIVE PILLARS) -->
+      <section class="essence section" id="essencia">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">
+              <span>02</span> / RAIZ, MENTE & CÓDIGO
+            </div>
+            <h2>
+              O código é só uma parte<span>.</span>
+            </h2>
+          </div>
+          <p>
+            A excelência se constrói fora da tela.<br />
+            E se revela em cada linha.
+          </p>
+        </div>
+
+        <PillarTabs client:visible />
+      </section>
+
+      <!-- APPROACH & FAQS -->
+      <section class="approach section" id="abordagem">
+        <div>
+          <div class="eyebrow">
+            <span>03</span> / ARQUITETURA & DECISÕES
+          </div>
+          <h2>
+            Intenção antes<br />
+            da implementação<span>.</span>
+          </h2>
+          <p class="approach-description">
+            A melhor tecnologia é aquela que resolve o problema certo. Sem
+            excessos. Sem atalhos que custam caro depois.
+          </p>
+        </div>
+        <div class="faq-list">
+          {faqs.map((f, i) => (
+            <details>
+              <summary>
+                <span class="mono">0{i + 1}</span>
+                {f.question}
+                <span class="faq-plus">+</span>
+              </summary>
+              <p>{f.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- HOME JOURNAL TEASER -->
+      <section class="home-journal section" aria-labelledby="journal-title">
+        <div class="eyebrow">
+          <span>04</span> / IDEIAS QUE MERECEM CIRCULAR
+        </div>
+        <div class="section-heading">
+          <div>
+            <h2 id="journal-title">
+              Da prática à reflexão<span>.</span>
+            </h2>
+            <p class="journal-description">
+              Arquitetura, tecnologia e desenvolvimento com propósito. Artigos
+              para compartilhar decisões, não apenas ferramentas.
+            </p>
+          </div>
+          <a class="button button-outline" href="/blog/">
+            Explorar artigos <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section class="contact section" id="contato">
+        <div class="eyebrow">
+          <i></i> ABERTO A BOAS CONVERSAS
+        </div>
+        <h2>
+          Seu próximo desafio.<br />
+          <span>Nossa próxima construção.</span>
+        </h2>
+        <div class="contact-bottom">
+          <p>
+            Uma ideia, um sistema para evoluir ou um problema complexo.<br />
+            Vamos encontrar o caminho mais sólido.
+          </p>
+          <a
+            class="button button-copper"
+            href={profile.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Conversar no WhatsApp <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <a class="contact-email" href={`mailto:${profile.email}`}>
+          {profile.email} <span aria-hidden="true">↗</span>
+        </a>
+        <div class="social-links" aria-label="Redes sociais">
+          {profile.socials.map((s) => (
+            <a href={s.url} target="_blank" rel="noopener noreferrer">
+              {s.name} ↗
+            </a>
+          ))}
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="footer-logo" href="/">
+        flávio sólon<span>.</span>
+      </a>
+      <span class="mono">FEITO COM INTENÇÃO. DIRETO DA AMAZÔNIA.</span>
+      <div>
+        {profile.socials.map((s) => (
+          <a href={s.url} target="_blank" rel="noopener noreferrer">
+            {s.name} ↗
+          </a>
+        ))}
+        <span>© {new Date().getFullYear()}</span>
+      </div>
+    </footer>
+  </div>
+</Layout>

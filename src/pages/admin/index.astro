@@ -1,0 +1,26 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import AdminApp from '@/components/svelte/admin/AdminApp.svelte';
+import { verifySessionToken, COOKIE_NAME } from '@/lib/auth';
+import { getArticles, getProjects, getMedia, getProfile } from '@/lib/db';
+
+const token = Astro.cookies.get(COOKIE_NAME)?.value;
+if (!verifySessionToken(token)) {
+  return Astro.redirect('/admin/login');
+}
+
+const articles = getArticles(true); // include drafts
+const projects = getProjects();
+const media = getMedia();
+const profile = getProfile();
+---
+
+<Layout title="Console Administrativo Seguro" path="/admin">
+  <AdminApp
+    client:load
+    initialArticles={articles}
+    initialProjects={projects}
+    initialMedia={media}
+    initialProfile={profile}
+  />
+</Layout>

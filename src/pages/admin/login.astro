@@ -1,0 +1,108 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { verifySessionToken, COOKIE_NAME } from '@/lib/auth';
+
+const token = Astro.cookies.get(COOKIE_NAME)?.value;
+if (verifySessionToken(token)) {
+  return Astro.redirect('/admin');
+}
+---
+
+<Layout title="Acesso Administrativo Seguro" path="/admin/login">
+  <div class="admin-shell" style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px;">
+    <div class="admin-card" style="width: 100%; max-width: 440px; padding: 40px; background: #0e1213; border: 1px solid #25312c; box-shadow: 0 20px 40px rgba(0,0,0,0.6);">
+      <div style="text-align: center; margin-bottom: 32px;">
+        <a href="/" class="wordmark" style="font-size: 24px;">
+          flávio sól<span class="logo-o">o</span>n<span class="logo-dot">.</span>
+        </a>
+        <div style="display: flex; justify-content: center; gap: 8px; margin-top: 12px; align-items: center;">
+          <span class="admin-badge">ADMIN CONSOLE</span>
+          <span class="mono" style="font-size: 10px; color: #839185;">TLS / SHA-256</span>
+        </div>
+      </div>
+
+      <div id="alert-box" style="display: none; padding: 12px 16px; border-radius: 3px; font-size: 13px; font-family: var(--mono); margin-bottom: 20px;"></div>
+
+      <form id="login-form">
+        <div style="margin-bottom: 22px;">
+          <label class="admin-label" for="admin-pass">SENHA MESTRA ADMINISTRATIVA</label>
+          <input
+            id="admin-pass"
+            type="password"
+            class="admin-input"
+            required
+            placeholder="••••••••••••••••"
+            autocomplete="current-password"
+            autofocus
+          />
+        </div>
+
+        <button type="submit" id="submit-btn" class="admin-btn" style="width: 100%; justify-content: center; font-size: 14px; padding: 14px;">
+          Desbloquear Painel ➔
+        </button>
+      </form>
+
+      <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #1c2521; text-align: center;">
+        <span class="mono" style="font-size: 10px; color: #727e74;">
+          Proteção contra força bruta ativa (máx. 5 tentativas).
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('login-form') as HTMLFormElement;
+    const input = document.getElementById('admin-pass') as HTMLInputElement;
+    const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const alertBox = document.getElementById('alert-box') as HTMLDivElement;
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const password = input.value;
+      if (!password) return;
+
+      btn.disabled = true;
+      btn.innerText = 'Verificando credenciais...';
+      alertBox.style.display = 'none';
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          alertBox.style.display = 'block';
+          alertBox.style.background = '#15291c';
+          alertBox.style.color = '#a9e0b5';
+          alertBox.style.border = '1px solid #2f593b';
+          alertBox.innerText = 'Autenticado com sucesso! Redirecionando...';
+          setTimeout(() => {
+            window.location.href = '/admin';
+          }, 400);
+        } else {
+          alertBox.style.display = 'block';
+          alertBox.style.background = '#321919';
+          alertBox.style.color = '#f5b5b5';
+          alertBox.style.border = '1px solid #6b2e2e';
+          alertBox.innerText = data.error || 'Credenciais inválidas.';
+          btn.disabled = false;
+          btn.innerText = 'Desbloquear Painel ➔';
+          input.value = '';
+          input.focus();
+        }
+      } catch (err: any) {
+        alertBox.style.display = 'block';
+        alertBox.style.background = '#321919';
+        alertBox.style.color = '#f5b5b5';
+        alertBox.style.border = '1px solid #6b2e2e';
+        alertBox.innerText = 'Erro na conexão com o servidor.';
+        btn.disabled = false;
+        btn.innerText = 'Desbloquear Painel ➔';
+      }
+    });
+  </script>
+</Layout>
