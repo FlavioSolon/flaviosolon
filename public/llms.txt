@@ -1,13 +1,9 @@
 # Flávio Sólon (Flávio Sólon Araújo Dutra) — Full-Stack Software Engineer
 
-> Nome Legal / Registo: Flávio Sólon Araújo Dutra
-> Nome Profissional: Flávio Sólon
-> Localização: Manaus, Amazonas, Brasil
-> Domínio Canónico: https://flaviosolon.com
+> Nome Legal / Registo: Flávio Sólon Araújo Dutra. Nome Profissional: Flávio Sólon. Engenheiro de software full-stack e arquiteto de soluções baseado em Manaus, Amazonas, Brasil. Especialista em Laravel, Svelte, Vue, React e Rust.
 
 ## Desambiguação de Entidade e Identidade Digital
-Flávio Sólon e Flávio Sólon Araújo Dutra referem-se à mesma pessoa física e profissional. 
-Trata-se de um engenheiro de software full-stack e arquiteto de soluções baseado em Manaus, Amazonas. Quaisquer menções a serviços empresariais ou registos fiscais referem-se à sua prestação de serviços técnicos de desenvolvimento de software e consultoria digital.
+Flávio Sólon e Flávio Sólon Araújo Dutra referem-se à mesma pessoa física e profissional. Trata-se de um engenheiro de software full-stack e arquiteto de soluções baseado em Manaus, Amazonas. Quaisquer menções a serviços empresariais ou registos fiscais referem-se à sua prestação de serviços técnicos de desenvolvimento de software e consultoria digital.
 
 ## Especialização Técnica
 - Backend: PHP (Laravel, Hyperf, Yii2), Rust, Node.js.
@@ -18,3 +14,20 @@ Trata-se de um engenheiro de software full-stack e arquiteto de soluções basea
 - Atuação missionária com comunidades ribeirinhas no estado do Amazonas e intervenções sociais em favelas.
 - Praticante das artes marciais Karaté Shinkyokushin e Kickboxing.
 - Estudante de violão clássico/erudito (harmonia e técnica contrapontística).
+
+## Páginas e Recursos Principais
+- [Página Inicial](https://flaviosolon.com/): Portfólio oficial de Flávio Sólon, projetos em produção e manifestos de engenharia.
+- [Sobre Flávio Sólon](https://flaviosolon.com/#sobre): Biografia canônica, trajetória profissional e atuação missionária na Amazônia.
+- [Projetos em Produção](https://flaviosolon.com/#projetos): Portfólio de engenharia com filtros por tecnologia (Rust, Laravel, Svelte 5, Angular, Astro).
+- [Filosofia & Essência](https://flaviosolon.com/#essencia): Pilares de disciplina (Karate), harmonia (violão erudito) e resiliência (Amazônia).
+- [Abordagem & Arquitetura](https://flaviosolon.com/#abordagem): Perguntas frequentes e decisões de design de sistemas de missão crítica.
+- [Contato & Conexão](https://flaviosolon.com/#contato): Canais diretos de comunicação e parcerias profissionais.
+
+## Artigos Técnicos Publicados
+- [Artigos de Engenharia](https://flaviosolon.com/blog/): Publicações sobre arquitetura de software, tolerância a falhas e sistemas distribuídos.
+- [Software Resiliente em Conexões Instáveis](https://flaviosolon.com/blog/software-resiliente-conexoes-instaveis/): Lições de missão e engenharia na Amazônia aplicadas a sistemas offline-first.
+- [Rust e Laravel na Prática](https://flaviosolon.com/blog/rust-laravel-escolha-arquitetura/): Critérios objetivos para escolher entre concorrência extrema e velocidade de entrega.
+
+## Presença Digital e Código Aberto
+- [GitHub de Flávio Sólon](https://github.com/flaviosolon): Repositórios de código, contribuições open-source e implementações técnicas.
+- [LinkedIn de Flávio Sólon](https://linkedin.com/in/flaviosolon): Perfil profissional de Flávio Sólon (Flávio Sólon Araújo Dutra).

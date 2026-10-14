@@ -3,6 +3,8 @@ import Layout from '@/layouts/Layout.astro';
 import MobileNav from '@/components/svelte/MobileNav.svelte';
 import ProjectFilter from '@/components/svelte/ProjectFilter.svelte';
 import PillarTabs from '@/components/svelte/PillarTabs.svelte';
+import { Image } from 'astro:assets';
+import heroImage from '@/assets/hero-amazonia.jpg';
 import { getProfile, getProjects, getFaqs, getArticles } from '@/lib/db';
 
 const profile = getProfile();
@@ -64,18 +66,19 @@ const articles = getArticles();
         </div>
 
         <div class="hero-art">
-          <picture>
-            <source srcset="https://images.unsplash.com/photo-1610413260327-ac5ffe5e0146?auto=format&fit=crop&w=1000&q=85&fm=avif" type="image/avif" />
-            <source srcset="https://images.unsplash.com/photo-1610413260327-ac5ffe5e0146?auto=format&fit=crop&w=1000&q=85&fm=webp" type="image/webp" />
-            <img
-              src="https://images.unsplash.com/photo-1610413260327-ac5ffe5e0146?auto=format&fit=crop&w=1000&q=85"
-              alt="Vista aérea da floresta amazônica e de seu rio — base e inspiração de Flávio Sólon em Manaus"
-              fetchpriority="high"
-              width="1000"
-              height="600"
-              decoding="async"
-            />
-          </picture>
+          <Image
+            src={heroImage}
+            alt="Vista aérea da floresta amazônica e de seu rio — base e inspiração de Flávio Sólon em Manaus"
+            widths={[400, 640, 800]}
+            sizes="(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 640px"
+            format="webp"
+            quality={75}
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            width={640}
+            height={427}
+          />
           <div class="art-shade"></div>
           <div class="art-coordinate">
             03°06′ S &nbsp; 60°01′ W <span>AMAZÔNIA / BRASIL</span>
