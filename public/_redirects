@@ -1,3 +1,5 @@
+/sitemap.xml /sitemap-index.xml 301
+
 # Cloudflare Pages _redirects
 # Nota de Arquitetura:
 # Redirecionamentos entre domínios (ex: www.flaviosolon.com -> flaviosolon.com)
