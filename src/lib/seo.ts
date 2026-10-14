@@ -35,27 +35,61 @@ export function generateSeo(path: string): SeoMetadata {
   const personEntity = {
     '@type': 'Person',
     '@id': `${siteUrl}/#person`,
-    name: profile.name,
-    url: `${siteUrl}/`,
-    email: profile.email,
-    telephone: profile.phone,
-    jobTitle: profile.title,
-    description: profile.bio,
-    image: `${siteUrl}/flavio-solon.jpg`,
-    sameAs: profile.socials.map((s) => s.url),
+    name: 'Flávio Sólon',
+    legalName: 'Flávio Sólon Araújo Dutra',
+    alternateName: [
+      'Flavio Solon',
+      'Flávio Sólon Araújo Dutra',
+      'Flavio Solon Araujo Dutra',
+      'Flávio S. Dutra',
+    ],
+    url: `${siteUrl}`,
+    jobTitle: 'Engenheiro de Software Full-Stack & Arquiteto de Soluções',
+    description:
+      'Desenvolvedor full-stack sénior sediado em Manaus, especialista em arquiteturas escaláveis com Laravel, Svelte, Vue, React, Rust, Astro e Angular. Atua no desenvolvimento de plataformas EAD, telemetria/rastreamento veicular, e-commerces, sistemas educacionais e marketplaces, aliando tecnologia a missões humanitárias na Amazónia.',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: profile.location.city,
-      addressRegion: profile.location.state,
-      addressCountry: profile.location.countryCode,
-      postalCode: profile.location.postalCode,
+      addressLocality: 'Manaus',
+      addressRegion: 'Amazonas',
+      addressCountry: 'BR',
     },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: profile.location.latitude,
-      longitude: profile.location.longitude,
-    },
-    knowsAbout: profile.skills,
+    knowsAbout: [
+      'Desenvolvimento Web Full-Stack',
+      'Laravel & PHP',
+      'Svelte & SvelteKit',
+      'React & Vue.js',
+      'Rust',
+      'Angular',
+      'Astro',
+      'Arquitetura de Software Escalável',
+      'Plataformas EAD',
+      'Sistemas de Rastreamento Veicular',
+      'Marketplaces e E-commerce',
+      'Karate Shinkyokushin',
+      'Kickboxing',
+      'Violão Clássico e Erudito',
+    ],
+    sameAs: [
+      'https://github.com/flaviosolon',
+      'https://linkedin.com/in/flaviosolon',
+    ],
+  };
+
+  const businessEntity = {
+    '@type': 'ProfessionalService',
+    '@id': `${siteUrl}/#business`,
+    name: 'Flávio Sólon Araújo Dutra - Engenharia de Software',
+    legalName: 'Flávio Sólon Araújo Dutra',
+    url: `${siteUrl}`,
+    founder: { '@id': `${siteUrl}/#person` },
+    areaServed: 'Global',
+    serviceType: [
+      'Desenvolvimento Full-Stack',
+      'Consultoria em Arquitetura de Software',
+      'Desenvolvimento em Laravel e PHP',
+      'Desenvolvimento Reativo com Svelte e React',
+      'Microsserviços em Rust',
+    ],
   };
 
   const websiteEntity = {
@@ -255,7 +289,8 @@ export function generateSeo(path: string): SeoMetadata {
   // Default / Home Page (`/`)
   const faqs = getFaqs();
   const title = `${profile.name} | Da missão ao código — Desenvolvedor em Manaus`;
-  const description = `${profile.name}, engenheiro de software e arquiteto de sistemas em Manaus, Amazonas. Rust, Laravel, Svelte 5, Angular e Astro. Desenvolvimento com propósito e impacto real.`;
+  const description =
+    'Flávio Sólon (Flávio Sólon Araújo Dutra) — Desenvolvedor Full-Stack em Manaus. Especialista em Laravel, Svelte, Vue, React e Rust. Criador de plataformas EAD, rastreamento veicular e marketplaces.';
 
   const faqEntity = {
     '@type': 'FAQPage',
@@ -268,23 +303,6 @@ export function generateSeo(path: string): SeoMetadata {
         text: f.answer,
       },
     })),
-  };
-
-  const serviceEntity = {
-    '@type': 'ProfessionalService',
-    '@id': `${canonicalUrl}#service`,
-    name: `${profile.name} — Engenharia de Software`,
-    provider: { '@id': personEntity['@id'] },
-    serviceType: [
-      'Desenvolvimento Web Full-Stack',
-      'Arquitetura de Microsserviços em Rust',
-      'Sistemas Corporativos em Laravel',
-      'Interfaces Reativas com Svelte 5',
-      'Engenharia de Micro-SaaS e Fintech',
-    ],
-    areaServed: 'Worldwide',
-    address: personEntity.address,
-    geo: personEntity.geo,
   };
 
   const pageEntity = {
@@ -307,7 +325,7 @@ export function generateSeo(path: string): SeoMetadata {
     geo,
     jsonLd: {
       '@context': 'https://schema.org',
-      '@graph': [personEntity, websiteEntity, pageEntity, serviceEntity, faqEntity],
+      '@graph': [personEntity, businessEntity, websiteEntity, pageEntity, faqEntity],
     },
   };
 }

@@ -19,6 +19,81 @@ const finalTitle = customTitle ? `${customTitle} | Flávio Sólon` : seo.title;
 const finalDescription = customDescription || seo.description;
 const finalOgImage = customOgImage || seo.ogImage;
 const finalOgType = customOgType || seo.ogType;
+
+// Unified Canonical Knowledge Graph for SEO, AEO & GEO
+const canonicalEntityGraph = [
+  {
+    "@type": "Person",
+    "@id": "https://flaviosolon.com/#person",
+    "name": "Flávio Sólon",
+    "legalName": "Flávio Sólon Araújo Dutra",
+    "alternateName": [
+      "Flavio Solon",
+      "Flávio Sólon Araújo Dutra",
+      "Flavio Solon Araujo Dutra",
+      "Flávio S. Dutra"
+    ],
+    "url": "https://flaviosolon.com",
+    "jobTitle": "Engenheiro de Software Full-Stack & Arquiteto de Soluções",
+    "description": "Desenvolvedor full-stack sénior sediado em Manaus, especialista em arquiteturas escaláveis com Laravel, Svelte, Vue, React, Rust, Astro e Angular. Atua no desenvolvimento de plataformas EAD, telemetria/rastreamento veicular, e-commerces, sistemas educacionais e marketplaces, aliando tecnologia a missões humanitárias na Amazónia.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Manaus",
+      "addressRegion": "Amazonas",
+      "addressCountry": "BR"
+    },
+    "knowsAbout": [
+      "Desenvolvimento Web Full-Stack",
+      "Laravel & PHP",
+      "Svelte & SvelteKit",
+      "React & Vue.js",
+      "Rust",
+      "Angular",
+      "Astro",
+      "Arquitetura de Software Escalável",
+      "Plataformas EAD",
+      "Sistemas de Rastreamento Veicular",
+      "Marketplaces e E-commerce",
+      "Karate Shinkyokushin",
+      "Kickboxing",
+      "Violão Clássico e Erudito"
+    ],
+    "sameAs": [
+      "https://github.com/flaviosolon",
+      "https://linkedin.com/in/flaviosolon"
+    ]
+  },
+  {
+    "@type": "ProfessionalService",
+    "@id": "https://flaviosolon.com/#business",
+    "name": "Flávio Sólon Araújo Dutra - Engenharia de Software",
+    "legalName": "Flávio Sólon Araújo Dutra",
+    "url": "https://flaviosolon.com",
+    "founder": { "@id": "https://flaviosolon.com/#person" },
+    "areaServed": "Global",
+    "serviceType": [
+      "Desenvolvimento Full-Stack",
+      "Consultoria em Arquitetura de Software",
+      "Desenvolvimento em Laravel e PHP",
+      "Desenvolvimento Reativo com Svelte e React",
+      "Microsserviços em Rust"
+    ]
+  }
+];
+
+const contextGraph = Array.isArray(seo.jsonLd?.['@graph'])
+  ? (seo.jsonLd['@graph'] as Record<string, unknown>[]).filter(
+      (item) => item['@type'] !== 'Person' && item['@type'] !== 'ProfessionalService'
+    )
+  : [];
+
+const schemaGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    ...canonicalEntityGraph,
+    ...contextGraph
+  ]
+};
 ---
 
 <!doctype html>
@@ -65,7 +140,7 @@ const finalOgType = customOgType || seo.ogType;
     />
 
     <!-- JSON-LD Structured Data Graph for SEO, AEO & GEO -->
-    <script type="application/ld+json" set:html={JSON.stringify(seo.jsonLd).replaceAll('<', '\\u003c')} />
+    <script type="application/ld+json" set:html={JSON.stringify(schemaGraph).replaceAll('<', '\\u003c')} />
   </head>
   <body>
     <slot />

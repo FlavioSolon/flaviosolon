@@ -17,6 +17,9 @@ body{font-size:16px;line-height:1.6}
 h1{font-size:clamp(52px,5.8vw,84px);line-height:1.06;letter-spacing:-2.5px}
 .hero-manifesto{font:500 clamp(20px,2vw,27px)/1.45 var(--display);margin:0 0 23px;color:#e3e6dc;letter-spacing:-.5px}
 .hero-content>p{font-size:16px;line-height:1.85;max-width:470px}
+.hero-intro{display:flex;flex-direction:column;gap:16px;max-width:540px;margin:20px 0 28px}
+.hero-intro p{font-size:15px;line-height:1.85;color:#abb0ab;margin:0}
+.hero-intro .hero-canonical{color:#f0f2ed;font-size:16px;line-height:1.8;font-weight:450}
 .availability{font-size:10px;letter-spacing:.65px;flex-wrap:wrap}
 .availability>span{display:none}
 .button{font-size:14px;padding:15px 20px;min-height:48px}

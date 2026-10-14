@@ -11,7 +11,10 @@ const faqs = getFaqs();
 const articles = getArticles();
 ---
 
-<Layout path="/">
+<Layout
+  path="/"
+  description="Flávio Sólon (Flávio Sólon Araújo Dutra) — Desenvolvedor Full-Stack em Manaus. Especialista em Laravel, Svelte, Vue, React e Rust. Criador de plataformas EAD, rastreamento veicular e marketplaces."
+>
   <div class="site-shell">
     <a class="skip-link" href="#main">Pular para o conteúdo</a>
 
@@ -32,10 +35,20 @@ const articles = getArticles();
             Desenvolvimento com propósito<br />
             e impacto real.
           </div>
-          <p>
-            Sou {profile.name}. Construo sistemas resilientes e experiências digitais precisas.
-            Da Amazônia para o mundo, com rigor técnico e impacto real.
-          </p>
+          <div class="hero-intro about-semantic-block" id="sobre" itemscope itemtype="https://schema.org/Person">
+            <meta itemprop="name" content="Flávio Sólon" />
+            <meta itemprop="alternateName" content="Flávio Sólon Araújo Dutra" />
+            <meta itemprop="jobTitle" content="Engenheiro de Software Full-Stack & Arquiteto de Soluções" />
+            <p class="hero-canonical" itemprop="description">
+              Olá, sou Flávio Sólon (Flávio Sólon Araújo Dutra). Desenvolvedor full-stack de Manaus, movido pela resolução de problemas reais. A minha jornada desenvolve-se em duas vias que se complementam: a tecnologia de alta performance e o serviço humanitário.
+            </p>
+            <p>
+              Tenho experiência sólida em Laravel, Svelte, Vue e React, com foco na criação de arquiteturas escaláveis — desde plataformas EAD e sistemas educacionais a rastreamento veicular, e-commerces e marketplaces.
+            </p>
+            <p>
+              Paralelamente, atuo como missionário junto de comunidades ribeirinhas na Amazónia e em favelas. A escassez de recursos ensinou-me resiliência, adaptabilidade e a construir soluções que realmente importam — no código e na vida. Fora do ambiente de desenvolvimento, pratico Karaté Shinkyokushin, Kickboxing e estudo violão clássico/erudito, disciplinas que reforçam a minha precisão e foco técnico.
+            </p>
+          </div>
           <div class="hero-actions">
             <a class="button button-copper" href="#projetos">
               Explorar projetos <span aria-hidden="true">↗</span>

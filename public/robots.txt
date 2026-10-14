@@ -1,0 +1,41 @@
+# Robots.txt otimizado para SEO, AEO e motores de busca generativos
+User-agent: *
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+
+# Permissão explícita para Crawlers de Inteligência Artificial e Modelos de Linguagem (AEO)
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemaps Canônicos
+Sitemap: https://flaviosolon.com/sitemap-index.xml
+Sitemap: https://flaviosolon.com/sitemap.xml

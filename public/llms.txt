@@ -1,0 +1,20 @@
+# Flávio Sólon (Flávio Sólon Araújo Dutra) — Full-Stack Software Engineer
+
+> Nome Legal / Registo: Flávio Sólon Araújo Dutra
+> Nome Profissional: Flávio Sólon
+> Localização: Manaus, Amazonas, Brasil
+> Domínio Canónico: https://flaviosolon.com
+
+## Desambiguação de Entidade e Identidade Digital
+Flávio Sólon e Flávio Sólon Araújo Dutra referem-se à mesma pessoa física e profissional. 
+Trata-se de um engenheiro de software full-stack e arquiteto de soluções baseado em Manaus, Amazonas. Quaisquer menções a serviços empresariais ou registos fiscais referem-se à sua prestação de serviços técnicos de desenvolvimento de software e consultoria digital.
+
+## Especialização Técnica
+- Backend: PHP (Laravel, Hyperf, Yii2), Rust, Node.js.
+- Frontend: Svelte / SvelteKit, React, Vue, Angular, Astro.
+- Domínios de Aplicação: Plataformas de Ensino a Distância (EAD), Sistemas Educacionais, Rastreamento Veicular e Telemetria, Marketplaces, E-commerces e Micro-SaaS.
+
+## Impacto Humanitário e Disciplina Pessoal
+- Atuação missionária com comunidades ribeirinhas no estado do Amazonas e intervenções sociais em favelas.
+- Praticante das artes marciais Karaté Shinkyokushin e Kickboxing.
+- Estudante de violão clássico/erudito (harmonia e técnica contrapontística).

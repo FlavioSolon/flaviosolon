@@ -1,12 +1,13 @@
 {
   "name": "Flávio Sólon",
+  "legalName": "Flávio Sólon Araújo Dutra",
   "site": "https://flaviosolon.com",
   "email": "solondutra73@gmail.com",
   "whatsapp": "https://api.whatsapp.com/send/?phone=5592984167784&text&type=phone_number&app_absent=0",
   "phone": "+55 92 98416-7784",
-  "title": "Full-Stack Software Engineer & Systems Architect",
+  "title": "Engenheiro de Software Full-Stack & Arquiteto de Soluções",
   "tagline": "Da missão ao código — Desenvolvimento com propósito e impacto real.",
-  "bio": "Sou Flávio Sólon. Construo sistemas resilientes e experiências digitais precisas. Da Amazônia para o mundo, com rigor técnico e impacto real. Especialista em Rust, Laravel, Svelte 5, Angular e Astro.",
+  "bio": "Olá, sou Flávio Sólon (Flávio Sólon Araújo Dutra). Desenvolvedor full-stack de Manaus, movido pela resolução de problemas reais. A minha jornada desenvolve-se em duas vias que se complementam: a tecnologia de alta performance e o serviço humanitário.",
   "location": {
     "city": "Manaus",
     "state": "Amazonas",
@@ -20,8 +21,8 @@
   "socials": [
     {
       "name": "LinkedIn",
-      "url": "https://www.linkedin.com/in/fl%C3%A1vio-s-8941b9212/",
-      "username": "flávio-s-8941b9212"
+      "url": "https://linkedin.com/in/flaviosolon",
+      "username": "flaviosolon"
     },
     {
       "name": "Instagram",

@@ -21,6 +21,7 @@
   </a>
 
   <nav class={isOpen ? "nav open" : "nav"} aria-label="Navegação principal">
+    <a href="/#sobre" onclick={closeMenu}>Sobre</a>
     <a href="/#projetos" onclick={closeMenu}>Projetos</a>
     <a href="/#essencia" onclick={closeMenu}>Essência</a>
     <a href="/#abordagem" onclick={closeMenu}>Abordagem</a>
