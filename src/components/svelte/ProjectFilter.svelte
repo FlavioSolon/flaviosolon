@@ -6,7 +6,7 @@
     email: string;
   }
 
-  let { projects = [], email = 'solondutra73@gmail.com' }: Props = $props();
+  let { projects = [], email = 'contato@flaviosolon.com' }: Props = $props();
 
   let filter = $state('Tudo');
   let showAll = $state(false);
@@ -22,6 +22,17 @@
     filter === 'Tudo' && !showAll ? filteredProjects.slice(0, 3) : filteredProjects
   );
 
+  function setFilter(f: string) {
+    if (filter === f) return;
+    if (typeof document !== 'undefined' && 'startViewTransition' in document) {
+      document.startViewTransition(() => {
+        filter = f;
+      });
+    } else {
+      filter = f;
+    }
+  }
+
   function toggleDetail(id: string) {
     openDetails[id] = !openDetails[id];
   }
@@ -31,9 +42,10 @@
   <div class="filters" role="group" aria-label="Filtrar projetos por tecnologia">
     {#each filterOptions as f}
       <button
+        type="button"
         aria-pressed={filter === f}
         class={filter === f ? 'active' : ''}
-        onclick={() => (filter = f)}
+        onclick={() => setFilter(f)}
       >
         {#if f === 'Tudo'}<span>✳ </span>{/if}
         {f}
@@ -149,7 +161,7 @@
               {p.longDescription || p.description} Stack principal: {p.stack.join(', ')}.
             </p>
             {#if p.metrics}
-              <div class="mono" style="font-size: 11px; color: var(--copper); margin-bottom: 12px;">
+              <div class="mono" style="font-size: 12px; color: var(--copper); margin-bottom: 12px;">
                 ↳ Impacto: {p.metrics}
               </div>
             {/if}

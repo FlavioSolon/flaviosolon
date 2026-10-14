@@ -1,14 +1,14 @@
 {
-	"pid": 48972,
-	"port": 8444,
-	"url": "http://localhost:8444",
+	"pid": 13430,
+	"port": 8443,
+	"url": "http://localhost:8443",
 	"urls": {
 		"local": [
-			"http://localhost:8444/"
+			"http://localhost:8443/"
 		],
 		"network": [
-			"http://10.34.92.70:8444/",
-			"http://172.28.0.1:8444/"
+			"http://10.34.92.177:8443/",
+			"http://172.28.0.1:8443/"
 		],
 		"networkInterfaceNames": [
 			"wlp0s20f3",
@@ -16,5 +16,5 @@
 		]
 	},
 	"background": false,
-	"startedAt": "2026-10-13T18:00:35.919Z"
+	"startedAt": "2026-10-14T20:11:32.696Z"
 }

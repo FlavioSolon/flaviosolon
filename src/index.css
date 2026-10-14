@@ -19,41 +19,41 @@ h1{font-size:clamp(52px,5.8vw,84px);line-height:1.06;letter-spacing:-2.5px}
 .hero-intro{display:flex;flex-direction:column;gap:16px;max-width:540px;margin:20px 0 28px}
 .hero-intro p{font-size:15px;line-height:1.85;color:#abb0ab;margin:0}
 .hero-intro .hero-canonical{color:#f0f2ed;font-size:16px;line-height:1.8;font-weight:450}
-.availability{font-size:10px;letter-spacing:.65px;flex-wrap:wrap}
+.availability{font-size:12px;letter-spacing:.65px;flex-wrap:wrap}
 .availability>span{display:none}
 .button{font-size:14px;padding:15px 20px;min-height:48px}
 .text-link{font-size:14px;min-height:44px;align-items:center}
-.hero-location{font-size:10px;letter-spacing:.6px;flex-wrap:wrap}
-.stack-intro{font-size:9px}.stack-end{font-size:8px}.stack-name{font-size:18px}
-.eyebrow{font-size:11px;letter-spacing:1.15px;line-height:1.7}
+.hero-location{font-size:12px;letter-spacing:.6px;flex-wrap:wrap}
+.stack-intro{font-size:12px}.stack-end{font-size:12px}.stack-name{font-size:18px}
+.eyebrow{font-size:12px;letter-spacing:1.2px;line-height:1.7}
 .section-heading>p{font-size:15px;line-height:1.8;max-width:330px}
-.filters button{font-size:13px;min-height:44px;padding:9px 14px}
-.project-count{font-size:10px;line-height:1.7}
+.filters button{font-size:13px;min-height:44px;padding:10px 16px;display:inline-flex;align-items:center;justify-content:center}
+.project-count{font-size:12px;line-height:1.7}
 .project-grid{gap:20px}
-.project-type{font-size:10px;letter-spacing:.4px}
+.project-type{font-size:12px;letter-spacing:.4px}
 .project-info{padding:24px 22px 0}
 .project-title h3{font-size:27px}
 .project-title>a{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:end}
 .project-info>p{font-size:15px;line-height:1.8;min-height:108px}
-.tags>span{font-size:11px;padding:5px 8px}
-.project-details summary{font-size:11px;line-height:1.6;min-height:48px;gap:12px}
+.tags>span{font-size:12px;padding:6px 10px;min-height:28px;display:inline-flex;align-items:center}
+.project-details summary{font-size:12px;line-height:1.6;min-height:48px;gap:12px}
 .project-details p{font-size:14px}
 .view-all{font-size:14px;min-height:44px;margin-top:25px}
 .pillar{padding:28px 24px}
-.pillar-top .mono{font-size:10px;line-height:1.8;max-width:80%}
+.pillar-top .mono{font-size:12px;line-height:1.8;max-width:80%}
 .pillar h3{font-size:29px}
 .pillar>p{font-size:15px;line-height:1.85;min-height:140px}
-.pillar-code{font-size:11px;line-height:1.85}
+.pillar-code{font-size:12px;line-height:1.85}
 .approach-description{font-size:16px;line-height:1.85}
 .faq-list summary{font-size:15px;line-height:1.65;gap:16px}
-.faq-list summary>.mono{font-size:11px}
+.faq-list summary>.mono{font-size:12px}
 .faq-list details p{font-size:15px;line-height:1.85;padding-left:31px}
 .contact-bottom p{font-size:16px}
 .contact-email{font-size:16px;overflow-wrap:anywhere;min-height:44px}
 .social-links{display:flex;gap:24px;flex-wrap:wrap;margin-top:15px}
-.social-links a{font-size:14px;min-height:44px;display:flex;align-items:center;color:#b8c2b2}
-footer{flex-wrap:wrap}footer>.mono{font-size:9px}footer>div{font-size:12px;flex-wrap:wrap;gap:18px}
-footer a{min-height:44px;display:inline-flex;align-items:center}
+.social-links a{font-size:14px;min-height:44px;min-width:44px;display:inline-flex;align-items:center;padding:8px 12px;color:#b8c2b2}
+footer{flex-wrap:wrap}footer>.mono{font-size:12px}footer>div{font-size:12px;flex-wrap:wrap;gap:18px}
+footer a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;padding:6px 8px}
 .home-journal{border-top:1px solid var(--line)}
 .journal-description{color:var(--muted);font-size:16px;line-height:1.85;max-width:550px;margin-bottom:0}
 .button-outline{border:1px solid #596350;color:#d9e0d0;white-space:nowrap}
@@ -117,8 +117,8 @@ footer a{min-height:44px;display:inline-flex;align-items:center}
 }
 @media(max-width:760px){
   .header{height:86px;gap:12px;position:relative}
-  .wordmark{font-size:22px;flex-shrink:0}.wordmark-sub{font-size:8px;letter-spacing:1.8px}
-  .header-contact{margin:0 0 0 auto;padding:9px 11px;gap:8px;font-size:12px}
+  .wordmark{font-size:22px;flex-shrink:0}.wordmark-sub{font-size:12px;letter-spacing:1.5px}
+  .header-contact{margin:0 0 0 auto;padding:10px 14px;gap:8px;font-size:12px;min-height:44px}
   .menu-toggle{display:flex;justify-content:center;align-items:center;border:1px solid #3f483c;min-width:44px;min-height:44px;flex-shrink:0;color:#d6ddcc;background:transparent}
   .nav{display:none;top:86px;left:-7%;right:-7%;position:absolute;background:#141b16;border:1px solid #3f483c;padding:15px;z-index:20}
   .nav.open{display:flex;flex-wrap:wrap;justify-content:space-around;gap:5px}
@@ -127,31 +127,31 @@ footer a{min-height:44px;display:inline-flex;align-items:center}
   .hero h1{font-size:clamp(50px,11.8vw,78px);letter-spacing:-2px;margin:26px 0 19px}
   .hero-manifesto{font-size:23px;line-height:1.5}
   .hero-content>p{font-size:16px;line-height:1.85}
-  .availability{font-size:10px;letter-spacing:.3px}
+  .availability{font-size:12px;letter-spacing:.3px}
   .hero-actions{gap:16px;flex-wrap:wrap;margin-top:25px}
-  .hero-location{font-size:10px;gap:10px;line-height:2}
-  .hero-art{min-height:350px}
-  .art-coordinate{font-size:9px;left:18px;right:18px;flex-wrap:wrap;gap:10px}
-  .art-note>span{font-size:9px}
-  .art-corner{font-size:9px}.photo-credit{font-size:9px;bottom:6px}
-  .stack-intro{font-size:10px}.stack-name{font-size:15px}.stack-strip{gap:16px}
+  .hero-location{font-size:12px;gap:10px;line-height:2}
+  .hero-art{min-height:350px;aspect-ratio:3/2}
+  .art-coordinate{font-size:12px;left:18px;right:18px;flex-wrap:wrap;gap:10px}
+  .art-note>span{font-size:12px}
+  .art-corner{font-size:12px}.photo-credit{font-size:12px;bottom:6px}
+  .stack-intro{font-size:12px}.stack-name{font-size:15px}.stack-strip{gap:16px}
   .section{padding:46px 0}
-  .eyebrow{font-size:10px;letter-spacing:.8px}
+  .eyebrow{font-size:12px;letter-spacing:.8px}
   h2{font-size:32px;line-height:1.22;letter-spacing:-1px;overflow-wrap:break-word}
   .section-heading{display:block}.section-heading>p{font-size:16px;max-width:none;margin-top:18px}
-  .filters{gap:5px}.filters button{font-size:13px;min-height:44px;padding:9px 13px}
+  .filters{gap:8px}.filters button{font-size:13px;min-height:44px;padding:10px 14px}
   .filter-row{flex-direction:column;align-items:start;gap:15px}
-  .project-count{font-size:10px}
+  .project-count{font-size:12px}
   .project-grid{grid-template-columns:1fr;gap:24px}
-  .project-type{font-size:10px}
+  .project-type{font-size:12px}
   .project-title h3{font-size:28px}
   .project-info>p{font-size:16px;min-height:0}
-  .tags>span{font-size:11px}
+  .tags>span{font-size:12px;padding:6px 10px}
   .project-details summary{font-size:12px;min-height:48px}
   .project-details p{font-size:15px}
   .pillar-grid{grid-template-columns:1fr;gap:15px}
   .pillar{padding:26px;margin:0}
-  .pillar-top .mono{font-size:10px;max-width:85%}
+  .pillar-top .mono{font-size:12px;max-width:85%}
   .pillar h3{font-size:30px;margin:20px 0 15px}
   .pillar>p{font-size:16px;min-height:0}
   .pillar-code{font-size:12px}
@@ -163,13 +163,13 @@ footer a{min-height:44px;display:inline-flex;align-items:center}
   .contact-bottom{display:block}.contact-bottom p{font-size:16px}
   .contact-email{font-size:16px}.contact-bottom .button{margin-top:15px}
   .home-journal .button{margin-top:22px}
-  footer{gap:18px}footer>.mono{font-size:9px;line-height:1.8}
-  footer>div{font-size:13px;gap:23px}
+  footer{gap:18px}footer>.mono{font-size:12px;line-height:1.8}
+  footer>div{font-size:12px;gap:20px}
   .journal-hero{padding:43px 0 20px}
   .journal-hero h1{font-size:clamp(38px,9.5vw,65px);letter-spacing:-1.5px}
   .journal-hero>p{font-size:17px}
   .journal-toolbar{flex-direction:column;align-items:start;padding:22px 0;gap:20px}
-  .journal-toolbar>.mono{font-size:10px}.article-search{width:100%}
+  .journal-toolbar>.mono{font-size:12px}.article-search{width:100%}
   .article-list{grid-template-columns:1fr;padding-bottom:45px}
   .journal-card h2{font-size:28px}.journal-card-body{padding:24px}
   .journal-card-body>p{min-height:0;font-size:16px}
@@ -189,11 +189,96 @@ footer a{min-height:44px;display:inline-flex;align-items:center}
 }
 @media(max-width:360px){
   .site-shell{padding:0 5%}.header{gap:7px}.wordmark{font-size:20px}
-  .header-contact{font-size:11px;padding:8px;gap:5px}
+  .header-contact{font-size:12px;padding:10px 12px;min-height:44px;gap:6px}
   .hero h1{font-size:48px}.hero-manifesto{font-size:21px}
-  .filters button{padding:8px 11px}
+  .filters button{padding:10px 12px;font-size:12px;min-height:44px}
   .receipt-brand{font-size:14px;left:16px}.receipt-paper{right:16px;width:140px}
-  .pdf-badge{left:12px;font-size:5px}
+  .pdf-badge{left:12px;font-size:12px}
+}
+
+/* ==========================================================================
+   Solutions & Problem-Solving Section (CRO / High-Conversion)
+   ========================================================================== */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+.solution-card {
+  background: #101412;
+  border: 1px solid var(--line);
+  padding: 34px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color .25s, transform .2s;
+}
+.solution-card:hover {
+  border-color: #556350;
+  transform: translateY(-2px);
+}
+.solution-num {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--copper);
+  letter-spacing: 1px;
+}
+.solution-card h3 {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 18px 0 14px;
+  color: #f4f4f0;
+  line-height: 1.3;
+}
+.solution-card p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #a7b0a5;
+  margin: 0 0 24px;
+  flex: 1;
+}
+.solution-tag {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: #8c998b;
+  letter-spacing: 1px;
+  border-top: 1px solid #232c25;
+  padding-top: 16px;
+}
+@media (max-width: 1000px) {
+  .solutions-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+.hero-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 24px;
+  max-width: 520px;
+}
+.hero-details p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: #9ea49c;
+  margin: 0;
+}
+.hero-details strong {
+  color: #e2e8df;
+  font-weight: 600;
+}
+.hero-art-img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.hero-art picture,
+.hero-art picture img,
+.hero-art>img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
 }
 
 /* ==========================================================================
@@ -214,7 +299,7 @@ footer a{min-height:44px;display:inline-flex;align-items:center}
   margin-bottom: 12px;
 }
 .aeo-label {
-  font: 10px var(--mono);
+  font: 12px var(--mono);
   letter-spacing: 1.5px;
   color: var(--copper);
   display: flex;
@@ -222,10 +307,10 @@ footer a{min-height:44px;display:inline-flex;align-items:center}
   gap: 8px;
 }
 .aeo-badge {
-  font: 9px var(--mono);
+  font: 12px var(--mono);
   background: #25392e;
   color: #9cb8a5;
-  padding: 3px 8px;
+  padding: 4px 8px;
   border-radius: 2px;
 }
 .aeo-summary {
@@ -238,11 +323,11 @@ footer a{min-height:44px;display:inline-flex;align-items:center}
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font: 10px var(--mono);
+  font: 12px var(--mono);
   color: #8c9c8f;
   background: #141c18;
   border: 1px solid #2d3b32;
-  padding: 5px 12px;
+  padding: 6px 12px;
   margin-top: 14px;
 }
 .geo-dot {

@@ -15,12 +15,12 @@ const articles = getArticles();
 
 <Layout
   path="/"
-  description="Flávio Sólon (Flávio Sólon Araújo Dutra) — Desenvolvedor Full-Stack em Manaus. Especialista em Laravel, Svelte, Vue, React e Rust. Criador de plataformas EAD, rastreamento veicular e marketplaces."
+  description="Flávio Sólon (Flávio Sólon Araújo Dutra) — Engenheiro de Software Full-Stack em Manaus. Especialista em Rust, Laravel, Svelte 5, Angular e Astro."
 >
   <div class="site-shell">
     <a class="skip-link" href="#main">Pular para o conteúdo</a>
 
-    <MobileNav client:load whatsappUrl={profile.whatsapp} currentPath="/" />
+    <MobileNav client:idle whatsappUrl={profile.whatsapp} currentPath="/" />
 
     <main id="main">
       <!-- HERO SECTION -->
@@ -34,30 +34,31 @@ const articles = getArticles();
             <span>ao código.</span>
           </h1>
           <div class="hero-manifesto">
-            Desenvolvimento com propósito<br />
-            e impacto real.
+            Engenharia de software de alta precisão para sistemas críticos, SaaS e negócios que precisam escalar.
           </div>
           <div class="hero-intro about-semantic-block" id="sobre" itemscope itemtype="https://schema.org/Person">
             <meta itemprop="name" content="Flávio Sólon" />
             <meta itemprop="alternateName" content="Flávio Sólon Araújo Dutra" />
-            <meta itemprop="jobTitle" content="Engenheiro de Software Full-Stack & Arquiteto de Soluções" />
+            <meta itemprop="jobTitle" content="Engenheiro de Software Full-Stack Sênior" />
             <p class="hero-canonical" itemprop="description">
-              Olá, sou Flávio Sólon (Flávio Sólon Araújo Dutra). Desenvolvedor full-stack de Manaus, movido pela resolução de problemas reais. A minha jornada desenvolve-se em duas vias que se complementam: a tecnologia de alta performance e o serviço humanitário.
+              Olá, sou <strong>Flávio Sólon (Flávio Sólon Araújo Dutra)</strong>, <strong>desenvolvedor full-stack em Manaus</strong> focado na construção de sistemas críticos e resolução de problemas reais. Minha jornada caminha em duas vias que se complementam: a tecnologia de alta precisão e o serviço humanitário na <strong>Amazônia</strong>.
             </p>
-            <p>
-              Tenho experiência sólida em Laravel, Svelte, Vue e React, com foco na criação de arquiteturas escaláveis — desde plataformas EAD e sistemas educacionais a rastreamento veicular, e-commerces e marketplaces.
-            </p>
-            <p>
-              Paralelamente, atuo como missionário junto de comunidades ribeirinhas na Amazónia e em favelas. A escassez de recursos ensinou-me resiliência, adaptabilidade e a construir soluções que realmente importam — no código e na vida. Fora do ambiente de desenvolvimento, pratico Karaté Shinkyokushin, Kickboxing e estudo violão clássico/erudito, disciplinas que reforçam a minha precisão e foco técnico.
-            </p>
-          </div>
-          <div class="hero-actions">
-            <a class="button button-copper" href="#projetos">
-              Explorar projetos <span aria-hidden="true">↗</span>
-            </a>
-            <a class="text-link" href="#essencia">
-              Além do código <span>↓</span>
-            </a>
+            <div class="hero-actions">
+              <a class="button button-copper" href="#contato">
+                Diagnosticar meu projeto <span aria-hidden="true">↗</span>
+              </a>
+              <a class="text-link" href="#projetos">
+                Explorar projetos <span>↓</span>
+              </a>
+            </div>
+            <div class="hero-details">
+              <p>
+                Experiência sólida em <strong>Laravel, Svelte, Vue, React, Angular e Rust</strong>, projetando arquiteturas escaláveis para <strong>plataformas EAD, sistemas educacionais, rastreamento veicular, e-commerces e marketplaces</strong>.
+              </p>
+              <p>
+                Atuo como missionário junto a comunidades ribeirinhas na Amazônia e em periferias. A escassez de recursos me ensinou resiliência, adaptabilidade e a construir soluções que realmente importam — no código e na vida. Pratico <strong>Karatê Shinkyokushin</strong>, <strong>Kickboxing</strong> e violão erudito — disciplinas que sustentam meu rigor técnico e precisão.
+              </p>
+            </div>
           </div>
           <div class="hero-location">
             <span class="location-icon">⌖</span> {profile.location.city.toUpperCase()}, {profile.location.country.toUpperCase()}
@@ -78,6 +79,7 @@ const articles = getArticles();
             decoding="async"
             width={600}
             height={400}
+            class="hero-art-img aspect-[3/2] w-full h-auto object-cover"
           />
           <div class="art-shade"></div>
           <div class="art-coordinate">
@@ -146,7 +148,7 @@ const articles = getArticles();
           </p>
         </div>
 
-        <ProjectFilter client:load projects={projects} email={profile.email} />
+        <ProjectFilter client:visible projects={projects} email={profile.email} />
       </section>
 
       <!-- ESSENCE SECTION (SVELTE 5 REACTIVE PILLARS) -->
@@ -169,11 +171,52 @@ const articles = getArticles();
         <PillarTabs client:visible />
       </section>
 
+      <!-- PROBLEMS I SOLVE SECTION (CRO & CONVERSION FOCUS) -->
+      <section class="solutions section" id="solucoes">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">
+              <span>03</span> / VALOR DE NEGÓCIO & IMPACTO
+            </div>
+            <h2>
+              Problemas de negócio<br />
+              <span>que eu resolvo.</span>
+            </h2>
+          </div>
+          <p>
+            Engenharia hands-on orientada a estabilidade, escalabilidade e resultado financeiro real.
+          </p>
+        </div>
+
+        <div class="solutions-grid">
+          <div class="solution-card">
+            <span class="solution-num">01</span>
+            <h3>Sistemas Lentos & Gargalos Críticos</h3>
+            <p>Diagnóstico cirúrgico e eliminação de lentidão em APIs, otimização de queries em bancos sobrecarregados e extração de microsserviços de alta concorrência em Rust para desonerar o backend com consumo mínimo de memória.</p>
+            <div class="solution-tag">RUST · POSTGRESQL · ALTA ESCALA</div>
+          </div>
+
+          <div class="solution-card">
+            <span class="solution-num">02</span>
+            <h3>Criação de SaaS, EAD & Marketplaces</h3>
+            <p>Construção de produtos digitais robustos do zero à produção: arquitetura escalável multi-tenant, gateways de pagamento, controle de concorrência e telemetria veicular em tempo real com tolerância a falhas.</p>
+            <div class="solution-tag">SVELTE 5 · ASTRO · TELEMETRIA</div>
+          </div>
+
+          <div class="solution-card">
+            <span class="solution-num">03</span>
+            <h3>Modernização de Legados em Laravel/PHP</h3>
+            <p>Refatoração segura de sistemas legados sem paralisar a operação. Upgrade de versões, blindagem de segurança, desacoplamento de monolitos e reformulação de interfaces corporativas em Angular e Svelte.</p>
+            <div class="solution-tag">LARAVEL · ANGULAR · ZERO DOWNTIME</div>
+          </div>
+        </div>
+      </section>
+
       <!-- APPROACH & FAQS -->
       <section class="approach section" id="abordagem">
         <div>
           <div class="eyebrow">
-            <span>03</span> / ARQUITETURA & DECISÕES
+            <span>04</span> / ARQUITETURA & DECISÕES
           </div>
           <h2>
             Intenção antes<br />
@@ -201,7 +244,7 @@ const articles = getArticles();
       <!-- HOME JOURNAL TEASER -->
       <section class="home-journal section" aria-labelledby="journal-title">
         <div class="eyebrow">
-          <span>04</span> / IDEIAS QUE MERECEM CIRCULAR
+          <span>05</span> / IDEIAS QUE MERECEM CIRCULAR
         </div>
         <div class="section-heading">
           <div>

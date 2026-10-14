@@ -15,75 +15,132 @@ const { title: customTitle, description: customDescription, path: customPath, og
 const currentPath = customPath || Astro.url.pathname;
 const seo = generateSeo(currentPath);
 
+const defaultDescription = "Flávio Sólon (Flávio Sólon Araújo Dutra) — Engenheiro de Software Full-Stack em Manaus. Especialista em Rust, Laravel, Svelte 5, Angular e Astro.";
+
 const finalTitle = customTitle ? `${customTitle} | Flávio Sólon` : seo.title;
-const finalDescription = customDescription || seo.description;
+const finalDescription = customDescription || seo.description || defaultDescription;
 const finalOgImage = customOgImage || seo.ogImage;
 const finalOgType = customOgType || seo.ogType;
+const canonicalURL = seo.canonicalUrl;
 
 // Unified Canonical Knowledge Graph for SEO, AEO & GEO
 const canonicalEntityGraph = [
   {
+    "@type": "WebSite",
+    "@id": "https://flaviosolon.com/#website",
+    "url": "https://flaviosolon.com/",
+    "name": "Flávio Sólon — Engenharia de Software Full-Stack",
+    "inLanguage": "pt-BR",
+    "publisher": { "@id": "https://flaviosolon.com/#person" }
+  },
+  {
     "@type": "Person",
     "@id": "https://flaviosolon.com/#person",
     "name": "Flávio Sólon",
-    "legalName": "Flávio Sólon Araújo Dutra",
+    "givenName": "Flávio Sólon",
+    "familyName": "Araújo Dutra",
     "alternateName": [
-      "Flavio Solon",
       "Flávio Sólon Araújo Dutra",
-      "Flavio Solon Araujo Dutra",
-      "Flávio S. Dutra"
+      "Flavio Solon",
+      "Flavio Solon Araujo Dutra"
     ],
-    "url": "https://flaviosolon.com",
-    "jobTitle": "Engenheiro de Software Full-Stack & Arquiteto de Soluções",
-    "description": "Desenvolvedor full-stack sénior sediado em Manaus, especialista em arquiteturas escaláveis com Laravel, Svelte, Vue, React, Rust, Astro e Angular. Atua no desenvolvimento de plataformas EAD, telemetria/rastreamento veicular, e-commerces, sistemas educacionais e marketplaces, aliando tecnologia a missões humanitárias na Amazónia.",
+    "url": "https://flaviosolon.com/",
+    "image": "https://flaviosolon.com/og-image.jpg",
+    "email": "mailto:contato@flaviosolon.com",
+    "jobTitle": "Engenheiro de Software Full-Stack Sênior",
+    "description": "Engenheiro de Software Full-Stack em Manaus (AM), especialista no desenvolvimento prático de sistemas web, plataformas EAD, telemetria veicular, marketplaces e micro-SaaS com Rust, Laravel, Svelte 5, Angular e Astro.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Manaus",
-      "addressRegion": "Amazonas",
+      "addressRegion": "AM",
       "addressCountry": "BR"
     },
     "knowsAbout": [
-      "Desenvolvimento Web Full-Stack",
-      "Laravel & PHP",
-      "Svelte & SvelteKit",
-      "React & Vue.js",
       "Rust",
+      "Laravel",
+      "PHP",
+      "Svelte 5",
+      "SvelteKit",
       "Angular",
       "Astro",
+      "React",
+      "Vue.js",
       "Arquitetura de Software Escalável",
       "Plataformas EAD",
       "Sistemas de Rastreamento Veicular",
       "Marketplaces e E-commerce",
-      "Karate Shinkyokushin",
+      "Karatê Shinkyokushin",
       "Kickboxing",
-      "Violão Clássico e Erudito"
+      "Violão Erudito"
     ],
     "sameAs": [
-      "https://github.com/flaviosolon",
-      "https://linkedin.com/in/flaviosolon"
+      "https://github.com/FlavioSolon",
+      "https://www.linkedin.com/in/flaviosolon"
     ]
   },
   {
     "@type": "ProfessionalService",
-    "@id": "https://flaviosolon.com/#business",
-    "name": "Flávio Sólon Araújo Dutra - Engenharia de Software",
-    "legalName": "Flávio Sólon Araújo Dutra",
-    "url": "https://flaviosolon.com",
-    "founder": { "@id": "https://flaviosolon.com/#person" },
-    "areaServed": "Global",
-    "serviceType": [
-      "Desenvolvimento Full-Stack",
-      "Consultoria em Arquitetura de Software",
-      "Desenvolvimento em Laravel e PHP",
-      "Desenvolvimento Reativo com Svelte e React",
-      "Microsserviços em Rust"
+    "@id": "https://flaviosolon.com/#service",
+    "name": "Flávio Sólon — Desenvolvimento de Software sob Medida",
+    "url": "https://flaviosolon.com/",
+    "image": "https://flaviosolon.com/og-image.jpg",
+    "email": "contato@flaviosolon.com",
+    "priceRange": "$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Manaus",
+      "addressRegion": "AM",
+      "addressCountry": "BR"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Manaus" },
+      { "@type": "Country", "name": "Brasil" }
+    ],
+    "founder": { "@id": "https://flaviosolon.com/#person" }
+  },
+  {
+    "@type": "FAQPage",
+    "@id": "https://flaviosolon.com/#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Por que combinar Rust e Laravel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O Laravel oferece produtividade extrema e um ecossistema maduro para regras de negócio, autenticação e gestão corporativa, enquanto o Rust assume rotas críticas de alta concorrência, workers financeiros e processamento em tempo real com consumo mínimo de memória."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quando escolher Svelte 5, Angular ou Astro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Astro é imbatível para páginas orientadas a conteúdo e SEO máximo com Zero-JS por padrão. Svelte 5 (Runes) entrega reatividade cirúrgica para SaaS e interfaces fluidas. Angular é a escolha ideal para sistemas corporativos complexos que exigem arquitetura padronizada em larga escala."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Você trabalha com empresas de Manaus e de fora do Amazonas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. Baseado em Manaus (AM), atuo presencialmente ou remotamente para empresas locais do Polo Industrial e negócios da região, além de atender empresas e startups em todo o Brasil e no exterior."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como contratar o Flávio Sólon para resolver problemas em um sistema existente ou criar um produto do zero?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Atuo diretamente no código (hands-on) tanto na refatoração de sistemas legados, correção de gargalos de performance e bancos de dados, quanto no desenvolvimento ponta a ponta de novos produtos SaaS, plataformas EAD, telemetria e marketplaces."
+        }
+      }
     ]
   }
 ];
 
 const contextGraph = Array.isArray(seo.jsonLd?.['@graph'])
   ? (seo.jsonLd['@graph'] as Record<string, unknown>[]).filter(
-      (item) => item['@type'] !== 'Person' && item['@type'] !== 'ProfessionalService'
+      (item) => item['@type'] !== 'Person' && item['@type'] !== 'ProfessionalService' && item['@type'] !== 'WebSite' && item['@type'] !== 'FAQPage'
     )
   : [];
 
@@ -105,7 +162,9 @@ const schemaGraph = {
     <meta name="description" content={finalDescription} />
     <meta name="author" content="Flávio Sólon" />
     <meta name="theme-color" content="#0B0D0E" />
-    <link rel="canonical" href={seo.canonicalUrl} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="pt-BR" href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- GEO & Local Relevance (Manaus, Amazonas, Brasil) -->

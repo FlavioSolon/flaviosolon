@@ -2,7 +2,7 @@
   const pillars = [
     {
       name: "A disciplina",
-      subject: "Shinkyokushin Karate",
+      subject: "Karatê Shinkyokushin",
       symbol: "道",
       text: "Foco, constância e calma sob pressão. A mesma disciplina do dojo aplicada a sistemas críticos e execução precisa.",
       code: "Precisão na execução. Segurança por princípio.",

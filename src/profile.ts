@@ -1,7 +1,7 @@
 export const profile = {
   name: "Flávio Sólon",
   site: "https://flaviosolon.com",
-  email: "solondutra73@gmail.com",
+  email: "contato@flaviosolon.com",
   whatsapp:
     "https://api.whatsapp.com/send/?phone=5592984167784&text&type=phone_number&app_absent=0",
   socials: [

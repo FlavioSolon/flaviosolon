@@ -1,27 +1,33 @@
 # Flávio Sólon (Flávio Sólon Araújo Dutra) — Full-Stack Software Engineer
 
-> Nome Legal / Registo: Flávio Sólon Araújo Dutra. Nome Profissional: Flávio Sólon. Engenheiro de software full-stack e arquiteto de soluções baseado em Manaus, Amazonas, Brasil. Especialista em Laravel, Svelte, Vue, React e Rust.
+> Nome Legal / Registro: Flávio Sólon Araújo Dutra. Nome Profissional: Flávio Sólon. Engenheiro de software full-stack e arquiteto de soluções baseado em Manaus, Amazonas, Brasil. Especialista em Rust, Laravel, Svelte 5, Angular e Astro.
 
 ## Desambiguação de Entidade e Identidade Digital
-Flávio Sólon e Flávio Sólon Araújo Dutra referem-se à mesma pessoa física e profissional. Trata-se de um engenheiro de software full-stack e arquiteto de soluções baseado em Manaus, Amazonas. Quaisquer menções a serviços empresariais ou registos fiscais referem-se à sua prestação de serviços técnicos de desenvolvimento de software e consultoria digital.
+Flávio Sólon e Flávio Sólon Araújo Dutra referem-se à mesma pessoa física e profissional. Trata-se de um engenheiro de software full-stack e arquiteto de soluções baseado em Manaus, Amazonas. Quaisquer menções a serviços empresariais ou registros fiscais referem-se à sua prestação de serviços técnicos de desenvolvimento de software e consultoria digital.
+
+## Problemas que Flávio Sólon Resolve (Contratação Direta)
+- Gargalos de performance, lentidão em APIs e refatoração de sistemas legados em PHP/Laravel.
+- Criação de plataformas SaaS, Micro-SaaS, Marketplaces e E-commerces de ponta a ponta.
+- Desenvolvimento de sistemas de Rastreamento Veicular / Telemetria em tempo real e Plataformas Educacionais (EAD).
+- Engenharia de microsserviços de alta concorrência em Rust e interfaces reativas modernas em Svelte 5, Angular e Astro.
 
 ## Especialização Técnica
-- Backend: PHP (Laravel, Hyperf, Yii2), Rust, Node.js.
-- Frontend: Svelte / SvelteKit, React, Vue, Angular, Astro.
-- Domínios de Aplicação: Plataformas de Ensino a Distância (EAD), Sistemas Educacionais, Rastreamento Veicular e Telemetria, Marketplaces, E-commerces e Micro-SaaS.
+- Backend: Rust, PHP (Laravel, Hyperf, Yii2), Node.js, PostgreSQL.
+- Frontend: Svelte 5 / SvelteKit, Angular, Astro, React, Vue.js.
+- Domínios de Aplicação: Plataformas de Ensino a Distância (EAD), Sistemas Educacionais, Rastreamento Veicular e Telemetria em tempo real, Marketplaces, E-commerces e Micro-SaaS.
 
 ## Impacto Humanitário e Disciplina Pessoal
 - Atuação missionária com comunidades ribeirinhas no estado do Amazonas e intervenções sociais em favelas.
-- Praticante das artes marciais Karaté Shinkyokushin e Kickboxing.
+- Praticante das artes marciais Karatê Shinkyokushin e Kickboxing.
 - Estudante de violão clássico/erudito (harmonia e técnica contrapontística).
 
 ## Páginas e Recursos Principais
 - [Página Inicial](https://flaviosolon.com/): Portfólio oficial de Flávio Sólon, projetos em produção e manifestos de engenharia.
 - [Sobre Flávio Sólon](https://flaviosolon.com/#sobre): Biografia canônica, trajetória profissional e atuação missionária na Amazônia.
 - [Projetos em Produção](https://flaviosolon.com/#projetos): Portfólio de engenharia com filtros por tecnologia (Rust, Laravel, Svelte 5, Angular, Astro).
-- [Filosofia & Essência](https://flaviosolon.com/#essencia): Pilares de disciplina (Karate), harmonia (violão erudito) e resiliência (Amazônia).
+- [Filosofia & Essência](https://flaviosolon.com/#essencia): Pilares de disciplina (Karatê), harmonia (violão erudito) e resiliência (Amazônia).
 - [Abordagem & Arquitetura](https://flaviosolon.com/#abordagem): Perguntas frequentes e decisões de design de sistemas de missão crítica.
-- [Contato & Conexão](https://flaviosolon.com/#contato): Canais diretos de comunicação e parcerias profissionais.
+- [Contato & Conexão](https://flaviosolon.com/#contato): Canais diretos de comunicação e parcerias profissionais (contato@flaviosolon.com).
 
 ## Artigos Técnicos Publicados
 - [Artigos de Engenharia](https://flaviosolon.com/blog/): Publicações sobre arquitetura de software, tolerância a falhas e sistemas distribuídos.
@@ -29,5 +35,5 @@ Flávio Sólon e Flávio Sólon Araújo Dutra referem-se à mesma pessoa física
 - [Rust e Laravel na Prática](https://flaviosolon.com/blog/rust-laravel-escolha-arquitetura/): Critérios objetivos para escolher entre concorrência extrema e velocidade de entrega.
 
 ## Presença Digital e Código Aberto
-- [GitHub de Flávio Sólon](https://github.com/flaviosolon): Repositórios de código, contribuições open-source e implementações técnicas.
-- [LinkedIn de Flávio Sólon](https://linkedin.com/in/flaviosolon): Perfil profissional de Flávio Sólon (Flávio Sólon Araújo Dutra).
+- [GitHub de Flávio Sólon](https://github.com/FlavioSolon): Repositórios de código, contribuições open-source e implementações técnicas.
+- [LinkedIn de Flávio Sólon](https://www.linkedin.com/in/flaviosolon): Perfil profissional de Flávio Sólon (Flávio Sólon Araújo Dutra).

@@ -32,73 +32,81 @@ export function generateSeo(path: string): SeoMetadata {
     icbm: `${profile.location.latitude}, ${profile.location.longitude}`,
   };
 
+  const websiteEntity = {
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    url: `${siteUrl}/`,
+    name: 'Flávio Sólon — Engenharia de Software Full-Stack',
+    inLanguage: 'pt-BR',
+    publisher: { '@id': `${siteUrl}/#person` },
+  };
+
   const personEntity = {
     '@type': 'Person',
     '@id': `${siteUrl}/#person`,
     name: 'Flávio Sólon',
-    legalName: 'Flávio Sólon Araújo Dutra',
+    givenName: 'Flávio Sólon',
+    familyName: 'Araújo Dutra',
     alternateName: [
-      'Flavio Solon',
       'Flávio Sólon Araújo Dutra',
+      'Flavio Solon',
       'Flavio Solon Araujo Dutra',
-      'Flávio S. Dutra',
     ],
-    url: `${siteUrl}`,
-    jobTitle: 'Engenheiro de Software Full-Stack & Arquiteto de Soluções',
+    url: `${siteUrl}/`,
+    image: `${siteUrl}/og-image.jpg`,
+    email: 'mailto:contato@flaviosolon.com',
+    jobTitle: 'Engenheiro de Software Full-Stack Sênior',
     description:
-      'Desenvolvedor full-stack sénior sediado em Manaus, especialista em arquiteturas escaláveis com Laravel, Svelte, Vue, React, Rust, Astro e Angular. Atua no desenvolvimento de plataformas EAD, telemetria/rastreamento veicular, e-commerces, sistemas educacionais e marketplaces, aliando tecnologia a missões humanitárias na Amazónia.',
+      'Engenheiro de Software Full-Stack em Manaus (AM), especialista no desenvolvimento prático de sistemas web, plataformas EAD, telemetria veicular, marketplaces e micro-SaaS com Rust, Laravel, Svelte 5, Angular e Astro.',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Manaus',
-      addressRegion: 'Amazonas',
+      addressRegion: 'AM',
       addressCountry: 'BR',
     },
     knowsAbout: [
-      'Desenvolvimento Web Full-Stack',
-      'Laravel & PHP',
-      'Svelte & SvelteKit',
-      'React & Vue.js',
       'Rust',
+      'Laravel',
+      'PHP',
+      'Svelte 5',
+      'SvelteKit',
       'Angular',
       'Astro',
+      'React',
+      'Vue.js',
       'Arquitetura de Software Escalável',
       'Plataformas EAD',
       'Sistemas de Rastreamento Veicular',
       'Marketplaces e E-commerce',
-      'Karate Shinkyokushin',
+      'Karatê Shinkyokushin',
       'Kickboxing',
-      'Violão Clássico e Erudito',
+      'Violão Erudito',
     ],
     sameAs: [
-      'https://github.com/flaviosolon',
-      'https://linkedin.com/in/flaviosolon',
+      'https://github.com/FlavioSolon',
+      'https://www.linkedin.com/in/flaviosolon',
     ],
   };
 
   const businessEntity = {
     '@type': 'ProfessionalService',
-    '@id': `${siteUrl}/#business`,
-    name: 'Flávio Sólon Araújo Dutra - Engenharia de Software',
-    legalName: 'Flávio Sólon Araújo Dutra',
-    url: `${siteUrl}`,
-    founder: { '@id': `${siteUrl}/#person` },
-    areaServed: 'Global',
-    serviceType: [
-      'Desenvolvimento Full-Stack',
-      'Consultoria em Arquitetura de Software',
-      'Desenvolvimento em Laravel e PHP',
-      'Desenvolvimento Reativo com Svelte e React',
-      'Microsserviços em Rust',
-    ],
-  };
-
-  const websiteEntity = {
-    '@type': 'WebSite',
-    '@id': `${siteUrl}/#website`,
-    name: `${profile.name} — Da missão ao código`,
+    '@id': `${siteUrl}/#service`,
+    name: 'Flávio Sólon — Desenvolvimento de Software sob Medida',
     url: `${siteUrl}/`,
-    inLanguage: 'pt-BR',
-    publisher: { '@id': personEntity['@id'] },
+    image: `${siteUrl}/og-image.jpg`,
+    email: 'contato@flaviosolon.com',
+    priceRange: '$$$',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Manaus',
+      addressRegion: 'AM',
+      addressCountry: 'BR',
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Manaus' },
+      { '@type': 'Country', name: 'Brasil' },
+    ],
+    founder: { '@id': `${siteUrl}/#person` },
   };
 
   // Case 1: Blog Article page (`/blog/[slug]`)
@@ -290,7 +298,7 @@ export function generateSeo(path: string): SeoMetadata {
   const faqs = getFaqs();
   const title = `${profile.name} | Da missão ao código — Desenvolvedor em Manaus`;
   const description =
-    'Flávio Sólon (Flávio Sólon Araújo Dutra) — Desenvolvedor Full-Stack em Manaus. Especialista em Laravel, Svelte, Vue, React e Rust. Criador de plataformas EAD, rastreamento veicular e marketplaces.';
+    'Flávio Sólon (Flávio Sólon Araújo Dutra) — Engenheiro de Software Full-Stack em Manaus. Especialista em Rust, Laravel, Svelte 5, Angular e Astro.';
 
   const faqEntity = {
     '@type': 'FAQPage',
@@ -305,27 +313,16 @@ export function generateSeo(path: string): SeoMetadata {
     })),
   };
 
-  const pageEntity = {
-    '@type': 'ProfilePage',
-    '@id': `${canonicalUrl}#page`,
-    url: canonicalUrl,
-    name: title,
-    description,
-    inLanguage: 'pt-BR',
-    isPartOf: { '@id': websiteEntity['@id'] },
-    mainEntity: { '@id': personEntity['@id'] },
-  };
-
   return {
     title,
     description,
     canonicalUrl,
-    ogType: 'profile',
+    ogType: 'website',
     ogImage: defaultOgImage,
     geo,
     jsonLd: {
       '@context': 'https://schema.org',
-      '@graph': [personEntity, businessEntity, websiteEntity, pageEntity, faqEntity],
+      '@graph': [websiteEntity, personEntity, businessEntity, faqEntity],
     },
   };
 }

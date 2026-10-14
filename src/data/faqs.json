@@ -1,18 +1,18 @@
 [
   {
     "question": "Por que combinar Rust e Laravel?",
-    "answer": "Laravel oferece um ecossistema maduro para regras de negócio, autenticação e APIs. Rust complementa essa arquitetura em serviços que exigem concorrência, segurança de memória e baixa latência. A escolha parte do problema, não da tendência."
+    "answer": "O Laravel oferece produtividade extrema e um ecossistema maduro para regras de negócio, autenticação e gestão corporativa, enquanto o Rust assume rotas críticas de alta concorrência, workers financeiros e processamento em tempo real com consumo mínimo de memória."
   },
   {
     "question": "Quando escolher Svelte 5, Angular ou Astro?",
-    "answer": "Svelte 5 é uma opção para interfaces reativas e produtos leves. Angular atende aplicações corporativas com padrões e governança. Astro se destaca em experiências orientadas a conteúdo, com JavaScript entregue apenas onde necessário."
+    "answer": "Astro é imbatível para páginas orientadas a conteúdo e SEO máximo com Zero-JS por padrão. Svelte 5 (Runes) entrega reatividade cirúrgica para SaaS e interfaces fluidas. Angular é a escolha ideal para sistemas corporativos complexos que exigem arquitetura padronizada em larga escala."
   },
   {
-    "question": "Você trabalha com equipes fora de Manaus?",
-    "answer": "Sim. Baseado em Manaus, Amazonas, estou disponível para colaboração remota com equipes no Brasil e no exterior. Entre em contato para conversar sobre escopo, disponibilidade e necessidades do projeto."
+    "question": "Você trabalha com empresas de Manaus e de fora do Amazonas?",
+    "answer": "Sim. Baseado em Manaus (AM), atuo presencialmente ou remotamente para empresas locais do Polo Industrial e negócios da região, além de atender empresas e startups em todo o Brasil e no exterior."
   },
   {
-    "question": "Como você garante a resiliência de software em ambientes de alta criticidade?",
-    "answer": "Através de design orientado a falhas (graceful degradation), salvaguarda local de dados (offline-first), chaves de idempotência para transações financeiras e medição rigorosa de latência e consumo de recursos."
+    "question": "Como contratar o Flávio Sólon para resolver problemas em um sistema existente ou criar um produto do zero?",
+    "answer": "Atuo diretamente no código (hands-on) tanto na refatoração de sistemas legados, correção de gargalos de performance e bancos de dados, quanto no desenvolvimento ponta a ponta de novos produtos SaaS, plataformas EAD, telemetria e marketplaces."
   }
 ]
