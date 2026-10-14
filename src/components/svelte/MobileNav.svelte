@@ -14,7 +14,7 @@
 </script>
 
 <header class="header">
-  <a class="wordmark" href="/" aria-label="Flávio Sólon, início">
+  <a class="wordmark" href="/">
     flávio sól<span class="logo-o">o</span>n
     <span class="logo-dot">.</span>
     <span class="wordmark-sub">SOFTWARE ENGINEER</span>

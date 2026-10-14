@@ -8,6 +8,9 @@ import path from "node:path"
 export default defineConfig({
   site: "https://flaviosolon.com",
   output: "static",
+  build: {
+    inlineStylesheets: "always",
+  },
   integrations: [
     svelte(),
     sitemap({

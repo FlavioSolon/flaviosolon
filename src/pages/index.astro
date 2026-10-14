@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import MobileNav from '@/components/svelte/MobileNav.svelte';
 import ProjectFilter from '@/components/svelte/ProjectFilter.svelte';
 import PillarTabs from '@/components/svelte/PillarTabs.svelte';
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import heroImage from '@/assets/hero-amazonia.jpg';
 import { getProfile, getProjects, getFaqs, getArticles } from '@/lib/db';
 
@@ -66,18 +66,18 @@ const articles = getArticles();
         </div>
 
         <div class="hero-art">
-          <Image
+          <Picture
             src={heroImage}
             alt="Vista aérea da floresta amazônica e de seu rio — base e inspiração de Flávio Sólon em Manaus"
-            widths={[400, 640, 800]}
-            sizes="(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 640px"
-            format="webp"
-            quality={75}
+            widths={[360, 540, 720]}
+            sizes="(max-width: 700px) 92vw, (max-width: 1200px) 45vw, 600px"
+            formats={['avif', 'webp']}
+            quality={50}
             loading="eager"
             fetchpriority="high"
             decoding="async"
-            width={640}
-            height={427}
+            width={600}
+            height={400}
           />
           <div class="art-shade"></div>
           <div class="art-coordinate">
