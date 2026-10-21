@@ -9,18 +9,15 @@
   let { projects = [], email = 'contato@flaviosolon.com' }: Props = $props();
 
   let filter = $state('Tudo');
-  let showAll = $state(false);
   let openDetails = $state<Record<string, boolean>>({});
 
-  const filterOptions = ['Tudo', 'Rust', 'Laravel', 'Svelte 5', 'Angular', 'Astro'];
+  const filterOptions = ['Tudo', 'Rust', 'Laravel', 'Svelte 5', 'Vue.js', 'Angular', 'Astro'];
 
   let filteredProjects = $derived(
     projects.filter((p) => filter === 'Tudo' || p.filters.includes(filter))
   );
 
-  let visibleProjects = $derived(
-    filter === 'Tudo' && !showAll ? filteredProjects.slice(0, 3) : filteredProjects
-  );
+  let visibleProjects = $derived(filteredProjects);
 
   function setFilter(f: string) {
     if (filter === f) return;
@@ -53,12 +50,12 @@
     {/each}
   </div>
   <span class="mono project-count">
-    {String(visibleProjects.length).padStart(2, '0')} PROJETOS SELECIONADOS
+    {String(visibleProjects.length).padStart(2, '0')} PROJETOS EM PRODUÇÃO
   </span>
 </div>
 
 <div class="project-grid">
-  {#each visibleProjects as p, index (p.id)}
+  {#each visibleProjects as p (p.id)}
     <article class="project-card">
       <div class={`project-visual ${p.visual}`} aria-hidden="true">
         {#if p.coverImage}
@@ -70,7 +67,7 @@
         {:else if p.visual === 'finance'}
           <div class="mini-app">
             <div class="mini-top">
-              <b><span class="tiny-square"></span> cotinhas</b>
+              <b><span class="tiny-square"></span> cotinha</b>
               <span>Visão geral ···</span>
             </div>
             <div class="mini-greeting">Pequenos passos. Grandes conquistas.</div>
@@ -99,32 +96,48 @@
             </div>
             <div class="pdf-badge">↙ PDF pronto. Sem complicação.</div>
           </div>
-        {:else if p.visual === 'map'}
-          <div class="map-app">
-            <div class="map-sidebar">
-              <b>cec<span>rastreamento</span></b>
-              <small>VISÃO GERAL</small>
-              <p>◈ Dashboard</p>
-              <p class="chosen">◎ Rastreamento</p>
-              <p>▤ Veículos</p>
-              <p>◷ Histórico</p>
-              <div><i></i> 24 veículos online</div>
+        {:else if p.visual === 'casadosfilhos'}
+          <div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, #1b2620, #0f1713); padding: 20px; text-align: center;">
+            <span style="font-family: var(--mono); font-size: 10px; color: var(--copper); letter-spacing: 1.5px; margin-bottom: 8px;">CASADOSFILHOS.COM</span>
+            <strong style="font-family: var(--display); font-size: 20px; color: #f4f4f0; letter-spacing: -0.5px; line-height: 1.2;">Acolhimento & Impacto</strong>
+            <div style="display: flex; gap: 8px; margin-top: 14px;">
+              <span style="font-family: var(--mono); font-size: 9px; background: #26362d; color: #9bbda5; padding: 3px 8px; border-radius: 2px;">ASTRO</span>
+              <span style="font-family: var(--mono); font-size: 9px; background: #26362d; color: #9bbda5; padding: 3px 8px; border-radius: 2px;">SVELTE 5</span>
+              <span style="font-family: var(--mono); font-size: 9px; background: #26362d; color: var(--copper); padding: 3px 8px; border-radius: 2px;">PERF 100</span>
             </div>
-            <div class="map-grid">
-              <svg viewBox="0 0 300 180">
-                <path d="M-20 130 L50 105 L80 140 L125 95 L165 110 L220 35 L310 50"></path>
-                <circle cx="125" cy="95" r="6"></circle>
-                <circle cx="220" cy="35" r="6"></circle>
-              </svg>
-              <span class="map-pin">◎</span>
-              <div class="map-status">
-                <i></i> Frota conectada <b>24/24</b>
-              </div>
+          </div>
+        {:else if p.visual === 'theocidade'}
+          <div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, #171d24, #0d1217); padding: 20px; text-align: center;">
+            <span style="font-family: var(--mono); font-size: 10px; color: var(--copper); letter-spacing: 1.5px; margin-bottom: 8px;">INSTITUTOTHEOCIDADE.COM</span>
+            <strong style="font-family: var(--display); font-size: 20px; color: #f4f4f0; letter-spacing: -0.5px; line-height: 1.2;">Plataforma EAD & LMS</strong>
+            <div style="display: flex; gap: 8px; margin-top: 14px;">
+              <span style="font-family: var(--mono); font-size: 9px; background: #1c2b36; color: #9bc2e0; padding: 3px 8px; border-radius: 2px;">LARAVEL</span>
+              <span style="font-family: var(--mono); font-size: 9px; background: #1c2b36; color: #9bc2e0; padding: 3px 8px; border-radius: 2px;">VUE.JS</span>
+              <span style="font-family: var(--mono); font-size: 9px; background: #1c2b36; color: var(--copper); padding: 3px 8px; border-radius: 2px;">EDUCAÇÃO</span>
+            </div>
+          </div>
+        {:else if p.visual === 'kblanguage'}
+          <div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, #241c22, #140f13); padding: 20px; text-align: center;">
+            <span style="font-family: var(--mono); font-size: 10px; color: var(--copper); letter-spacing: 1.5px; margin-bottom: 8px;">KBLANGUAGESCHOOL.VERCEL.APP</span>
+            <strong style="font-family: var(--display); font-size: 20px; color: #f4f4f0; letter-spacing: -0.5px; line-height: 1.2;">Imersão em Idiomas</strong>
+            <div style="display: flex; gap: 8px; margin-top: 14px;">
+              <span style="font-family: var(--mono); font-size: 9px; background: #382433; color: #e09bc5; padding: 3px 8px; border-radius: 2px;">SVELTE 5</span>
+              <span style="font-family: var(--mono); font-size: 9px; background: #382433; color: #e09bc5; padding: 3px 8px; border-radius: 2px;">RESPONSIVO</span>
+            </div>
+          </div>
+        {:else if p.visual === 'nutricandies'}
+          <div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, #262118, #17130c); padding: 20px; text-align: center;">
+            <span style="font-family: var(--mono); font-size: 10px; color: var(--copper); letter-spacing: 1.5px; margin-bottom: 8px;">NUTRICANDIES.COM</span>
+            <strong style="font-family: var(--display); font-size: 20px; color: #f4f4f0; letter-spacing: -0.5px; line-height: 1.2;">CMS & Catálogo Comercial</strong>
+            <div style="display: flex; gap: 8px; margin-top: 14px;">
+              <span style="font-family: var(--mono); font-size: 9px; background: #362c1c; color: #dfbe8f; padding: 3px 8px; border-radius: 2px;">NUXT 3</span>
+              <span style="font-family: var(--mono); font-size: 9px; background: #362c1c; color: #dfbe8f; padding: 3px 8px; border-radius: 2px;">LARAVEL</span>
+              <span style="font-family: var(--mono); font-size: 9px; background: #362c1c; color: var(--copper); padding: 3px 8px; border-radius: 2px;">FILAMENT</span>
             </div>
           </div>
         {:else}
           <div class="extra-preview">
-            <span>{p.visual === 'editorial' ? 'academia.tech' : 'CORE / ENGINE'}</span>
+            <span>{p.visual === 'editorial' ? 'academiatech.online' : 'CORE / ENGINE'}</span>
             <strong>{p.visual === 'editorial' ? 'Conhecimento que vai além.' : 'Complexidade sob controle.'}</strong>
             <div class="preview-bars"><i></i><i></i><i></i><i></i></div>
           </div>
@@ -138,10 +151,12 @@
         </div>
         <div class="project-title">
           <h3>{p.title}</h3>
-          {#if p.url}
+          {#if p.url && !p.isPrivate}
             <a href={p.url} target="_blank" rel="noopener noreferrer" aria-label={`Acessar ${p.title}`}>
               <span aria-hidden="true">↗</span>
             </a>
+          {:else}
+            <span class="private-badge">Sistema Corporativo Privado</span>
           {/if}
         </div>
         <p>{p.description}</p>
@@ -174,10 +189,3 @@
     </article>
   {/each}
 </div>
-
-{#if filter === 'Tudo'}
-  <button class="view-all" onclick={() => (showAll = !showAll)}>
-    {showAll ? 'Mostrar seleção' : 'Explorar todos os projetos'}
-    <span>{showAll ? '−' : '+'}</span>
-  </button>
-{/if}

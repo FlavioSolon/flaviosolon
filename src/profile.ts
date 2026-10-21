@@ -3,7 +3,7 @@ export const profile = {
   site: "https://flaviosolon.com",
   email: "contato@flaviosolon.com",
   whatsapp:
-    "https://api.whatsapp.com/send/?phone=5592984167784&text&type=phone_number&app_absent=0",
+    "https://wa.me/5592984167784?text=Ol%C3%A1%20Fl%C3%A1vio%2C%20acessei%20flaviosolon.com%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.",
   socials: [
     {
       name: "LinkedIn",

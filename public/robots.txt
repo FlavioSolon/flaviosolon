@@ -1,35 +1,21 @@
-# Robots.txt otimizado para SEO, AEO e motores de busca generativos
+# Robots.txt — flaviosolon.com (SEO, AEO & GEO Full Allow)
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /api/
 
-# Permissão explícita para Crawlers de Inteligência Artificial e Modelos de Linguagem (AEO)
 User-agent: GPTBot
 Allow: /
-Disallow: /admin/
-Disallow: /api/
 
 User-agent: ClaudeBot
 Allow: /
-Disallow: /admin/
-Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
-Disallow: /admin/
-Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
-Disallow: /admin/
-Disallow: /api/
 
 User-agent: Applebot-Extended
 Allow: /
-Disallow: /admin/
-Disallow: /api/
 
-# Sitemaps Canônicos
 Sitemap: https://flaviosolon.com/sitemap-index.xml
 Sitemap: https://flaviosolon.com/sitemap-0.xml

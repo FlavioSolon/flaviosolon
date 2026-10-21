@@ -29,7 +29,7 @@ const canonicalEntityGraph = [
     "@type": "WebSite",
     "@id": "https://flaviosolon.com/#website",
     "url": "https://flaviosolon.com/",
-    "name": "Flávio Sólon — Engenharia de Software Full-Stack",
+    "name": "Flávio Sólon — Engenheiro de Software Full-Stack em Manaus e no Brasil",
     "inLanguage": "pt-BR",
     "publisher": { "@id": "https://flaviosolon.com/#person" }
   },
@@ -39,6 +39,7 @@ const canonicalEntityGraph = [
     "name": "Flávio Sólon",
     "givenName": "Flávio Sólon",
     "familyName": "Araújo Dutra",
+    "legalName": "Flávio Sólon Araújo Dutra",
     "alternateName": [
       "Flávio Sólon Araújo Dutra",
       "Flavio Solon",
@@ -47,44 +48,51 @@ const canonicalEntityGraph = [
     "url": "https://flaviosolon.com/",
     "image": "https://flaviosolon.com/og-image.jpg",
     "email": "mailto:contato@flaviosolon.com",
-    "jobTitle": "Engenheiro de Software Full-Stack Sênior",
-    "description": "Engenheiro de Software Full-Stack em Manaus (AM), especialista no desenvolvimento prático de sistemas web, plataformas EAD, telemetria veicular, marketplaces e micro-SaaS com Rust, Laravel, Svelte 5, Angular e Astro.",
+    "telephone": "+55-92-98416-7784",
+    "jobTitle": "Senior Full-Stack Software Engineer & Solutions Architect",
+    "description": "Desenvolvedor Full-Stack Sênior (Hands-on) baseado em Manaus, Amazonas, Brasil (Brazil). Especialista em desenvolvimento de software sob medida, plataformas SaaS, EAD, sistemas de rastreamento veicular, marketplaces e refatoração de sistemas críticos utilizando Rust, PHP (Laravel), Svelte 5, Angular, React, Vue.js e Astro.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Manaus",
       "addressRegion": "AM",
       "addressCountry": "BR"
     },
+    "nationality": {
+      "@type": "Country",
+      "name": "Brazil"
+    },
+    "knowsLanguage": ["pt-BR", "en"],
     "knowsAbout": [
-      "Rust",
-      "Laravel",
-      "PHP",
-      "Svelte 5",
-      "SvelteKit",
+      "Full-Stack Software Development",
+      "Rust Programming Language",
+      "Laravel & PHP",
+      "Svelte 5 & SvelteKit",
       "Angular",
       "Astro",
-      "React",
-      "Vue.js",
-      "Arquitetura de Software Escalável",
-      "Plataformas EAD",
-      "Sistemas de Rastreamento Veicular",
+      "React & Vue.js",
+      "SaaS & Micro-SaaS Architecture",
+      "Plataformas EAD e Sistemas Educacionais",
+      "Sistemas de Rastreamento Veicular e Telemetria",
       "Marketplaces e E-commerce",
       "Karatê Shinkyokushin",
       "Kickboxing",
-      "Violão Erudito"
+      "Violão Clássico e Erudito"
     ],
     "sameAs": [
       "https://github.com/FlavioSolon",
-      "https://www.linkedin.com/in/flaviosolon"
+      "https://www.linkedin.com/in/flaviosolon",
+      "https://www.instagram.com/flaviosolon_/",
+      "https://x.com/flaviosolon_"
     ]
   },
   {
     "@type": "ProfessionalService",
     "@id": "https://flaviosolon.com/#service",
-    "name": "Flávio Sólon — Desenvolvimento de Software sob Medida",
+    "name": "Flávio Sólon — Desenvolvimento de Software sob Medida (Manaus & Brasil)",
     "url": "https://flaviosolon.com/",
     "image": "https://flaviosolon.com/og-image.jpg",
     "email": "contato@flaviosolon.com",
+    "telephone": "+55-92-98416-7784",
     "priceRange": "$$$",
     "address": {
       "@type": "PostalAddress",
@@ -94,9 +102,124 @@ const canonicalEntityGraph = [
     },
     "areaServed": [
       { "@type": "City", "name": "Manaus" },
-      { "@type": "Country", "name": "Brasil" }
+      { "@type": "State", "name": "Amazonas" },
+      { "@type": "Country", "name": "Brasil" },
+      { "@type": "Country", "name": "Brazil" }
     ],
-    "founder": { "@id": "https://flaviosolon.com/#person" }
+    "founder": { "@id": "https://flaviosolon.com/#person" },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Serviços de Engenharia de Software Full-Stack",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Desenvolvimento de Sistemas Web, SaaS, EAD e Marketplaces sob Medida",
+            "description": "Execução técnica direta (mão no código) do banco de dados ao frontend com Laravel, Rust, Svelte 5 e Angular."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Otimização de Performance, Bancos de Dados e Modernização de Sistemas Legados",
+            "description": "Diagnóstico e correção de lentidão em APIs, refatoração de monolitos PHP/Laravel e criação de microsserviços em Rust."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "@type": "ItemList",
+    "@id": "https://flaviosolon.com/#portfolio",
+    "name": "Projetos em Produção desenvolvidos por Flávio Sólon",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "Cotinha",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Web",
+          "description": "Plataforma SaaS de arrecadação coletiva com split automático de pagamentos Pix construída em Rust e SvelteKit.",
+          "url": "https://cotinha.com"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "NoCapricho",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "description": "Micro-SaaS stateless em Svelte 5 (Runes) para emissão instantânea de recibos profissionais e PDFs 100% client-side.",
+          "url": "https://nocapricho.online"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "WebSite",
+          "name": "Casa dos Filhos",
+          "applicationCategory": "CommunityApplication",
+          "operatingSystem": "Web",
+          "description": "Landing page de altíssima velocidade e impacto construída em Astro e Svelte 5 para acolhimento social e transformação comunitária.",
+          "url": "https://casadosfilhos.com"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "Instituto Theo Cidade",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Web",
+          "description": "Plataforma completa de ensino a distância (LMS) e gestão educacional desenvolvida sob medida em Laravel e Vue.js.",
+          "url": "https://institutotheocidade.com"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "WebSite",
+          "name": "KB Language School",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Web",
+          "description": "Landing page moderna e interativa desenvolvida em Svelte 5 para escola de idiomas com foco em conversão e agendamento.",
+          "url": "https://kblanguageschool.vercel.app"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "WebSite",
+          "name": "Nutri Candies",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "description": "CMS institucional e catálogo dinâmico de produtos com arquitetura desacoplada em Nuxt 3, Laravel e painel Filament.",
+          "url": "https://nutricandies.com"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "item": {
+          "@type": "WebSite",
+          "name": "AcademiaTech",
+          "applicationCategory": "PublishingApplication",
+          "operatingSystem": "Web",
+          "description": "Portal editorial otimizado para Core Web Vitals e indexação profunda por motores de busca generativos (AEO) construído em Astro.",
+          "url": "https://academiatech.online"
+        }
+      }
+    ]
   },
   {
     "@type": "FAQPage",
@@ -120,10 +243,10 @@ const canonicalEntityGraph = [
       },
       {
         "@type": "Question",
-        "name": "Você trabalha com empresas de Manaus e de fora do Amazonas?",
+        "name": "Você trabalha com empresas de Manaus, do Brasil e do exterior?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sim. Baseado em Manaus (AM), atuo presencialmente ou remotamente para empresas locais do Polo Industrial e negócios da região, além de atender empresas e startups em todo o Brasil e no exterior."
+          "text": "Sim. Baseado em Manaus (AM), atuo como desenvolvedor full-stack sênior (hands-on) para empresas do Polo Industrial de Manaus e negócios locais, além de atender remotamente startups e empresas em todo o Brasil (Brazil) e no exterior."
         }
       },
       {
@@ -131,7 +254,7 @@ const canonicalEntityGraph = [
         "name": "Como contratar o Flávio Sólon para resolver problemas em um sistema existente ou criar um produto do zero?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Atuo diretamente no código (hands-on) tanto na refatoração de sistemas legados, correção de gargalos de performance e bancos de dados, quanto no desenvolvimento ponta a ponta de novos produtos SaaS, plataformas EAD, telemetria e marketplaces."
+          "text": "Atuo diretamente na escrita de código (mão na massa) tanto na refatoração de sistemas legados, correção de gargalos de performance e bancos de dados, quanto no desenvolvimento ponta a ponta de novos produtos SaaS, plataformas EAD, telemetria e marketplaces."
         }
       }
     ]
@@ -140,7 +263,7 @@ const canonicalEntityGraph = [
 
 const contextGraph = Array.isArray(seo.jsonLd?.['@graph'])
   ? (seo.jsonLd['@graph'] as Record<string, unknown>[]).filter(
-      (item) => item['@type'] !== 'Person' && item['@type'] !== 'ProfessionalService' && item['@type'] !== 'WebSite' && item['@type'] !== 'FAQPage'
+      (item) => item['@type'] !== 'Person' && item['@type'] !== 'ProfessionalService' && item['@type'] !== 'WebSite' && item['@type'] !== 'FAQPage' && item['@type'] !== 'ItemList'
     )
   : [];
 

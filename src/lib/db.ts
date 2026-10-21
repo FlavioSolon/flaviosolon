@@ -92,6 +92,7 @@ export interface Project {
   featured: boolean;
   metrics?: string;
   url?: string;
+  isPrivate?: boolean;
   githubUrl?: string;
   coverImage?: string;
   coverImageAvif?: string;
