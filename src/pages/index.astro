@@ -4,7 +4,7 @@ import MobileNav from '@/components/svelte/MobileNav.svelte';
 import ProjectFilter from '@/components/svelte/ProjectFilter.svelte';
 import PillarTabs from '@/components/svelte/PillarTabs.svelte';
 import { Picture } from 'astro:assets';
-import heroImage from '@/assets/hero-amazonia.jpg';
+import heroImage from '@/assets/flaviosolon.jpeg';
 import { getProfile, getProjects, getFaqs, getArticles } from '@/lib/db';
 
 const profile = getProfile();
@@ -69,34 +69,20 @@ const articles = getArticles();
         <div class="hero-art">
           <Picture
             src={heroImage}
-            alt="Vista aérea da floresta amazônica e de seu rio — base e inspiração de Flávio Sólon em Manaus"
-            widths={[360, 540, 720]}
-            sizes="(max-width: 700px) 92vw, (max-width: 1200px) 45vw, 600px"
+            alt="Flávio Sólon, desenvolvedor full-stack sênior em Manaus, sorrindo em retrato em preto e branco"
+            widths={[420, 640, 900]}
+            sizes="(max-width: 760px) 90vw, (max-width: 1500px) 44vw, 640px"
             formats={['avif', 'webp']}
-            quality={50}
+            quality={72}
             loading="eager"
             fetchpriority="high"
             decoding="async"
-            width={600}
-            height={400}
-            class="hero-art-img aspect-[3/2] w-full h-auto object-cover"
+            class="hero-art-img"
           />
           <div class="art-shade"></div>
           <div class="art-coordinate">
             03°06′ S &nbsp; 60°01′ W <span>AMAZÔNIA / BRASIL</span>
           </div>
-          <svg class="orbit-art" viewBox="0 0 500 500" fill="none" aria-hidden="true">
-            <g transform="translate(250 245)">
-              <circle r="169"></circle>
-              <circle r="122"></circle>
-              <ellipse rx="169" ry="65" transform="rotate(-38)"></ellipse>
-              <ellipse rx="169" ry="65" transform="rotate(38)"></ellipse>
-              <ellipse rx="65" ry="169"></ellipse>
-              <path d="M-201 0H201M0-205V205" class="orbit-axis"></path>
-              <circle r="8" class="orbit-center"></circle>
-              <circle cx="133" cy="-105" r="5" class="orbit-point"></circle>
-            </g>
-          </svg>
           <div class="art-note">
             <span>01 / ORIGEM & DIREÇÃO</span>
             <p>
@@ -108,14 +94,6 @@ const articles = getArticles();
             FS —<br />
             EST. MANAUS
           </div>
-          <a
-            class="photo-credit"
-            href="https://unsplash.com/@kiyoshi_jpg"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Fotografia: Andres Medina
-          </a>
         </div>
       </section>
 
