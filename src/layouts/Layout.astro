@@ -21,7 +21,11 @@ const finalTitle = customTitle ? `${customTitle} | Flávio Sólon` : seo.title;
 const finalDescription = customDescription || seo.description || defaultDescription;
 const finalOgImage = customOgImage || seo.ogImage;
 const finalOgType = customOgType || seo.ogType;
-const canonicalURL = seo.canonicalUrl;
+
+// Força sempre o protocolo https:// e o domínio canônico https://flaviosolon.com
+const targetPath = (customPath || Astro.url.pathname).replace(/\/$/, '') || '/';
+const normalizedPath = targetPath === '/' ? '/' : `${targetPath}/`;
+const canonicalURL = new URL(normalizedPath, 'https://flaviosolon.com').toString().replace(/^http:/, 'https:');
 
 // Unified Canonical Knowledge Graph for SEO, AEO & GEO
 const canonicalEntityGraph = [
@@ -300,7 +304,7 @@ const schemaGraph = {
     <meta property="og:site_name" content="Flávio Sólon — Da missão ao código" />
     <meta property="og:type" content={finalOgType} />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:url" content={seo.canonicalUrl} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={finalTitle} />
     <meta property="og:description" content={finalDescription} />
     <meta property="og:image" content={finalOgImage} />

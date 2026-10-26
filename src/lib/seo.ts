@@ -21,8 +21,8 @@ export interface SeoMetadata {
 export function generateSeo(path: string): SeoMetadata {
   const profile = getProfile();
   const cleanPath = path.replace(/\/$/, '') || '/';
-  const siteUrl = profile.site.replace(/\/$/, '');
-  const canonicalUrl = `${siteUrl}${cleanPath === '/' ? '/' : `${cleanPath}/`}`;
+  const siteUrl = (profile.site || 'https://flaviosolon.com').replace(/\/$/, '').replace(/^http:/, 'https:');
+  const canonicalUrl = `${siteUrl}${cleanPath === '/' ? '/' : `${cleanPath}/`}`.replace(/^http:/, 'https:');
   const defaultOgImage = `${siteUrl}/og-image.jpg`;
 
   const geo = {
