@@ -75,6 +75,10 @@ export interface Article {
   tags?: string[];
   aeoSummary?: string;
   geoContext?: string;
+  /** Rótulo curto exibido no card visual da listagem do blog (ex.: "ARQUITETURA"). */
+  markLabel?: string;
+  /** Chamada para ação opcional exibida ao final do artigo (links para a Home e WhatsApp). */
+  cta?: { heading: string; text: string };
   sections: ArticleSection[];
 }
 

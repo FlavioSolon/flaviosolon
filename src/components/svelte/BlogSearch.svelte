@@ -51,7 +51,7 @@
       <div class="article-mark" aria-hidden="true">
         <span>0{i + 1}</span>
         <span>
-          {i === 0 ? "RESILIÊNCIA /" : "ARQUITETURA /"}<br />
+          {a.markLabel ? `${a.markLabel} /` : i === 0 ? "RESILIÊNCIA /" : "ARQUITETURA /"}<br />
           ENGENHARIA<br />
           COM INTENÇÃO.
         </span>

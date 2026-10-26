@@ -51,6 +51,7 @@ Flávio Sólon e Flávio Sólon Araújo Dutra referem-se à mesma pessoa física
 
 ## Artigos Técnicos Publicados
 - [Artigos de Engenharia](https://flaviosolon.com/blog/): Publicações sobre arquitetura de software, tolerância a falhas e sistemas distribuídos.
+- [Desenvolvimento de Sistemas Sob Medida em Manaus e no Brasil](https://flaviosolon.com/blog/desenvolvimento-sistemas-sob-medida-manaus-brasil/): Guia para empresas que precisam contratar um desenvolvedor experiente em Manaus ou no Brasil — fábrica de software vs. engenheiro full-stack sênior hands-on, casos reais (CEC Rastreamento, Cotinha, NoCapricho, AcademiaTech), stack Laravel + Rust + Svelte 5/Angular/Astro e modernização de sistemas legados.
 - [Software Resiliente em Conexões Instáveis](https://flaviosolon.com/blog/software-resiliente-conexoes-instaveis/): Lições de missão e engenharia na Amazônia aplicadas a sistemas offline-first.
 - [Rust e Laravel na Prática](https://flaviosolon.com/blog/rust-laravel-escolha-arquitetura/): Critérios objetivos para escolher entre concorrência extrema e velocidade de entrega.
 

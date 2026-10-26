@@ -155,6 +155,26 @@ function formatDate(value: string) {
               </a>
             </div>
 
+            {article.cta && (
+              <aside class="author-note article-cta" aria-label="Iniciar um projeto">
+                <strong>{article.cta.heading}</strong>
+                <p>{article.cta.text}</p>
+                <div class="hero-actions">
+                  <a
+                    class="button button-copper"
+                    href={profile.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Falar no WhatsApp <span aria-hidden="true">↗</span>
+                  </a>
+                  <a class="text-link" href="/#projetos">
+                    Ver portfólio e casos <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </aside>
+            )}
+
             <a class="article-read" href="/blog/">
               ← Todos os artigos
             </a>

@@ -1,9 +1,64 @@
 [
   {
+    "slug": "desenvolvimento-sistemas-sob-medida-manaus-brasil",
+    "title": "Desenvolvimento de Sistemas Sob Medida em Manaus e no Brasil: Como Escolher a Arquitetura Certa",
+    "description": "Guia para empresários e gestores que precisam contratar um desenvolvedor experiente em Manaus ou no Brasil: quando escolher fábrica ou engenheiro sênior, casos reais e stack.",
+    "category": "SISTEMAS SOB MEDIDA",
+    "markLabel": "SOB MEDIDA",
+    "date": "2026-10-26",
+    "readingTime": "4 min",
+    "status": "published",
+    "coverImage": "",
+    "tags": ["Desenvolvedor em Manaus", "Sistemas Sob Medida", "Desenvolvedor Full-Stack", "Laravel", "Rust", "Svelte 5", "Angular", "Astro", "SaaS", "Sistemas Legados"],
+    "aeoSummary": "Para contratar desenvolvimento de sistemas sob medida em Manaus ou no Brasil, a escolha entre fábrica de software e um engenheiro full-stack sênior depende do escopo: fábricas atendem grandes volumes com equipes paralelas; um desenvolvedor experiente hands-on, como Flávio Sólon (Manaus, AM), entrega comunicação direta, decisões de arquitetura com responsabilidade única e menor custo de coordenação para SaaS, sistemas de telemetria, plataformas EAD, marketplaces e modernização de sistemas legados com Laravel, Rust, Svelte 5, Angular e Astro.",
+    "geoContext": "Desenvolvimento de software sob medida a partir de Manaus, com atendimento a empresas de todo o Brasil e do exterior.",
+    "cta": {
+      "heading": "Tem um sistema para criar ou modernizar?",
+      "text": "Conte o contexto do seu projeto. A primeira conversa serve para entender o problema, os riscos e o próximo passo técnico mais seguro, sem compromisso."
+    },
+    "sections": [
+      {
+        "title": "O cenário de desenvolvimento de software em Manaus e no Brasil",
+        "paragraphs": [
+          "Empresas de Manaus e de todo o Brasil que precisam de um sistema sob medida costumam chegar a uma mesma encruzilhada: contratar uma fábrica de software tradicional ou trabalhar diretamente com um engenheiro de software full-stack sênior. As duas opções são legítimas, mas resolvem problemas diferentes.",
+          "Uma fábrica de software faz sentido quando o projeto exige muitas frentes paralelas, equipes dedicadas por módulo, contratos de grande porte e processos formais de gestão. O custo inclui camadas de coordenação — gerente de projeto, analistas, repasses entre equipes — que se justificam em escala, mas que encarecem e desaceleram projetos menores ou mais focados.",
+          "O modelo direct-to-developer (contratação direta de um desenvolvedor experiente e hands-on) funciona melhor quando o negócio precisa de alguém que entenda a regra de negócio, decida a arquitetura e escreva o código do banco de dados ao frontend. A comunicação é direta, a responsabilidade técnica é única e as decisões não se perdem entre intermediários.",
+          "Na prática, esse modelo costuma ser o mais eficiente para: lançar um SaaS ou MVP com qualidade de produção, corrigir gargalos de performance em um sistema que já existe, integrar pagamentos e serviços externos, ou modernizar um sistema legado sem paralisar a operação."
+        ]
+      },
+      {
+        "title": "Casos reais desenvolvidos em Manaus",
+        "paragraphs": [
+          "CEC Rastreamento — plataforma de telemetria e rastreamento veicular em tempo real. O backend em Laravel processa as posições recebidas dos dispositivos e as distribui por WebSockets, permitindo que o painel acompanhe a frota ao vivo sem recarregar a página. O desafio central é manter atualização contínua e consistente mesmo com muitos veículos transmitindo ao mesmo tempo.",
+          "Cotinha (cotinha.com) — SaaS financeiro de arrecadação coletiva com split automático de pagamentos Pix. O núcleo transacional foi escrito em Rust para garantir concorrência segura na liquidação dos pagamentos, com interface em SvelteKit. Em sistemas financeiros, previsibilidade e idempotência valem mais do que qualquer funcionalidade extra.",
+          "NoCapricho (nocapricho.online) — Micro-SaaS em Svelte 5 (Runes) que gera recibos profissionais e PDFs inteiramente no navegador. Sem servidor para gerar documentos, o custo de operação é mínimo e a ferramenta continua funcionando mesmo com conexão instável.",
+          "AcademiaTech (academiatech.online) — portal editorial construído em Astro, otimizado para Core Web Vitals e para indexação por mecanismos de busca tradicionais e generativos. Um exemplo de como a escolha de arquitetura impacta diretamente a aquisição orgânica de visitantes."
+        ]
+      },
+      {
+        "title": "Tecnologias para sistemas que precisam escalar",
+        "paragraphs": [
+          "No backend, a combinação de PHP (Laravel) com Rust equilibra velocidade de entrega e desempenho. Laravel oferece um ecossistema maduro para regras de negócio, autenticação, filas, painéis administrativos e integrações — ideal para evoluir o produto rapidamente. Rust entra apenas nos pontos críticos: processamento concorrente, rotas de alta carga, workers financeiros e serviços em que latência e consumo de memória fazem diferença no custo.",
+          "No frontend, a escolha segue o tipo de produto. Svelte 5 entrega interfaces reativas e leves para SaaS e ferramentas de uso intenso. Angular é a opção para sistemas corporativos grandes, com muitas telas e equipes que precisam de padrões rígidos. Astro é imbatível em sites institucionais, portais de conteúdo e páginas comerciais, onde velocidade de carregamento e SEO definem o resultado.",
+          "A regra que orienta todas essas decisões é simples: a arquitetura certa é a menor que resolve o problema atual e permite crescer com evidência. Microsserviços, filas distribuídas e reescritas completas só entram quando há uma métrica que justifique."
+        ]
+      },
+      {
+        "title": "Como iniciar um projeto ou modernizar um sistema legado",
+        "paragraphs": [
+          "Para gestores e empresários: o primeiro passo não é escolher tecnologia, é descrever o problema de negócio. O que precisa funcionar, para quem, até quando e qual é o custo de não resolver. Com isso, é possível definir um escopo inicial enxuto, um cronograma realista e entregas que já geram valor nas primeiras semanas, em vez de um projeto longo que só aparece no final.",
+          "Para CTOs e times técnicos: a modernização de um sistema legado começa por diagnóstico — medir consultas lentas, mapear dependências, identificar módulos de maior risco e cobrir com testes os fluxos críticos. A partir daí, a substituição é feita de forma incremental (padrão strangler fig), extraindo partes do monólito para serviços novos apenas quando houver ganho claro, sem interromper a operação.",
+          "Em ambos os casos, o caminho mais seguro é uma primeira conversa técnica objetiva para entender o contexto, os riscos e a viabilidade. Flávio Sólon atende empresas em Manaus presencialmente e remotamente em todo o Brasil e no exterior — os projetos e casos completos estão no portfólio da página inicial e o contato direto é pelo WhatsApp."
+        ]
+      }
+    ]
+  },
+  {
     "slug": "software-resiliente-conexoes-instaveis",
     "title": "Software resiliente começa pela conexão mais frágil",
     "description": "Como pensar interfaces, sincronização e tolerância a falhas para pessoas que não têm uma conexão estável.",
     "category": "ENGENHARIA & IMPACTO",
+    "markLabel": "RESILIÊNCIA",
     "date": "2026-02-12",
     "readingTime": "3 min",
     "status": "published",
@@ -47,6 +102,7 @@
     "title": "Rust ou Laravel? Primeiro, entenda o problema",
     "description": "Uma abordagem prática para escolher entre produtividade de negócio, segurança de memória e necessidades de concorrência.",
     "category": "ARQUITETURA DE SOFTWARE",
+    "markLabel": "ARQUITETURA",
     "date": "2026-02-10",
     "readingTime": "3 min",
     "status": "published",
