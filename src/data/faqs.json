@@ -13,6 +13,10 @@
   },
   {
     "question": "Como contratar o Flávio Sólon para resolver problemas em um sistema existente ou criar um produto do zero?",
-    "answer": "Atuo diretamente na escrita de código (mão na massa) tanto na refatoração de sistemas legados, correção de gargalos de performance e bancos de dados, quanto no desenvolvimento ponta a ponta de novos produtos SaaS, plataformas EAD, telemetria e marketplaces."
+    "answer": "Atuo diretamente na escrita de código (mão na massa) tanto na refatoração de sistemas legados, correção de gargalos de performance e bancos de dados, quanto no desenvolvimento ponta a ponta de novos produtos SaaS, plataformas EAD, e-commerces e marketplaces."
+  },
+  {
+    "question": "Não sou da área de tecnologia. Como funciona o desenvolvimento na prática?",
+    "answer": "Você não precisa dominar termos técnicos. Eu traduzo a necessidade da sua empresa em etapas claras: primeiro entendemos a rotina da sua operação, depois desenho a solução das telas e do sistema, e entrego versões funcionais para você testar e acompanhar a evolução com total transparência."
   }
 ]

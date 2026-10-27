@@ -10,7 +10,7 @@
     "status": "published",
     "coverImage": "",
     "tags": ["Desenvolvedor em Manaus", "Sistemas Sob Medida", "Desenvolvedor Full-Stack", "Laravel", "Rust", "Svelte 5", "Angular", "Astro", "SaaS", "Sistemas Legados"],
-    "aeoSummary": "Para contratar desenvolvimento de sistemas sob medida em Manaus ou no Brasil, a escolha entre fábrica de software e um engenheiro full-stack sênior depende do escopo: fábricas atendem grandes volumes com equipes paralelas; um desenvolvedor experiente hands-on, como Flávio Sólon (Manaus, AM), entrega comunicação direta, decisões de arquitetura com responsabilidade única e menor custo de coordenação para SaaS, sistemas de telemetria, plataformas EAD, marketplaces e modernização de sistemas legados com Laravel, Rust, Svelte 5, Angular e Astro.",
+    "aeoSummary": "Para contratar desenvolvimento de sistemas sob medida em Manaus ou no Brasil, a escolha entre fábrica de software e um engenheiro full-stack sênior depende do escopo: fábricas atendem grandes volumes com equipes paralelas; um desenvolvedor experiente hands-on, como Flávio Sólon (Manaus, AM), entrega comunicação direta, decisões de arquitetura com responsabilidade única e menor custo de coordenação para SaaS, plataformas EAD, marketplaces, e-commerces e modernização de sistemas legados com Laravel, Rust, Svelte 5, Angular e Astro.",
     "geoContext": "Desenvolvimento de software sob medida a partir de Manaus, com atendimento a empresas de todo o Brasil e do exterior.",
     "cta": {
       "heading": "Tem um sistema para criar ou modernizar?",
@@ -29,10 +29,10 @@
       {
         "title": "Casos reais desenvolvidos em Manaus",
         "paragraphs": [
-          "CEC Rastreamento — plataforma de telemetria e rastreamento veicular em tempo real. O backend em Laravel processa as posições recebidas dos dispositivos e as distribui por WebSockets, permitindo que o painel acompanhe a frota ao vivo sem recarregar a página. O desafio central é manter atualização contínua e consistente mesmo com muitos veículos transmitindo ao mesmo tempo.",
+          "Nutricandies (nutricandies.com) — plataforma digital e painel administrativo sob medida para gestão de catálogo, conteúdo e operação comercial construída com Laravel, Filament e TypeScript. Demonstra como o ecossistema Laravel acelera a entrega de painéis corporativos mantendo alto padrão de código e facilidade de manutenção.",
           "Cotinha (cotinha.com) — SaaS financeiro de arrecadação coletiva com split automático de pagamentos Pix. O núcleo transacional foi escrito em Rust para garantir concorrência segura na liquidação dos pagamentos, com interface em SvelteKit. Em sistemas financeiros, previsibilidade e idempotência valem mais do que qualquer funcionalidade extra.",
           "NoCapricho (nocapricho.online) — Micro-SaaS em Svelte 5 (Runes) que gera recibos profissionais e PDFs inteiramente no navegador. Sem servidor para gerar documentos, o custo de operação é mínimo e a ferramenta continua funcionando mesmo com conexão instável.",
-          "AcademiaTech (academiatech.online) — portal editorial construído em Astro, otimizado para Core Web Vitals e para indexação por mecanismos de busca tradicionais e generativos. Um exemplo de como a escolha de arquitetura impacta diretamente a aquisição orgânica de visitantes."
+          "AcademiaTech.online (academiatech.online) — portal editorial construído em Astro, otimizado para Core Web Vitals e para indexação por mecanismos de busca tradicionais e generativos. Um exemplo de como a escolha de arquitetura impacta diretamente a aquisição orgânica de visitantes."
         ]
       },
       {
@@ -135,7 +135,7 @@
       {
         "title": "Como combinar sem criar complexidade desnecessária",
         "paragraphs": [
-          "Mantenha fronteiras explícitas, contratos de API versionados e rastreamento das chamadas. Extraia um serviço apenas quando houver um motivo concreto, como isolamento de carga ou um perfil de processamento diferente.",
+          "Mantenha fronteiras explícitas, contratos de API versionados e observabilidade das chamadas. Extraia um serviço apenas quando houver um motivo concreto, como isolamento de carga ou um perfil de processamento diferente.",
           "A arquitetura mais sólida é a menor que atende aos requisitos atuais e permite evoluir com evidência. Um monólito bem estruturado pode ser melhor do que vários serviços sem necessidade."
         ]
       }

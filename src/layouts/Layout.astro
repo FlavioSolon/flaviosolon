@@ -22,7 +22,7 @@ const currentPath = customPath || Astro.url.pathname;
 const seo = generateSeo(currentPath);
 
 const defaultDescription =
-  "Flávio Sólon (Flávio Sólon Araújo Dutra) — Engenheiro de Software Full-Stack em Manaus. Especialista em Rust, Laravel, Svelte 5, Angular e Astro.";
+  "Flávio Sólon (Flávio Sólon Araújo Dutra) — Desenvolvedor Full-Stack em Manaus e Brasil. Criação e modernização de sistemas em Laravel, Rust, Svelte e Angular.";
 
 const finalTitle = customTitle ? `${customTitle} | Flávio Sólon` : seo.title;
 const finalDescription =
@@ -65,7 +65,7 @@ const canonicalEntityGraph = [
     telephone: "+55-92-98416-7784",
     jobTitle: "Senior Full-Stack Software Engineer & Solutions Architect",
     description:
-      "Desenvolvedor Full-Stack Sênior (Hands-on) baseado em Manaus, Amazonas, Brasil (Brazil). Especialista em desenvolvimento de software sob medida, plataformas SaaS, EAD, sistemas de rastreamento veicular, marketplaces e refatoração de sistemas críticos utilizando Rust, PHP (Laravel), Svelte 5, Angular, React, Vue.js e Astro.",
+      "Desenvolvedor Full-Stack Sênior (Hands-on) baseado em Manaus, Amazonas, Brasil (Brazil). Especialista em desenvolvimento de software sob medida, plataformas SaaS, EAD, portais corporativos, marketplaces e refatoração de sistemas críticos utilizando Rust, PHP (Laravel), Svelte 5, Angular, React, Vue.js e Astro.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Manaus",
@@ -87,7 +87,6 @@ const canonicalEntityGraph = [
       "React & Vue.js",
       "SaaS & Micro-SaaS Architecture",
       "Plataformas EAD e Sistemas Educacionais",
-      "Sistemas de Rastreamento Veicular e Telemetria",
       "Marketplaces e E-commerce",
       "Karatê Shinkyokushin",
       "Kickboxing",
@@ -241,7 +240,7 @@ const canonicalEntityGraph = [
         position: 7,
         item: {
           "@type": "WebSite",
-          name: "AcademiaTech",
+          name: "AcademiaTech.online",
           applicationCategory: "PublishingApplication",
           operatingSystem: "Web",
           description:
@@ -284,7 +283,15 @@ const canonicalEntityGraph = [
         name: "Como contratar o Flávio Sólon para resolver problemas em um sistema existente ou criar um produto do zero?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Atuo diretamente na escrita de código (mão na massa) tanto na refatoração de sistemas legados, correção de gargalos de performance e bancos de dados, quanto no desenvolvimento ponta a ponta de novos produtos SaaS, plataformas EAD, telemetria e marketplaces.",
+          text: "Atuo diretamente na escrita de código (mão na massa) tanto na refatoração de sistemas legados, correção de gargalos de performance e bancos de dados, quanto no desenvolvimento ponta a ponta de novos produtos SaaS, plataformas EAD, e-commerces e marketplaces.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Não sou da área de tecnologia. Como funciona o desenvolvimento na prática?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Você não precisa dominar termos técnicos. Eu traduzo a necessidade da sua empresa em etapas claras: primeiro entendemos a rotina da sua operação, depois desenho a solução das telas e do sistema, e entrego versões funcionais para você testar e acompanhar a evolução com total transparência.",
         },
       },
     ],

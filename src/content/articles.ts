@@ -85,7 +85,7 @@ export const articles: Article[] = [
       {
         title: "Como combinar sem criar complexidade desnecessária",
         paragraphs: [
-          "Mantenha fronteiras explícitas, contratos de API versionados e rastreamento das chamadas. Extraia um serviço apenas quando houver um motivo concreto, como isolamento de carga ou um perfil de processamento diferente.",
+          "Mantenha fronteiras explícitas, contratos de API versionados e observabilidade das chamadas. Extraia um serviço apenas quando houver um motivo concreto, como isolamento de carga ou um perfil de processamento diferente.",
           "A arquitetura mais sólida é a menor que atende aos requisitos atuais e permite evoluir com evidência. Um monólito bem estruturado pode ser melhor do que vários serviços sem necessidade.",
         ],
       },

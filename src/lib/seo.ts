@@ -308,7 +308,7 @@ export function generateSeo(path: string): SeoMetadata {
   const faqs = getFaqs();
   const title = `${profile.name} | Desenvolvedor Full-Stack Sênior em Manaus — Sistemas Sob Medida, SaaS e Web`;
   const description =
-    'Flávio Sólon (Flávio Sólon Araújo Dutra) — Desenvolvedor Full-Stack Sênior em Manaus e Brasil. Criação de sistemas sob medida, SaaS, aplicativos web em Laravel, Rust, Svelte e Angular.';
+    'Flávio Sólon (Flávio Sólon Araújo Dutra) — Desenvolvedor Full-Stack em Manaus e Brasil. Criação e modernização de sistemas em Laravel, Rust, Svelte e Angular.';
 
   const faqEntity = {
     '@type': 'FAQPage',

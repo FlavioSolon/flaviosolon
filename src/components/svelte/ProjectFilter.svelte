@@ -156,7 +156,7 @@
               <span aria-hidden="true">↗</span>
             </a>
           {:else}
-            <span class="private-badge">Sistema Corporativo Privado</span>
+            <span class="private-badge">Sistema Corporativo</span>
           {/if}
         </div>
         <p>{p.description}</p>
