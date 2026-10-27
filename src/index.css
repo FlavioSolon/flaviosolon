@@ -130,7 +130,7 @@ footer a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;p
   .availability{font-size:12px;letter-spacing:.3px}
   .hero-actions{gap:16px;flex-wrap:wrap;margin-top:25px}
   .hero-location{font-size:12px;gap:10px;line-height:2}
-  .hero-art{min-height:350px;aspect-ratio:3/2}
+  .hero-art{min-height:420px;aspect-ratio:4/5}
   .art-coordinate{font-size:12px;left:18px;right:18px;flex-wrap:wrap;gap:10px}
   .art-note>span{font-size:12px}
   .art-corner{font-size:12px}.photo-credit{font-size:12px;bottom:6px}
@@ -270,15 +270,28 @@ footer a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;p
   color: #e2e8df;
   font-weight: 600;
 }
-.hero-art-img {
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
+.hero-art picture {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
-.hero-art picture,
+.hero-art-img,
 .hero-art picture img,
-.hero-art>img {
-  aspect-ratio: 3 / 2;
+.hero-art > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: center 15%;
+  display: block;
+}
+.art-coordinate,
+.art-note,
+.art-corner {
+  z-index: 2;
 }
 
 /* ==========================================================================
