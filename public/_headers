@@ -38,6 +38,12 @@
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=3600
 
+# Feed RSS Oficial para Google Notícias e Agregadores
+/rss.xml
+  Content-Type: application/rss+xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
 # Favicon e Uploads
 /favicon.svg
   Cache-Control: public, max-age=86400

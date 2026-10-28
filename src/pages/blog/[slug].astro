@@ -23,6 +23,15 @@ if (!article) {
   return Astro.redirect('/blog/');
 }
 
+const allArticles = getArticles(false);
+const relatedArticles = allArticles
+  .filter((a) => a.slug !== article.slug)
+  .slice(0, 3);
+
+const isoPublishedTime = article.date.includes('T')
+  ? article.date
+  : `${article.date}T10:00:00-04:00`;
+
 function formatDate(value: string) {
   try {
     return new Date(`${value}T12:00:00Z`).toLocaleDateString('pt-BR', {
@@ -37,7 +46,18 @@ function formatDate(value: string) {
 }
 ---
 
-<Layout path={`/blog/${article.slug}/`}>
+<Layout
+  path={`/blog/${article.slug}/`}
+  title={article.title}
+  description={article.description}
+  isArticle={true}
+  publishedTime={isoPublishedTime}
+  modifiedTime={isoPublishedTime}
+  section={article.category}
+  image={article.coverImage || "/og-image.jpg"}
+  tags={article.tags}
+  articleHeadline={article.title}
+>
   <div class="site-shell blog-shell">
     <a class="skip-link" href="#main">Pular para o conteúdo</a>
 
@@ -65,19 +85,21 @@ function formatDate(value: string) {
         <nav class="breadcrumbs" aria-label="Caminho da página">
           <a href="/">Início</a>
           <span>/</span>
-          <a href="/blog/">Artigos</a>
+          <a href="/blog/">Blog</a>
           <span>/</span>
-          <span>Leitura</span>
+          <span>{article.category}</span>
         </nav>
 
         <header class="reading-header">
           <div class="eyebrow">{article.category}</div>
           <h1>{article.title}</h1>
-          <p>{article.description}</p>
+          <p class="article-lead">{article.description}</p>
           <div class="article-meta">
-            <a href="/#essencia">{profile.name}</a>
-            <time datetime={article.date}>{formatDate(article.date)}</time>
-            <span>{article.readingTime} de leitura</span>
+            <span class="article-byline">Por <a href="/#sobre">{profile.name}</a></span>
+            <span class="meta-dot">·</span>
+            <time datetime={isoPublishedTime}>{formatDate(article.date)}</time>
+            <span class="meta-dot">·</span>
+            <span class="article-reading-time">{article.readingTime} de leitura</span>
           </div>
 
           <!-- GEO Geographic Reference Badge -->
@@ -104,19 +126,24 @@ function formatDate(value: string) {
           )}
 
           {article.coverImage && (
-            <div style="margin-top: 32px; border: 1px solid #28362d; border-radius: 4px; overflow: hidden;">
+            <figure class="article-cover-wrapper">
               <picture>
                 {article.coverImageAvif && <source srcset={article.coverImageAvif} type="image/avif" />}
                 {article.coverImageWebp && <source srcset={article.coverImageWebp} type="image/webp" />}
                 <img
                   src={article.coverImage}
-                  alt={article.title}
-                  style="width: 100%; height: auto; max-height: 480px; object-fit: cover;"
-                  loading="lazy"
+                  alt={`Infográfico comparativo: ${article.title}`}
+                  class="article-cover-img"
+                  width="1200"
+                  height="630"
+                  loading="eager"
                   decoding="async"
                 />
               </picture>
-            </div>
+              <figcaption class="article-cover-caption">
+                <span class="caption-label">FIGURA 1 · ESPECIFICAÇÃO TÉCNICA:</span> Matriz visual de concessões entre Astro + Svelte 5 (Conversão na Borda) e Angular Modern (Governança Enterprise).
+              </figcaption>
+            </figure>
           )}
         </header>
 
@@ -134,26 +161,48 @@ function formatDate(value: string) {
             {article.sections.map((s, i) => (
               <section id={`secao-${i}`}>
                 <h2>{s.title}</h2>
-                {s.paragraphs.map((p) => (
-                  <p>{p}</p>
-                ))}
+                {s.paragraphs.map((p) => {
+                  if (
+                    p.startsWith('<div') ||
+                    p.startsWith('<table') ||
+                    p.startsWith('<pre') ||
+                    p.startsWith('<ul') ||
+                    p.startsWith('<ol')
+                  ) {
+                    return <Fragment set:html={p} />;
+                  }
+                  return <p set:html={p} />;
+                })}
               </section>
             ))}
 
-            <div class="author-note">
-              <strong>{profile.name}</strong>
-              <p>
-                Engenharia de software em Manaus, com atuação remota.
-                Desenvolvimento com propósito e impacto real.
+            <!-- Bloco de Autor Verificado (Author Box) -->
+            <section class="verified-author-box" aria-label="Sobre o Autor">
+              <div class="author-box-top">
+                <img
+                  src="/flaviosolon.jpeg"
+                  alt="Flávio Sólon — Engenheiro de Software Full-Stack"
+                  class="author-avatar"
+                  width="68"
+                  height="68"
+                  loading="lazy"
+                />
+                <div class="author-info">
+                  <span class="author-kicker">AUTOR VERIFICADO · ENGENHARIA DE SOFTWARE</span>
+                  <strong class="author-name">{profile.name}</strong>
+                  <span class="author-role">Engenheiro de Software Full-Stack &amp; Arquiteto de Soluções</span>
+                </div>
+              </div>
+              <p class="author-bio">
+                <strong>Flávio Sólon (Flávio Sólon Araújo Dutra)</strong> é Engenheiro de Software Full-Stack e Arquiteto de Soluções em Manaus (AM). Desenvolve sistemas sob medida, plataformas SaaS e arquiteturas escaláveis com Rust, Laravel (PHP), Svelte 5, Angular e Astro.
               </p>
-              <a
-                href={profile.socials[0]?.url || profile.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Conectar no LinkedIn ↗
-              </a>
-            </div>
+              <div class="author-links">
+                <a href="/" class="author-link">Conhecer Trajetória &amp; Portfólio ↗</a>
+                <a href="https://www.linkedin.com/in/flaviosolon" target="_blank" rel="noopener noreferrer" class="author-link">LinkedIn ↗</a>
+                <a href="https://github.com/FlavioSolon" target="_blank" rel="noopener noreferrer" class="author-link">GitHub ↗</a>
+                <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer" class="author-cta-btn">Falar sobre Projetos ↗</a>
+              </div>
+            </section>
 
             {article.cta && (
               <aside class="author-note article-cta" aria-label="Iniciar um projeto">
@@ -175,9 +224,37 @@ function formatDate(value: string) {
               </aside>
             )}
 
-            <a class="article-read" href="/blog/">
-              ← Todos os artigos
-            </a>
+            {relatedArticles.length > 0 && (
+              <section class="related-articles-section" aria-label="Artigos Relacionados">
+                <div class="related-heading">
+                  <span class="eyebrow">CONTINUE LENDO</span>
+                  <h3>Artigos Relacionados &amp; Decisões Arquiteturais</h3>
+                </div>
+                <div class="related-articles-grid">
+                  {relatedArticles.map((rel) => (
+                    <article class="related-article-card">
+                      <div class="related-meta">
+                        <span class="related-category">{rel.category}</span>
+                        <span class="related-reading-time">{rel.readingTime} de leitura</span>
+                      </div>
+                      <h4>
+                        <a href={`/blog/${rel.slug}/`}>{rel.title}</a>
+                      </h4>
+                      <p>{rel.description}</p>
+                      <a class="related-read-link" href={`/blog/${rel.slug}/`}>
+                        Ler artigo completo <span aria-hidden="true">→</span>
+                      </a>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            <div style="margin-top: 35px;">
+              <a class="article-read" href="/blog/">
+                ← Todos os artigos
+              </a>
+            </div>
           </div>
         </div>
       </article>

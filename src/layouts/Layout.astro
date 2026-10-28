@@ -8,6 +8,13 @@ interface Props {
   path?: string;
   ogImage?: string;
   ogType?: "website" | "article" | "profile";
+  isArticle?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
+  image?: string;
+  tags?: string[];
+  articleHeadline?: string;
 }
 
 const {
@@ -16,19 +23,45 @@ const {
   path: customPath,
   ogImage: customOgImage,
   ogType: customOgType,
+  isArticle: customIsArticle,
+  publishedTime: customPublishedTime,
+  modifiedTime: customModifiedTime,
+  section: customSection,
+  image: customImage,
+  tags: customTags,
+  articleHeadline: customArticleHeadline,
 } = Astro.props;
 
 const currentPath = customPath || Astro.url.pathname;
+const isArticle =
+  customIsArticle ??
+  (customOgType === "article" ||
+    (currentPath.startsWith("/blog/") &&
+      currentPath !== "/blog/" &&
+      currentPath !== "/blog"));
 const seo = generateSeo(currentPath);
 
 const defaultDescription =
-  "Flávio Sólon (Flávio Sólon Araújo Dutra) — Desenvolvedor Full-Stack em Manaus e Brasil. Criação e modernização de sistemas em Laravel, Rust, Svelte e Angular.";
+  "Flávio Sólon (Flávio Sólon Araújo Dutra) — Engenheiro de Software Full-Stack em Manaus e Brasil. Criação e modernização de sistemas em Laravel, Rust, Svelte e Angular.";
 
-const finalTitle = customTitle ? `${customTitle} | Flávio Sólon` : seo.title;
+const finalTitle = customTitle
+  ? customTitle.includes("Flávio Sólon")
+    ? customTitle
+    : `${customTitle} | Flávio Sólon`
+  : seo.title;
 const finalDescription =
   customDescription || seo.description || defaultDescription;
-const finalOgImage = customOgImage || seo.ogImage;
-const finalOgType = customOgType || seo.ogType;
+const rawOgImage =
+  customImage ||
+  customOgImage ||
+  seo.ogImage ||
+  "/og-image.jpg";
+const finalOgImage = rawOgImage.startsWith("http")
+  ? rawOgImage
+  : `https://flaviosolon.com${rawOgImage.startsWith("/") ? "" : "/"}${rawOgImage}`;
+const finalOgType = isArticle
+  ? "article"
+  : customOgType || seo.ogType || "website";
 
 // Força sempre o protocolo https:// e o domínio canônico https://flaviosolon.com
 const targetPath = (customPath || Astro.url.pathname).replace(/\/$/, "") || "/";
@@ -37,13 +70,32 @@ const canonicalURL = new URL(normalizedPath, "https://flaviosolon.com")
   .toString()
   .replace(/^http:/, "https:");
 
+let finalPublishedTime = customPublishedTime;
+let finalModifiedTime = customModifiedTime || finalPublishedTime;
+let finalSection = customSection;
+
+if (seo.article) {
+  if (!finalPublishedTime) {
+    const rawDate = seo.article.date;
+    finalPublishedTime = rawDate.includes("T")
+      ? rawDate
+      : `${rawDate}T10:00:00-04:00`;
+  }
+  if (!finalModifiedTime) {
+    finalModifiedTime = finalPublishedTime;
+  }
+  if (!finalSection) {
+    finalSection = seo.article.category;
+  }
+}
+
 // Unified Canonical Knowledge Graph for SEO, AEO & GEO
 const canonicalEntityGraph = [
   {
     "@type": "WebSite",
     "@id": "https://flaviosolon.com/#website",
     url: "https://flaviosolon.com/",
-    name: "Flávio Sólon — Engenheiro de Software Full-Stack em Manaus e no Brasil",
+    name: "Flávio Sólon — Engenharia de Software Full-Stack em Manaus e no Brasil",
     inLanguage: "pt-BR",
     publisher: { "@id": "https://flaviosolon.com/#person" },
   },
@@ -63,9 +115,9 @@ const canonicalEntityGraph = [
     image: "https://flaviosolon.com/og-image.jpg",
     email: "mailto:contato@flaviosolon.com",
     telephone: "+55-92-98416-7784",
-    jobTitle: "Senior Full-Stack Software Engineer & Solutions Architect",
+    jobTitle: "Engenheiro de Software Full-Stack & Arquiteto de Soluções",
     description:
-      "Desenvolvedor Full-Stack Sênior (Hands-on) baseado em Manaus, Amazonas, Brasil (Brazil). Especialista em desenvolvimento de software sob medida, plataformas SaaS, EAD, portais corporativos, marketplaces e refatoração de sistemas críticos utilizando Rust, PHP (Laravel), Svelte 5, Angular, React, Vue.js e Astro.",
+      "Engenheiro de Software Full-Stack (Hands-on) baseado em Manaus, Amazonas, Brasil (Brazil). Especialista em desenvolvimento de software sob medida, plataformas SaaS, EAD, portais corporativos, marketplaces e refatoração de sistemas críticos utilizando Rust, PHP (Laravel), Svelte 5, Angular, React, Vue.js e Astro.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Manaus",
@@ -100,16 +152,20 @@ const canonicalEntityGraph = [
     ],
   },
   {
-    "@type": ["ProfessionalService", "LocalBusiness"],
+    "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
     "@id": "https://flaviosolon.com/#service",
-    name: "Flávio Sólon — Desenvolvedor Full-Stack & Sistemas Sob Medida em Manaus & Brasil",
+    name: "Flávio Sólon — Engenharia de Software",
     alternateName: [
-      "Flávio Sólon Engenharia de Software",
       "Flávio Sólon Araújo Dutra",
+      "Flávio Sólon — Desenvolvedor Full-Stack & Sistemas Sob Medida em Manaus & Brasil",
     ],
     keywords:
       "desenvolvedor experiente em Manaus, desenvolvedor full-stack Manaus, desenvolvimento de sistemas sob medida Manaus, programador Laravel Rust Svelte Angular Brasil",
     url: "https://flaviosolon.com/",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://flaviosolon.com/favicon.svg",
+    },
     image: "https://flaviosolon.com/og-image.jpg",
     email: "contato@flaviosolon.com",
     telephone: "+55-92-98416-7784",
@@ -275,7 +331,7 @@ const canonicalEntityGraph = [
         name: "Você trabalha com empresas de Manaus, do Brasil e do exterior?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sim. Baseado em Manaus (AM), atuo como desenvolvedor full-stack sênior (hands-on) para empresas do Polo Industrial de Manaus e negócios locais, além de atender remotamente startups e empresas em todo o Brasil (Brazil) e no exterior.",
+          text: "Sim. Baseado em Manaus (AM), atuo como engenheiro de software full-stack (hands-on) para empresas do Polo Industrial de Manaus e negócios locais, além de atender remotamente startups e empresas em todo o Brasil (Brazil) e no exterior.",
         },
       },
       {
@@ -298,6 +354,83 @@ const canonicalEntityGraph = [
   },
 ];
 
+// Special Article Object for Google News & Discover if isArticle is true
+const articleEntities = isArticle
+  ? [
+      {
+        "@type": ["TechArticle", "NewsArticle", "BlogPosting"],
+        "@id": `${canonicalURL}#article`,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": canonicalURL,
+        },
+        headline: (
+          customArticleHeadline ||
+          customTitle ||
+          seo.article?.title ||
+          finalTitle
+        )
+          .replace(/\s*\|\s*Flávio Sólon.*$/, "")
+          .slice(0, 110),
+        description: finalDescription,
+        image: [finalOgImage],
+        datePublished: finalPublishedTime || "2026-10-28T10:00:00-04:00",
+        dateModified:
+          finalModifiedTime ||
+          finalPublishedTime ||
+          "2026-10-28T10:00:00-04:00",
+        inLanguage: "pt-BR",
+        author: {
+          "@type": "Person",
+          "@id": "https://flaviosolon.com/#person",
+          name: "Flávio Sólon",
+          url: "https://flaviosolon.com/",
+        },
+        publisher: {
+          "@type": "Organization",
+          "@id": "https://flaviosolon.com/#service",
+          name: "Flávio Sólon — Engenharia de Software",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://flaviosolon.com/favicon.svg",
+          },
+        },
+        isAccessibleForFree: true,
+        ...(finalSection ? { articleSection: finalSection } : {}),
+        ...((customTags || seo.article?.tags)
+          ? { keywords: (customTags || seo.article?.tags)?.join(", ") }
+          : {}),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Início",
+            item: "https://flaviosolon.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Blog",
+            item: "https://flaviosolon.com/blog/",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name:
+              customTitle ||
+              seo.article?.title ||
+              finalSection ||
+              "Artigo",
+            item: canonicalURL,
+          },
+        ],
+      },
+    ]
+  : [];
+
 const contextGraph = Array.isArray(seo.jsonLd?.["@graph"])
   ? (seo.jsonLd["@graph"] as Record<string, unknown>[]).filter(
       (item) =>
@@ -305,13 +438,18 @@ const contextGraph = Array.isArray(seo.jsonLd?.["@graph"])
         item["@type"] !== "ProfessionalService" &&
         item["@type"] !== "WebSite" &&
         item["@type"] !== "FAQPage" &&
-        item["@type"] !== "ItemList",
+        item["@type"] !== "ItemList" &&
+        (!isArticle ||
+          (item["@type"] !== "BlogPosting" &&
+            item["@type"] !== "TechArticle" &&
+            item["@type"] !== "NewsArticle" &&
+            item["@type"] !== "BreadcrumbList")),
     )
   : [];
 
 const schemaGraph = {
   "@context": "https://schema.org",
-  "@graph": [...canonicalEntityGraph, ...contextGraph],
+  "@graph": [...canonicalEntityGraph, ...articleEntities, ...contextGraph],
 };
 ---
 
@@ -329,13 +467,29 @@ const schemaGraph = {
     <link rel="alternate" hreflang="x-default" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Robots, Google Discover & Google News Directives -->
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta
+      name="googlebot"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Flávio Sólon — Artigos de Engenharia de Software"
+      href="https://flaviosolon.com/rss.xml"
+    />
+
     <!-- GEO & Local Relevance (Manaus, Amazonas, Brasil) -->
     <meta name="geo.region" content={seo.geo.region} />
     <meta name="geo.placename" content={seo.geo.placename} />
     <meta name="geo.position" content={seo.geo.position} />
     <meta name="ICBM" content={seo.geo.icbm} />
 
-    <!-- Open Graph (WhatsApp, LinkedIn, Social Networks) -->
+    <!-- Open Graph (WhatsApp, LinkedIn, Google Discover) -->
     <meta
       property="og:site_name"
       content="Flávio Sólon — Da missão ao código"
@@ -346,6 +500,30 @@ const schemaGraph = {
     <meta property="og:title" content={finalTitle} />
     <meta property="og:description" content={finalDescription} />
     <meta property="og:image" content={finalOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={finalTitle} />
+
+    {isArticle && (
+      <>
+        <meta property="article:published_time" content={finalPublishedTime} />
+        <meta
+          property="article:modified_time"
+          content={finalModifiedTime || finalPublishedTime}
+        />
+        <meta
+          property="article:author"
+          content="https://flaviosolon.com/#person"
+        />
+        <meta
+          property="article:section"
+          content={finalSection || "Engenharia de Software"}
+        />
+        {(customTags || seo.article?.tags)?.map((tag: string) => (
+          <meta property="article:tag" content={tag} />
+        ))}
+      </>
+    )}
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />

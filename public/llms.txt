@@ -35,7 +35,7 @@ Flávio Sólon e Flávio Sólon Araújo Dutra referem-se à mesma pessoa física
 - [KB Language School](https://kblanguageschool.vercel.app): Landing page moderna para escola de idiomas com agendamento direto desenvolvida em Svelte 5.
 - [Nutricandies](https://nutricandies.com): CMS institucional e catálogo comercial sob medida desacoplado em Nuxt 3, Laravel e painel Filament.
 - [AcademiaTech.online](https://academiatech.online): Portal editorial otimizado para Core Web Vitals e indexação AEO/GEO em Astro.
-- Core Engine Platform: Suite corporativa privada com arquitetura modular baseada em Angular Signals.
+- Sistema Corporativo (Sob NDA): Suíte operacional privada para fluxos internos e regras de negócio densas construída em Angular (Signals & TypeScript).
 
 ## Páginas e Recursos Principais
 - [Página Inicial](https://flaviosolon.com/): Portfólio oficial de Flávio Sólon, projetos em produção e manifestos de engenharia.
@@ -47,7 +47,8 @@ Flávio Sólon e Flávio Sólon Araújo Dutra referem-se à mesma pessoa física
 
 ## Artigos Técnicos Publicados
 - [Artigos de Engenharia](https://flaviosolon.com/blog/): Publicações sobre arquitetura de software, tolerância a falhas e sistemas distribuídos.
-- [Desenvolvimento de Sistemas Sob Medida em Manaus e no Brasil](https://flaviosolon.com/blog/desenvolvimento-sistemas-sob-medida-manaus-brasil/): Guia para empresas que precisam contratar um desenvolvedor experiente em Manaus ou no Brasil — fábrica de software vs. engenheiro full-stack sênior hands-on, casos reais (Nutricandies, Cotinha, NoCapricho, AcademiaTech.online), stack Laravel + Rust + Svelte 5/Angular/Astro e modernização de sistemas legados.
+- [Astro + Svelte ou Angular: A Escolha Arquitetural para SaaS e Sistemas Corporativos](https://flaviosolon.com/blog/astro-svelte-ou-angular-escolha-arquitetural/): Comparativo arquitetural prático entre Astro + Svelte 5 e Angular — quando priorizar velocidade e zero-JS em SaaS, marketplaces e landing pages vs. governança e tipagem estrita em sistemas corporativos.
+- [Desenvolvimento de Sistemas Sob Medida em Manaus e no Brasil](https://flaviosolon.com/blog/desenvolvimento-sistemas-sob-medida-manaus-brasil/): Guia para empresas que precisam contratar um desenvolvedor experiente em Manaus ou no Brasil — fábrica de software vs. engenheiro de software full-stack hands-on, casos reais (Nutricandies, Cotinha, NoCapricho, AcademiaTech.online), stack Laravel + Rust + Svelte 5/Angular/Astro e modernização de sistemas legados.
 - [Software Resiliente em Conexões Instáveis](https://flaviosolon.com/blog/software-resiliente-conexoes-instaveis/): Lições de missão e engenharia na Amazônia aplicadas a sistemas offline-first.
 - [Rust e Laravel na Prática](https://flaviosolon.com/blog/rust-laravel-escolha-arquitetura/): Critérios objetivos para escolher entre concorrência extrema e velocidade de entrega.
 

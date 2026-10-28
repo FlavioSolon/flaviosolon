@@ -1,338 +1,443 @@
-import { getProfile, getArticles, getArticleBySlug, getProjects, getProjectById, getFaqs } from './db';
-import type { Article, Project } from './db';
+import {
+  getProfile,
+  getArticles,
+  getArticleBySlug,
+  getProjects,
+  getProjectById,
+  getFaqs,
+} from "./db"
+import type { Article, Project } from "./db"
 
 export interface SeoMetadata {
-  title: string;
-  description: string;
-  canonicalUrl: string;
-  ogType: 'website' | 'article' | 'profile';
-  ogImage: string;
-  article?: Article;
-  project?: Project;
-  jsonLd: Record<string, unknown>;
+  title: string
+  description: string
+  canonicalUrl: string
+  ogType: "website" | "article" | "profile"
+  ogImage: string
+  article?: Article
+  project?: Project
+  jsonLd: Record<string, unknown>
   geo: {
-    region: string;
-    placename: string;
-    position: string;
-    icbm: string;
-  };
+    region: string
+    placename: string
+    position: string
+    icbm: string
+  }
 }
 
 export function generateSeo(path: string): SeoMetadata {
-  const profile = getProfile();
-  const cleanPath = path.replace(/\/$/, '') || '/';
-  const siteUrl = (profile.site || 'https://flaviosolon.com').replace(/\/$/, '').replace(/^http:/, 'https:');
-  const canonicalUrl = `${siteUrl}${cleanPath === '/' ? '/' : `${cleanPath}/`}`.replace(/^http:/, 'https:');
-  const defaultOgImage = `${siteUrl}/og-image.jpg`;
+  const profile = getProfile()
+  const cleanPath = path.replace(/\/$/, "") || "/"
+  const siteUrl = (profile.site || "https://flaviosolon.com")
+    .replace(/\/$/, "")
+    .replace(/^http:/, "https:")
+  const canonicalUrl = `${siteUrl}${
+    cleanPath === "/" ? "/" : `${cleanPath}/`
+  }`.replace(/^http:/, "https:")
+  const defaultOgImage = `${siteUrl}/og-image.jpg`
 
   const geo = {
-    region: profile.location.regionCode || 'BR-AM',
+    region: profile.location.regionCode || "BR-AM",
     placename: `${profile.location.city}, ${profile.location.state}, ${profile.location.country}`,
     position: `${profile.location.latitude};${profile.location.longitude}`,
     icbm: `${profile.location.latitude}, ${profile.location.longitude}`,
-  };
+  }
 
   const websiteEntity = {
-    '@type': 'WebSite',
-    '@id': `${siteUrl}/#website`,
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
     url: `${siteUrl}/`,
-    name: 'Flávio Sólon — Engenharia de Software Full-Stack',
-    inLanguage: 'pt-BR',
-    publisher: { '@id': `${siteUrl}/#person` },
-  };
+    name: "Flávio Sólon — Engenharia de Software Full-Stack",
+    inLanguage: "pt-BR",
+    publisher: { "@id": `${siteUrl}/#person` },
+  }
 
   const personEntity = {
-    '@type': 'Person',
-    '@id': `${siteUrl}/#person`,
-    name: 'Flávio Sólon',
-    givenName: 'Flávio Sólon',
-    familyName: 'Araújo Dutra',
-    legalName: 'Flávio Sólon Araújo Dutra',
+    "@type": "Person",
+    "@id": `${siteUrl}/#person`,
+    name: "Flávio Sólon",
+    givenName: "Flávio Sólon",
+    familyName: "Araújo Dutra",
+    legalName: "Flávio Sólon Araújo Dutra",
     alternateName: [
-      'Flávio Sólon Araújo Dutra',
-      'Flavio Solon',
-      'Flavio Solon Araujo Dutra',
+      "Flávio Sólon Araújo Dutra",
+      "Flavio Solon",
+      "Flavio Solon Araujo Dutra",
     ],
     url: `${siteUrl}/`,
     image: `${siteUrl}/og-image.jpg`,
-    email: 'mailto:contato@flaviosolon.com',
-    telephone: '+55-92-98416-7784',
-    jobTitle: 'Senior Full-Stack Software Engineer & Solutions Architect',
+    email: "mailto:contato@flaviosolon.com",
+    telephone: "+55-92-98416-7784",
+    jobTitle: "Engenheiro de Software Full-Stack & Arquiteto de Soluções",
     description:
-      'Desenvolvedor Full-Stack Sênior (Hands-on) baseado em Manaus, Amazonas, Brasil (Brazil). Especialista em desenvolvimento de software sob medida, plataformas SaaS, EAD, sistemas de rastreamento veicular, marketplaces e refatoração de sistemas críticos utilizando Rust, PHP (Laravel), Svelte 5, Angular, React, Vue.js e Astro.',
+      "Engenheiro de Software Full-Stack (Hands-on) baseado em Manaus, Amazonas, Brasil (Brazil). Especialista em desenvolvimento de software sob medida, plataformas SaaS, EAD, sistemas de rastreamento veicular, marketplaces e refatoração de sistemas críticos utilizando Rust, PHP (Laravel), Svelte 5, Angular, React, Vue.js e Astro.",
     address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Manaus',
-      addressRegion: 'AM',
-      addressCountry: 'BR',
+      "@type": "PostalAddress",
+      addressLocality: "Manaus",
+      addressRegion: "AM",
+      addressCountry: "BR",
     },
     nationality: {
-      '@type': 'Country',
-      name: 'Brazil',
+      "@type": "Country",
+      name: "Brazil",
     },
-    knowsLanguage: ['pt-BR', 'en'],
+    knowsLanguage: ["pt-BR", "en"],
     knowsAbout: [
-      'Full-Stack Software Development',
-      'Rust Programming Language',
-      'Laravel & PHP',
-      'Svelte 5 & SvelteKit',
-      'Angular',
-      'Astro',
-      'React & Vue.js',
-      'SaaS & Micro-SaaS Architecture',
-      'Plataformas EAD e Sistemas Educacionais',
-      'Sistemas de Rastreamento Veicular e Telemetria',
-      'Marketplaces e E-commerce',
-      'Karatê Shinkyokushin',
-      'Kickboxing',
-      'Violão Clássico e Erudito',
+      "Full-Stack Software Development",
+      "Rust Programming Language",
+      "Laravel & PHP",
+      "Svelte 5 & SvelteKit",
+      "Angular",
+      "Astro",
+      "React & Vue.js",
+      "SaaS & Micro-SaaS Architecture",
+      "Plataformas EAD e Sistemas Educacionais",
+      "Sistemas de Rastreamento Veicular e Telemetria",
+      "Marketplaces e E-commerce",
+      "Karatê Shinkyokushin",
+      "Kickboxing",
+      "Violão Clássico e Erudito",
     ],
     sameAs: [
-      'https://github.com/FlavioSolon',
-      'https://www.linkedin.com/in/flaviosolon',
-      'https://www.instagram.com/flaviosolon_/',
-      'https://x.com/flaviosolon_',
+      "https://github.com/FlavioSolon",
+      "https://www.linkedin.com/in/flaviosolon",
+      "https://www.instagram.com/flaviosolon_/",
+      "https://x.com/flaviosolon_",
     ],
-  };
+  }
 
   const businessEntity = {
-    '@type': 'ProfessionalService',
-    '@id': `${siteUrl}/#service`,
-    name: 'Flávio Sólon — Desenvolvimento de Software sob Medida (Manaus & Brasil)',
+    "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
+    "@id": `${siteUrl}/#service`,
+    name: "Flávio Sólon — Engenharia de Software",
+    alternateName: [
+      "Flávio Sólon Araújo Dutra",
+      "Flávio Sólon — Desenvolvimento de Software sob Medida (Manaus & Brasil)",
+    ],
     url: `${siteUrl}/`,
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteUrl}/favicon.svg`,
+    },
     image: `${siteUrl}/og-image.jpg`,
-    email: 'contato@flaviosolon.com',
-    telephone: '+55-92-98416-7784',
-    priceRange: '$$$',
+    email: "contato@flaviosolon.com",
+    telephone: "+55-92-98416-7784",
+    priceRange: "$$$",
     address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Manaus',
-      addressRegion: 'AM',
-      addressCountry: 'BR',
+      "@type": "PostalAddress",
+      addressLocality: "Manaus",
+      addressRegion: "AM",
+      addressCountry: "BR",
     },
     areaServed: [
-      { '@type': 'City', name: 'Manaus' },
-      { '@type': 'State', name: 'Amazonas' },
-      { '@type': 'Country', name: 'Brasil' },
-      { '@type': 'Country', name: 'Brazil' },
+      { "@type": "City", name: "Manaus" },
+      { "@type": "State", name: "Amazonas" },
+      { "@type": "Country", name: "Brasil" },
+      { "@type": "Country", name: "Brazil" },
     ],
-    founder: { '@id': `${siteUrl}/#person` },
-  };
+    founder: { "@id": `${siteUrl}/#person` },
+  }
 
   // Case 1: Blog Article page (`/blog/[slug]`)
-  if (cleanPath.startsWith('/blog/') && cleanPath !== '/blog') {
-    const slug = cleanPath.replace('/blog/', '');
-    const article = getArticleBySlug(slug);
+  if (cleanPath.startsWith("/blog/") && cleanPath !== "/blog") {
+    const slug = cleanPath.replace("/blog/", "")
+    const article = getArticleBySlug(slug)
 
     if (article) {
-      const title = `${article.title} | ${profile.name}`;
-      const description = article.description;
-      const ogImage = article.coverImage || defaultOgImage;
+      const title = `${article.title} | ${profile.name}`
+      const description = article.description
+      const ogImage = article.coverImage || defaultOgImage
+      const publishedIso = article.date.includes("T")
+        ? article.date
+        : `${article.date}T10:00:00-04:00`
+      const modifiedIso = publishedIso
 
       const blogPostingEntity = {
-        '@type': 'BlogPosting',
-        '@id': `${canonicalUrl}#article`,
-        headline: article.title,
-        description: article.description,
-        datePublished: article.date,
-        dateModified: article.date,
-        author: { '@id': personEntity['@id'] },
-        publisher: { '@id': personEntity['@id'] },
-        mainEntityOfPage: { '@id': `${canonicalUrl}#page` },
-        inLanguage: 'pt-BR',
-        articleSection: article.category,
-        keywords: article.tags?.join(', ') || article.category,
-        articleBody: article.sections
-          .map((s) => `${s.title}\n${s.paragraphs.join('\n')}`)
-          .join('\n\n'),
-        speakable: {
-          '@type': 'SpeakableSpecification',
-          cssSelector: ['.reading-header h1', '.aeo-direct-answer', '.article-prose p:first-of-type'],
+        "@type": ["TechArticle", "NewsArticle", "BlogPosting"],
+        "@id": `${canonicalUrl}#article`,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": canonicalUrl,
         },
-      };
+        headline: article.title.slice(0, 110),
+        description: article.description,
+        image: [ogImage],
+        datePublished: publishedIso,
+        dateModified: modifiedIso,
+        inLanguage: "pt-BR",
+        author: {
+          "@type": "Person",
+          "@id": personEntity["@id"],
+          name: profile.name,
+          url: `${siteUrl}/`,
+        },
+        publisher: {
+          "@type": "Organization",
+          "@id": businessEntity["@id"],
+          name: "Flávio Sólon — Engenharia de Software",
+          logo: {
+            "@type": "ImageObject",
+            url: `${siteUrl}/favicon.svg`,
+          },
+        },
+        isAccessibleForFree: true,
+        articleSection: article.category,
+        keywords: article.tags?.join(", ") || article.category,
+        articleBody: article.sections
+          .map((s) => `${s.title}\n${s.paragraphs.map((p) => p.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim()).join("\n")}`)
+          .join("\n\n"),
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: [
+            ".reading-header h1",
+            ".article-lead",
+            ".aeo-direct-answer",
+            ".article-prose p:first-of-type",
+          ],
+        },
+      }
 
       const breadcrumbEntity = {
-        '@type': 'BreadcrumbList',
+        "@type": "BreadcrumbList",
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Início', item: `${siteUrl}/` },
-          { '@type': 'ListItem', position: 2, name: 'Artigos', item: `${siteUrl}/blog/` },
-          { '@type': 'ListItem', position: 3, name: article.title, item: canonicalUrl },
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Início",
+            item: `${siteUrl}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Blog",
+            item: `${siteUrl}/blog/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: article.title,
+            item: canonicalUrl,
+          },
         ],
-      };
+      }
 
       const pageEntity = {
-        '@type': 'ItemPage',
-        '@id': `${canonicalUrl}#page`,
+        "@type": "ItemPage",
+        "@id": `${canonicalUrl}#page`,
         url: canonicalUrl,
         name: title,
         description,
-        inLanguage: 'pt-BR',
-        isPartOf: { '@id': websiteEntity['@id'] },
-        mainEntity: { '@id': blogPostingEntity['@id'] },
-      };
+        inLanguage: "pt-BR",
+        isPartOf: { "@id": websiteEntity["@id"] },
+        mainEntity: { "@id": blogPostingEntity["@id"] },
+      }
 
       return {
         title,
         description,
         canonicalUrl,
-        ogType: 'article',
+        ogType: "article",
         ogImage,
         article,
         geo,
         jsonLd: {
-          '@context': 'https://schema.org',
-          '@graph': [personEntity, websiteEntity, pageEntity, blogPostingEntity, breadcrumbEntity],
+          "@context": "https://schema.org",
+          "@graph": [
+            personEntity,
+            businessEntity,
+            websiteEntity,
+            pageEntity,
+            blogPostingEntity,
+            breadcrumbEntity,
+          ],
         },
-      };
+      }
     }
   }
 
   // Case 2: Blog index page (`/blog`)
-  if (cleanPath === '/blog') {
-    const articles = getArticles();
-    const title = `Artigos de engenharia e tecnologia | ${profile.name}`;
-    const description = `Notas de ${profile.name} sobre arquitetura de software, Rust, Laravel, Svelte e tolerância a falhas na Amazônia.`;
+  if (cleanPath === "/blog") {
+    const articles = getArticles()
+    const title = `Artigos de engenharia e tecnologia | ${profile.name}`
+    const description = `Notas de ${profile.name} sobre arquitetura de software, Rust, Laravel, Svelte e tolerância a falhas na Amazônia.`
 
     const blogEntity = {
-      '@type': 'Blog',
-      '@id': `${canonicalUrl}#blog`,
+      "@type": "Blog",
+      "@id": `${canonicalUrl}#blog`,
       name: `Artigos de ${profile.name}`,
       description,
       url: canonicalUrl,
-      author: { '@id': personEntity['@id'] },
+      author: { "@id": personEntity["@id"] },
       blogPost: articles.map((a) => ({
-        '@type': 'BlogPosting',
+        "@type": "BlogPosting",
         headline: a.title,
         description: a.description,
         url: `${siteUrl}/blog/${a.slug}/`,
         datePublished: a.date,
-        author: { '@id': personEntity['@id'] },
+        author: { "@id": personEntity["@id"] },
       })),
-    };
+    }
 
     const breadcrumbEntity = {
-      '@type': 'BreadcrumbList',
+      "@type": "BreadcrumbList",
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Início', item: `${siteUrl}/` },
-        { '@type': 'ListItem', position: 2, name: 'Artigos', item: canonicalUrl },
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Início",
+          item: `${siteUrl}/`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Artigos",
+          item: canonicalUrl,
+        },
       ],
-    };
+    }
 
     const pageEntity = {
-      '@type': 'CollectionPage',
-      '@id': `${canonicalUrl}#page`,
+      "@type": "CollectionPage",
+      "@id": `${canonicalUrl}#page`,
       url: canonicalUrl,
       name: title,
       description,
-      inLanguage: 'pt-BR',
-      isPartOf: { '@id': websiteEntity['@id'] },
-      mainEntity: { '@id': blogEntity['@id'] },
-    };
+      inLanguage: "pt-BR",
+      isPartOf: { "@id": websiteEntity["@id"] },
+      mainEntity: { "@id": blogEntity["@id"] },
+    }
 
     return {
       title,
       description,
       canonicalUrl,
-      ogType: 'website',
+      ogType: "website",
       ogImage: defaultOgImage,
       geo,
       jsonLd: {
-        '@context': 'https://schema.org',
-        '@graph': [personEntity, websiteEntity, pageEntity, blogEntity, breadcrumbEntity],
+        "@context": "https://schema.org",
+        "@graph": [
+          personEntity,
+          websiteEntity,
+          pageEntity,
+          blogEntity,
+          breadcrumbEntity,
+        ],
       },
-    };
+    }
   }
 
   // Case 3: Project detail page (`/projetos/[id]`)
-  if (cleanPath.startsWith('/projetos/')) {
-    const id = cleanPath.replace('/projetos/', '');
-    const project = getProjectById(id);
+  if (cleanPath.startsWith("/projetos/")) {
+    const id = cleanPath.replace("/projetos/", "")
+    const project = getProjectById(id)
 
     if (project) {
-      const title = `${project.title} — ${project.label} | ${profile.name}`;
-      const description = project.longDescription || project.description;
-      const ogImage = project.coverImage || defaultOgImage;
+      const title = `${project.title} — ${project.label} | ${profile.name}`
+      const description = project.longDescription || project.description
+      const ogImage = project.coverImage || defaultOgImage
 
       const appEntity = {
-        '@type': 'SoftwareApplication',
-        '@id': `${canonicalUrl}#software`,
+        "@type": "SoftwareApplication",
+        "@id": `${canonicalUrl}#software`,
         name: project.title,
         description: project.description,
         applicationCategory: project.category,
-        operatingSystem: 'Web, Multiplataforma',
-        author: { '@id': personEntity['@id'] },
+        operatingSystem: "Web, Multiplataforma",
+        author: { "@id": personEntity["@id"] },
         offers: {
-          '@type': 'Offer',
-          price: '0',
-          priceCurrency: 'BRL',
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "BRL",
         },
-      };
+      }
 
       const breadcrumbEntity = {
-        '@type': 'BreadcrumbList',
+        "@type": "BreadcrumbList",
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Início', item: `${siteUrl}/` },
-          { '@type': 'ListItem', position: 2, name: 'Projetos', item: `${siteUrl}/#projetos` },
-          { '@type': 'ListItem', position: 3, name: project.title, item: canonicalUrl },
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Início",
+            item: `${siteUrl}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Projetos",
+            item: `${siteUrl}/#projetos`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: project.title,
+            item: canonicalUrl,
+          },
         ],
-      };
+      }
 
       const pageEntity = {
-        '@type': 'ItemPage',
-        '@id': `${canonicalUrl}#page`,
+        "@type": "ItemPage",
+        "@id": `${canonicalUrl}#page`,
         url: canonicalUrl,
         name: title,
         description,
-        inLanguage: 'pt-BR',
-        isPartOf: { '@id': websiteEntity['@id'] },
-        mainEntity: { '@id': appEntity['@id'] },
-      };
+        inLanguage: "pt-BR",
+        isPartOf: { "@id": websiteEntity["@id"] },
+        mainEntity: { "@id": appEntity["@id"] },
+      }
 
       return {
         title,
         description,
         canonicalUrl,
-        ogType: 'website',
+        ogType: "website",
         ogImage,
         project,
         geo,
         jsonLd: {
-          '@context': 'https://schema.org',
-          '@graph': [personEntity, websiteEntity, pageEntity, appEntity, breadcrumbEntity],
+          "@context": "https://schema.org",
+          "@graph": [
+            personEntity,
+            websiteEntity,
+            pageEntity,
+            appEntity,
+            breadcrumbEntity,
+          ],
         },
-      };
+      }
     }
   }
 
   // Default / Home Page (`/`)
-  const faqs = getFaqs();
-  const title = `${profile.name} | Desenvolvedor Full-Stack Sênior em Manaus — Sistemas Sob Medida, SaaS e Web`;
+  const faqs = getFaqs()
+  const title = `${profile.name} | Engenheiro de Software Full-Stack em Manaus — Sistemas Sob Medida, SaaS e Web`
   const description =
-    'Flávio Sólon (Flávio Sólon Araújo Dutra) — Desenvolvedor Full-Stack em Manaus e Brasil. Criação e modernização de sistemas em Laravel, Rust, Svelte e Angular.';
+    "Flávio Sólon (Flávio Sólon Araújo Dutra) — Engenheiro de Software Full-Stack em Manaus e Brasil. Criação e modernização de sistemas em Laravel, Rust, Svelte e Angular."
 
   const faqEntity = {
-    '@type': 'FAQPage',
-    '@id': `${canonicalUrl}#faq`,
+    "@type": "FAQPage",
+    "@id": `${canonicalUrl}#faq`,
     mainEntity: faqs.map((f) => ({
-      '@type': 'Question',
+      "@type": "Question",
       name: f.question,
       acceptedAnswer: {
-        '@type': 'Answer',
+        "@type": "Answer",
         text: f.answer,
       },
     })),
-  };
+  }
 
   return {
     title,
     description,
     canonicalUrl,
-    ogType: 'website',
+    ogType: "website",
     ogImage: defaultOgImage,
     geo,
     jsonLd: {
-      '@context': 'https://schema.org',
-      '@graph': [websiteEntity, personEntity, businessEntity, faqEntity],
+      "@context": "https://schema.org",
+      "@graph": [websiteEntity, personEntity, businessEntity, faqEntity],
     },
-  };
+  }
 }
