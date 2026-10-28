@@ -1,0 +1,200 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getProfile } from '@/lib/db';
+
+const profile = getProfile();
+const legalName = (profile as Record<string, any>).legalName || "Flávio Sólon Araújo Dutra";
+const pageTitle = "Termos de Serviço | Flávio Sólon";
+const pageDescription = "Termos de Serviço e condições gerais de uso do portfólio digital, artigos técnicos em acesso aberto (Open Access) e serviços de engenharia de software de Flávio Sólon.";
+---
+
+<Layout
+  path="/termos/"
+  title={pageTitle}
+  description={pageDescription}
+>
+  <div class="site-shell blog-shell">
+    <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+    <header class="header">
+      <a class="wordmark" href="/">
+        flávio sólon<span class="logo-dot">.</span>
+        <span class="wordmark-sub">SOFTWARE ENGINEER</span>
+      </a>
+      <nav class="blog-nav" aria-label="Navegação principal">
+        <a href="/">Portfólio</a>
+        <a href="/blog/">Artigos</a>
+      </nav>
+      <a
+        class="header-contact"
+        href={profile.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp ↗
+      </a>
+    </header>
+
+    <main id="main">
+      <article class="reading-page">
+        <nav class="breadcrumbs" aria-label="Caminho da página">
+          <a href="/">Início</a>
+          <span>/</span>
+          <span>Termos de Serviço</span>
+        </nav>
+
+        <header class="reading-header">
+          <div class="eyebrow">
+            <span>TERMOS DE USO &amp; CONDIÇÕES</span> / GOVERNANÇA TÉCNICA
+          </div>
+          <h1>
+            Termos de<br />
+            <span>Serviço.</span>
+          </h1>
+          <p class="article-lead">
+            Condições gerais de acesso, uso do portfólio digital, propriedade intelectual, consumo de publicações editoriais em acesso aberto (Open Access) e contratação de serviços profissionais de engenharia de software de Flávio Sólon.
+          </p>
+          <div class="article-meta">
+            <span class="article-byline">Titular: <strong>{profile.name}</strong> ({legalName})</span>
+            <span class="meta-dot">·</span>
+            <time datetime="2026-10-28">Última atualização: Outubro de 2026</time>
+            <span class="meta-dot">·</span>
+            <span class="article-reading-time">Manaus, AM, Brasil</span>
+          </div>
+
+          <aside class="aeo-box" aria-label="Resumo dos Termos de Serviço">
+            <div class="aeo-box-header">
+              <span class="aeo-label">
+                ⚖️ PRINCÍPIOS ESSENCIAIS DE USO
+              </span>
+              <span class="aeo-badge">OPEN ACCESS &amp; DIREITO AUTORAL</span>
+            </div>
+            <p class="aeo-summary aeo-direct-answer">
+              O domínio <strong>flaviosolon.com</strong> oferece acesso livre e gratuito a artigos técnicos, estudos de caso de arquitetura e portfólio de engenharia de software. Os conteúdos editoriais operam sob modelo <strong>Open Access</strong> (Google Reader Revenue Manager ID: <code>CAowk5XiCw:openaccess</code>). Códigos e artigos possuem autoria protegida, sendo permitida a citação informativa com menção à fonte. Serviços sob medida são formalizados por propostas comerciais individuais, e o foro de eleição é a Comarca de Manaus (AM).
+            </p>
+          </aside>
+        </header>
+
+        <div class="reading-layout">
+          <aside class="article-toc">
+            <span class="eyebrow">SEÇÕES DOS TERMOS</span>
+            <nav aria-label="Índice dos termos de serviço">
+              <a href="#objeto">1. Objeto e Aceitação</a>
+              <a href="#propriedade-intelectual">2. Propriedade Intelectual</a>
+              <a href="#acesso-aberto">3. Acesso Aberto (Open Access)</a>
+              <a href="#responsabilidade">4. Limitação de Responsabilidade</a>
+              <a href="#servicos-profissionais">5. Serviços Profissionais sob Medida</a>
+              <a href="#links-terceiros">6. Links e Recursos de Terceiros</a>
+              <a href="#legislacao-foro">7. Legislação Aplicável e Foro</a>
+            </nav>
+          </aside>
+
+          <div class="article-prose">
+            <section id="objeto">
+              <h2>1. Objeto e Aceitação</h2>
+              <p>
+                Os presentes Termos de Serviço regulam o acesso e a utilização dos recursos disponíveis no website <code>flaviosolon.com</code>, de titularidade de <strong>{profile.name}</strong> ({legalName}), engenheiro de software inscrito nos registros profissionais competentes e domiciliado em Manaus, Amazonas, Brasil.
+              </p>
+              <p>
+                Ao navegar neste domínio, ler os artigos ou interagir com os canais de contato, o usuário declara ter lido, compreendido e concordado integralmente com as condições estipuladas neste documento e na <a href="/privacidade/">Política de Privacidade</a>.
+              </p>
+            </section>
+
+            <section id="propriedade-intelectual">
+              <h2>2. Propriedade Intelectual e Regras de Uso de Conteúdo</h2>
+              <p>
+                Todos os materiais intelectuais publicados em <code>flaviosolon.com</code> — incluindo artigos técnicos, diagramas de arquitetura, análises de desempenho, marcas nominativas e figurativas, logotipos, fotografias e trechos de código autoral — constituem propriedade exclusiva de <strong>{profile.name}</strong> ({legalName}), protegidos pela Lei de Direitos Autorais (Lei nº 9.610/1998) e tratados internacionais pertinentes.
+              </p>
+              <p>
+                <strong>Uso Permitido:</strong> É concedida aos leitores autorização expressa para leitura individual, estudo e citação parcial de trechos em trabalhos acadêmicos, fóruns ou publicações técnicas, desde que acompanhada de atribuição clara e explícita de autoria a Flávio Sólon e link canônico funcional direcionando para o artigo original em <code>https://flaviosolon.com</code>.
+              </p>
+              <p>
+                <strong>Vedações:</strong> É vedada a reprodução massiva, cópia integral desautorizada para plataformas concorrentes de conteúdo, apropriação indevida da marca ou utilização com intuito de enganar terceiros quanto à verdadeira autoria do código ou do ensaio técnico.
+              </p>
+            </section>
+
+            <section id="acesso-aberto">
+              <h2>3. Publicações Editoriais e Acesso Aberto (Open Access)</h2>
+              <p>
+                Os ensaios técnicos, tutoriais e análises de engenharia veiculados na seção de blog do <code>flaviosolon.com</code> são distribuídos sob a modalidade de <strong>Acesso Aberto</strong> (<em>Open Access</em>). Isso significa que:
+              </p>
+              <ul>
+                <li>Não há barreiras financeiras compulsórias (paywalls rígidos) nem bloqueios para leitura do acervo editorial;</li>
+                <li>O site integra-se oficialmente ao ecossistema do <strong>Google Notícias</strong> e ao <strong>Google Reader Revenue Manager</strong> sob o identificador <code>CAowk5XiCw:openaccess</code>, permitindo aos leitores acompanhar as publicações de forma transparente e gratuita;</li>
+                <li>Eventuais recursos voluntários de apoio ou inscrição institucional operam como incentivo ao trabalho de difusão de conhecimento técnico e não condicionam a consulta pública básica.</li>
+              </ul>
+            </section>
+
+            <section id="responsabilidade">
+              <h2>4. Limitação de Responsabilidade e Isenção Técnica</h2>
+              <p>
+                Os artigos e publicações técnicas expostos neste site visam compartilhar experiências reais de engenharia de software, melhores práticas e metodologias com tecnologias como Rust, Laravel (PHP), Svelte 5, Angular e Astro.
+              </p>
+              <p>
+                A engenharia de software exige a ponderação rigorosa de variáveis contextuais específicas (como ambiente de produção, concorrência, infraestrutura de nuvem e segurança de dados). Portanto:
+              </p>
+              <ul>
+                <li>Os códigos demonstrativos e tutoriais são disponibilizados no estado em que se encontram ("as is"), sem garantias implícitas de adequação a uma infraestrutura empresarial específica sem prévia auditoria técnica;</li>
+                <li>O autor não se responsabiliza por eventuais perdas financeiras, interrupções de serviço ou inconsistências decorrentes da implementação isolada e não supervisionada de trechos conceituais em sistemas de missão crítica de terceiros;</li>
+                <li>Recomenda-se a contratação de diagnóstico técnico especializado antes de intervenções em bases de código legadas ou arquiteturas críticas.</li>
+              </ul>
+            </section>
+
+            <section id="servicos-profissionais">
+              <h2>5. Serviços Profissionais e Contratação sob Medida</h2>
+              <p>
+                A apresentação de projetos no portfólio ilustra capacidades técnicas e produtos em produção. A prestação efetiva de serviços de desenvolvimento de sistemas web sob medida, criação de plataformas SaaS, EAD, auditorias de desempenho de banco de dados ou consultoria de engenharia de software é formalizada por meio de:
+              </p>
+              <ol>
+                <li>Alinhamento inicial de requisitos técnicos e operacionais via e-mail ou WhatsApp;</li>
+                <li>Apresentação de Diagnóstico e Proposta Técnica Comercial com escopo, prazos e investimentos definidos;</li>
+                <li>Celebração de Contrato de Prestação de Serviços de Desenvolvimento de Software com cláusulas de confidencialidade (NDA), marcos de entrega e garantias mútuas.</li>
+              </ol>
+            </section>
+
+            <section id="links-terceiros">
+              <h2>6. Links Externos e Recursos de Terceiros</h2>
+              <p>
+                Para conveniência dos visitantes, este site pode conter hiperlinks para plataformas e serviços externos (tais como GitHub, LinkedIn, Instagram e X). Flávio Sólon não exerce controle sobre as políticas operacionais ou práticas de privacidade desses serviços e recomenda a consulta prévia aos respectivos termos ao visitá-los.
+              </p>
+            </section>
+
+            <section id="legislacao-foro">
+              <h2>7. Legislação Aplicável e Foro de Eleição</h2>
+              <p>
+                Estes Termos de Serviço são regidos, interpretados e executados segundo as leis vigentes na República Federativa do Brasil, em especial o Marco Civil da Internet (Lei nº 12.965/2014) e a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).
+              </p>
+              <p>
+                Para dirimir quaisquer dúvidas, controvérsias ou litígios decorrentes do uso deste site ou da interpretação deste documento, fica eleito como exclusivamente competente o <strong>Foro da Comarca de Manaus, Estado do Amazonas, Brasil</strong>, com expressa renúncia a qualquer outro, por mais privilegiado que seja ou venha a ser.
+              </p>
+              <div class="hero-actions" style="margin-top: 28px;">
+                <a class="button button-copper" href={`mailto:${profile.email}`}>
+                  Entrar em contato <span aria-hidden="true">↗</span>
+                </a>
+                <a class="text-link" href="/privacidade/">
+                  Ver Política de Privacidade <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <a class="footer-logo" href="/">
+        flávio sólon<span>.</span>
+      </a>
+      <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      <div>
+        <a href="/termos/" aria-current="page">Termos de Uso</a>
+        <a href="/privacidade/">Privacidade</a>
+        {profile.socials.map((s) => (
+          <a href={s.url} target="_blank" rel="noopener noreferrer">
+            {s.name} ↗
+          </a>
+        ))}
+      </div>
+    </footer>
+  </div>
+</Layout>

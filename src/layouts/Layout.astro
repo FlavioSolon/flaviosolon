@@ -559,8 +559,27 @@ const schemaGraph = {
       type="application/ld+json"
       set:html={JSON.stringify(schemaGraph).replaceAll("<", "\\u003c")}
     />
+
+    <!-- Google Reader Revenue Manager (Open Access) -->
+    <script
+      is:inline
+      async
+      type="application/javascript"
+      src="https://news.google.com/swg/js/v1/swg-basic.js"
+    ></script>
+    <script is:inline>
+      (self.SWG_BASIC = self.SWG_BASIC || []).push( basicSubscriptions => {
+        basicSubscriptions.init({
+          type: "NewsArticle",
+          isPartOfType: ["Product"],
+          isPartOfProductId: "CAowk5XiCw:openaccess",
+          clientOptions: { theme: "light", lang: "pt-BR" },
+        });
+      });
+    </script>
   </head>
   <body>
     <slot />
   </body>
 </html>
+

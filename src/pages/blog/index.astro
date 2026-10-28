@@ -70,6 +70,8 @@ const articles = getArticles();
       </a>
       <a href={`mailto:${profile.email}`}>{profile.email}</a>
       <div>
+        <a href="/termos/">Termos de Uso</a>
+        <a href="/privacidade/">Privacidade</a>
         {profile.socials.map((s) => (
           <a href={s.url} target="_blank" rel="noopener noreferrer">
             {s.name} ↗

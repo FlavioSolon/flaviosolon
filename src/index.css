@@ -711,16 +711,82 @@ footer a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;p
 }
 
 /* Article Prose Rich Elements: Links, Tables, Diagrams, Code */
-.article-prose a {
+.article-prose a:not(.button):not(.text-link):not(.author-link):not(.author-cta-btn):not(.related-read-link) {
   color: var(--copper);
   text-decoration: underline;
   text-decoration-color: #5d493a;
   text-underline-offset: 3px;
   transition: color 0.2s, text-decoration-color 0.2s;
 }
-.article-prose a:hover {
+.article-prose a:not(.button):not(.text-link):not(.author-link):not(.author-cta-btn):not(.related-read-link):hover {
   color: #f4f4f0;
   text-decoration-color: var(--copper);
+}
+
+/* Ensure buttons and action links inside article-prose preserve button styling and high contrast */
+.article-prose .hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 28px;
+}
+.article-prose .button,
+.article-prose a.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: background 0.2s, color 0.2s;
+}
+.article-prose .button-copper,
+.article-prose a.button-copper {
+  background: var(--copper) !important;
+  color: #131611 !important;
+  text-decoration: none !important;
+}
+.article-prose .button-copper:hover,
+.article-prose a.button-copper:hover {
+  background: #e0a77e !important;
+  color: #131611 !important;
+  text-decoration: none !important;
+}
+.article-prose .button span,
+.article-prose a.button span {
+  font-size: 18px;
+  line-height: 1;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+.article-prose .text-link,
+.article-prose a.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #c1c8b8 !important;
+  text-decoration: none !important;
+  transition: color 0.2s;
+}
+.article-prose .text-link:hover,
+.article-prose a.text-link:hover {
+  color: #f4f4f0 !important;
+  text-decoration: none !important;
+}
+.article-prose .text-link span,
+.article-prose a.text-link span {
+  color: var(--copper) !important;
+  text-decoration: none !important;
+  transition: transform 0.2s;
+}
+.article-prose .text-link:hover span,
+.article-prose a.text-link:hover span {
+  transform: translateX(4px);
 }
 .article-prose code {
   font-family: var(--mono);

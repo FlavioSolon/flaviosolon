@@ -184,7 +184,16 @@ export function generateSeo(path: string): SeoMetadata {
         articleSection: article.category,
         keywords: article.tags?.join(", ") || article.category,
         articleBody: article.sections
-          .map((s) => `${s.title}\n${s.paragraphs.map((p) => p.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim()).join("\n")}`)
+          .map(
+            (s) =>
+              `${s.title}\n${s.paragraphs
+                .map((p) =>
+                  p.replace(/<[^>]*>/g, " ")
+                    .replace(/\s+/g, " ")
+                    .trim(),
+                )
+                .join("\n")}`,
+          )
           .join("\n\n"),
         speakable: {
           "@type": "SpeakableSpecification",
@@ -406,6 +415,112 @@ export function generateSeo(path: string): SeoMetadata {
           ],
         },
       }
+    }
+  }
+
+  // Case 4: Privacy Policy (`/privacidade`)
+  if (cleanPath === "/privacidade") {
+    const title = `Política de Privacidade | ${profile.name}`
+    const description = `Política de Privacidade e conformidade técnica (LGPD) do domínio ${profile.name} (flaviosolon.com). Transparência, dados e cookies.`
+
+    const pageEntity = {
+      "@type": "WebPage",
+      "@id": `${canonicalUrl}#page`,
+      url: canonicalUrl,
+      name: title,
+      description,
+      inLanguage: "pt-BR",
+      isPartOf: { "@id": websiteEntity["@id"] },
+    }
+
+    const breadcrumbEntity = {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Início",
+          item: `${siteUrl}/`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Política de Privacidade",
+          item: canonicalUrl,
+        },
+      ],
+    }
+
+    return {
+      title,
+      description,
+      canonicalUrl,
+      ogType: "website",
+      ogImage: defaultOgImage,
+      geo,
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@graph": [
+          personEntity,
+          websiteEntity,
+          businessEntity,
+          pageEntity,
+          breadcrumbEntity,
+        ],
+      },
+    }
+  }
+
+  // Case 5: Terms of Service (`/termos`)
+  if (cleanPath === "/termos") {
+    const title = `Termos de Serviço | ${profile.name}`
+    const description = `Termos de Serviço e regras de uso do portfólio digital, artigos técnicos e serviços de engenharia de software de ${profile.name}.`
+
+    const pageEntity = {
+      "@type": "WebPage",
+      "@id": `${canonicalUrl}#page`,
+      url: canonicalUrl,
+      name: title,
+      description,
+      inLanguage: "pt-BR",
+      isPartOf: { "@id": websiteEntity["@id"] },
+    }
+
+    const breadcrumbEntity = {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Início",
+          item: `${siteUrl}/`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Termos de Serviço",
+          item: canonicalUrl,
+        },
+      ],
+    }
+
+    return {
+      title,
+      description,
+      canonicalUrl,
+      ogType: "website",
+      ogImage: defaultOgImage,
+      geo,
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@graph": [
+          personEntity,
+          websiteEntity,
+          businessEntity,
+          pageEntity,
+          breadcrumbEntity,
+        ],
+      },
     }
   }
 

@@ -1,5 +1,6 @@
 export const profile = {
   name: "Flávio Sólon",
+  legalName: "Flávio Sólon Araújo Dutra",
   site: "https://flaviosolon.com",
   email: "contato@flaviosolon.com",
   whatsapp:

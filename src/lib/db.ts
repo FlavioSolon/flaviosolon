@@ -35,6 +35,7 @@ function writeJson<T>(filename: string, data: T): boolean {
 
 export interface Profile {
   name: string;
+  legalName: string;
   site: string;
   email: string;
   whatsapp: string;
