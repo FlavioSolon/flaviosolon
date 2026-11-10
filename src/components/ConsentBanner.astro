@@ -1,73 +1,66 @@
 ---
 /**
  * Banner de consentimento (LGPD + Google Consent Mode v2).
- * Renderizado apenas quando PUBLIC_GOOGLE_ADS_ID está configurado.
  * Qualquer elemento com `data-consent-open` reabre o banner (ex.: Política de Privacidade).
  */
-const enabled = /^AW-\d+$/.test((import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "").trim());
+export interface Props {}
 ---
 
-{
-  enabled && (
-    <>
-      <div id="fs-consent" class="consent-banner" role="region" aria-label="Preferências de privacidade" hidden>
-        <p class="consent-text">
-          <strong>Sua privacidade importa.</strong> Uso cookies do Google Ads apenas para saber quais anúncios
-          trazem contatos reais. Sem venda de dados, sem perfil de consumo.{" "}
-          <a href="/privacidade#cookies-terceiros">Saiba mais</a>
-        </p>
-        <div class="consent-actions">
-          <button type="button" class="consent-btn consent-btn-ghost" data-consent-choice="denied">
-            Recusar
-          </button>
-          <button type="button" class="consent-btn consent-btn-primary" data-consent-choice="granted">
-            Aceitar
-          </button>
-        </div>
-      </div>
-      <script is:inline>
-        (function () {
-          var KEY = "fs_consent_v1";
-          var banner = document.getElementById("fs-consent");
-          if (!banner) return;
+<div id="fs-consent" class="consent-banner" role="region" aria-label="Preferências de privacidade" hidden>
+  <p class="consent-text">
+    <strong>Sua privacidade importa.</strong> Uso cookies do Google Ads apenas para saber quais anúncios
+    trazem contatos reais. Sem venda de dados, sem perfil de consumo.{" "}
+    <a href="/privacidade#cookies-terceiros">Saiba mais</a>
+  </p>
+  <div class="consent-actions">
+    <button type="button" class="consent-btn consent-btn-ghost" data-consent-choice="denied">
+      Recusar
+    </button>
+    <button type="button" class="consent-btn consent-btn-primary" data-consent-choice="granted">
+      Aceitar
+    </button>
+  </div>
+</div>
+<script is:inline>
+  (function () {
+    var KEY = "fs_consent_v1";
+    var banner = document.getElementById("fs-consent");
+    if (!banner) return;
 
-          var stored = null;
-          try {
-            stored = localStorage.getItem(KEY);
-          } catch (e) {}
-          if (stored !== "granted" && stored !== "denied") banner.hidden = false;
+    var stored = null;
+    try {
+      stored = localStorage.getItem(KEY);
+    } catch (e) {}
+    if (stored !== "granted" && stored !== "denied") banner.hidden = false;
 
-          banner.addEventListener("click", function (ev) {
-            var btn = ev.target.closest("[data-consent-choice]");
-            if (!btn) return;
-            var choice = btn.getAttribute("data-consent-choice");
-            try {
-              localStorage.setItem(KEY, choice);
-            } catch (e) {}
-            if (typeof window.gtag === "function") {
-              window.gtag("consent", "update", {
-                ad_storage: choice,
-                ad_user_data: choice,
-                ad_personalization: choice,
-                analytics_storage: choice,
-              });
-            }
-            banner.hidden = true;
-          });
+    banner.addEventListener("click", function (ev) {
+      var btn = ev.target.closest("[data-consent-choice]");
+      if (!btn) return;
+      var choice = btn.getAttribute("data-consent-choice");
+      try {
+        localStorage.setItem(KEY, choice);
+      } catch (e) {}
+      if (typeof window.gtag === "function") {
+        window.gtag("consent", "update", {
+          ad_storage: choice,
+          ad_user_data: choice,
+          ad_personalization: choice,
+          analytics_storage: choice,
+        });
+      }
+      banner.hidden = true;
+    });
 
-          document.addEventListener("click", function (ev) {
-            if (ev.target.closest && ev.target.closest("[data-consent-open]")) {
-              ev.preventDefault();
-              banner.hidden = false;
-              var first = banner.querySelector("button");
-              if (first) first.focus();
-            }
-          });
-        })();
-      </script>
-    </>
-  )
-}
+    document.addEventListener("click", function (ev) {
+      if (ev.target.closest && ev.target.closest("[data-consent-open]")) {
+        ev.preventDefault();
+        banner.hidden = false;
+        var first = banner.querySelector("button");
+        if (first) first.focus();
+      }
+    });
+  })();
+</script>
 
 <style>
   .consent-banner {
@@ -139,4 +132,3 @@ const enabled = /^AW-\d+$/.test((import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "").tri
     }
   }
 </style>
-

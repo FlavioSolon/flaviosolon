@@ -1,98 +1,76 @@
 ---
 /**
- * Google tag (gtag.js) para Google Ads + Consent Mode v2 + conversão "Solicitar contato".
- *
- * Configuração (variáveis de build — no Cloudflare: Settings → Variables and Secrets;
- * localmente: arquivo `.env` na raiz):
- *   PUBLIC_GOOGLE_ADS_ID=AW-XXXXXXXXX             # obrigatório — sem ele nada é carregado
- *   PUBLIC_GOOGLE_ADS_CONTACT_LABEL=AbCdEfGhIjK   # rótulo da ação de conversão "Solicitar contato"
- *   PUBLIC_GOOGLE_ADS_CONTACT_VALUE=50            # opcional — valor estimado (BRL) por contato
- *
- * Conversão: um único listener delegado no `document` dispara a conversão em qualquer
- * clique em link de WhatsApp (wa.me / api.whatsapp.com), `mailto:` ou `tel:` — inclusive
- * em ilhas Svelte —, sem exigir alteração nos CTAs existentes.
- *
- * Consentimento (LGPD): por padrão todos os sinais de anúncio ficam negados. A tag é
- * carregada em modo avançado (pings sem cookies, permitindo modelagem de conversões) e
- * só grava cookies após o aceite no <ConsentBanner />.
+ * Google tag (gtag.js) oficial para Google Ads (AW-18567586959) + Consent Mode v2
+ * + conversão "Contato WhatsApp / E-mail" (AW-18567586959/q6GfCMWR6rUdEI_J25VF).
  */
-const adsId = (import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "").trim();
-const contactLabel = (import.meta.env.PUBLIC_GOOGLE_ADS_CONTACT_LABEL ?? "").trim();
-const contactValue = Number(import.meta.env.PUBLIC_GOOGLE_ADS_CONTACT_VALUE ?? "") || 0;
-const enabled = /^AW-\d+$/.test(adsId);
+export interface Props {}
 ---
 
-{
-  enabled && (
-    <>
-      <script is:inline define:vars={{ adsId, contactLabel, contactValue }}>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          window.dataLayer.push(arguments);
-        }
-        window.gtag = gtag;
+<!-- Google tag (gtag.js) -->
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-18567586959"></script>
+<script is:inline>
+  (function () {
+    var ADS_ID = "AW-18567586959";
+    var SEND_TO = "AW-18567586959/q6GfCMWR6rUdEI_J25VF";
 
-        // Consent Mode v2 — negado por padrão até a escolha do visitante.
-        gtag("consent", "default", {
-          ad_storage: "denied",
-          ad_user_data: "denied",
-          ad_personalization: "denied",
-          analytics_storage: "denied",
-          wait_for_update: 500,
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    window.gtag = gtag;
+
+    // Consent Mode v2 — negado por padrão até a escolha do visitante.
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
+      wait_for_update: 500,
+    });
+    gtag("set", "ads_data_redaction", true);
+    gtag("set", "url_passthrough", true);
+
+    var stored = null;
+    try {
+      stored = localStorage.getItem("fs_consent_v1");
+    } catch (e) {}
+    if (stored === "granted") {
+      gtag("consent", "update", {
+        ad_storage: "granted",
+        ad_user_data: "granted",
+        ad_personalization: "granted",
+        analytics_storage: "granted",
+      });
+    }
+
+    gtag("js", new Date());
+    gtag("config", ADS_ID);
+
+    // Event snippet for Contato WhatsApp / E-mail conversion
+    var lastFire = 0;
+    document.addEventListener(
+      "click",
+      function (ev) {
+        var link = ev.target && ev.target.closest ? ev.target.closest("a[href]") : null;
+        if (!link) return;
+        var href = link.getAttribute("href") || "";
+        var isContact =
+          /^(https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\/|whatsapp:|mailto:|tel:)/i.test(
+            href,
+          );
+        if (!isContact) return;
+
+        var now = Date.now();
+        if (now - lastFire < 1500) return;
+        lastFire = now;
+
+        gtag("event", "conversion", {
+          send_to: SEND_TO,
+          value: 1.0,
+          currency: "BRL",
         });
-        gtag("set", "ads_data_redaction", true);
-        gtag("set", "url_passthrough", true);
-
-        var stored = null;
-        try {
-          stored = localStorage.getItem("fs_consent_v1");
-        } catch (e) {}
-        if (stored === "granted") {
-          gtag("consent", "update", {
-            ad_storage: "granted",
-            ad_user_data: "granted",
-            ad_personalization: "granted",
-            analytics_storage: "granted",
-          });
-        }
-
-        gtag("js", new Date());
-        gtag("config", adsId);
-
-        // Conversão "Solicitar contato" — WhatsApp, e-mail e telefone.
-        var lastFire = 0;
-        document.addEventListener(
-          "click",
-          function (ev) {
-            var link = ev.target && ev.target.closest ? ev.target.closest("a[href]") : null;
-            if (!link) return;
-            var href = link.getAttribute("href") || "";
-            var method = /^(https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\/|whatsapp:)/i.test(href)
-              ? "whatsapp"
-              : /^mailto:/i.test(href)
-                ? "email"
-                : /^tel:/i.test(href)
-                  ? "phone"
-                  : null;
-            if (!method || !contactLabel) return;
-
-            // Evita contagem dupla em duplo clique / toque fantasma.
-            var now = Date.now();
-            if (now - lastFire < 1500) return;
-            lastFire = now;
-
-            var conversion = { send_to: adsId + "/" + contactLabel };
-            if (contactValue > 0) {
-              conversion.value = contactValue;
-              conversion.currency = "BRL";
-            }
-            gtag("event", "conversion", conversion);
-          },
-          { capture: true, passive: true },
-        );
-      </script>
-      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${adsId}`} />
-    </>
-  )
-}
-
+      },
+      { capture: true, passive: true },
+    );
+  })();
+</script>

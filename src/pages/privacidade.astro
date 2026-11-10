@@ -6,7 +6,6 @@ const profile = getProfile();
 const legalName = (profile as Record<string, any>).legalName || "Flávio Sólon Araújo Dutra";
 const pageTitle = "Política de Privacidade | Flávio Sólon";
 const pageDescription = "Política de Privacidade e conformidade técnica (LGPD) de Flávio Sólon (flaviosolon.com). Transparência, tratamento de dados, cookies essenciais e Google Reader Revenue Manager.";
-const adsEnabled = /^AW-\d+$/.test((import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "").trim());
 ---
 
 <Layout
@@ -146,7 +145,7 @@ const adsEnabled = /^AW-\d+$/.test((import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "").
                 </li>
               </ul>
               <p>
-                O visitante pode desativar o armazenamento de cookies nas configurações de privacidade do seu navegador a qualquer momento, sem prejuízo à navegação ou à leitura dos artigos e casos de estudo publicados.{adsEnabled && (<> Você também pode <a href="#cookies-terceiros" data-consent-open>revisar suas preferências de cookies</a> diretamente neste site.</>)}
+                O visitante pode desativar o armazenamento de cookies nas configurações de privacidade do seu navegador a qualquer momento, sem prejuízo à navegação ou à leitura dos artigos e casos de estudo publicados. Você também pode <a href="#cookies-terceiros" data-consent-open>revisar suas preferências de cookies</a> diretamente neste site.
               </p>
             </section>
 
