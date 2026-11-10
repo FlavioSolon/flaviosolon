@@ -1,6 +1,8 @@
 ---
 import "@/index.css";
 import { generateSeo } from "@/lib/seo";
+import GoogleAdsTag from "@/components/GoogleAdsTag.astro";
+import ConsentBanner from "@/components/ConsentBanner.astro";
 
 interface Props {
   title?: string;
@@ -458,6 +460,10 @@ const schemaGraph = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google tag (Google Ads) + Consent Mode v2 — inerte sem PUBLIC_GOOGLE_ADS_ID -->
+    <GoogleAdsTag />
+
     <title>{finalTitle}</title>
     <meta name="description" content={finalDescription} />
     <meta name="author" content="Flávio Sólon" />
@@ -580,6 +586,7 @@ const schemaGraph = {
   </head>
   <body>
     <slot />
+    <ConsentBanner />
   </body>
 </html>
 

@@ -6,6 +6,7 @@ const profile = getProfile();
 const legalName = (profile as Record<string, any>).legalName || "Flávio Sólon Araújo Dutra";
 const pageTitle = "Política de Privacidade | Flávio Sólon";
 const pageDescription = "Política de Privacidade e conformidade técnica (LGPD) de Flávio Sólon (flaviosolon.com). Transparência, tratamento de dados, cookies essenciais e Google Reader Revenue Manager.";
+const adsEnabled = /^AW-\d+$/.test((import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "").trim());
 ---
 
 <Layout
@@ -57,7 +58,7 @@ const pageDescription = "Política de Privacidade e conformidade técnica (LGPD)
           <div class="article-meta">
             <span class="article-byline">Controlador: <strong>{profile.name}</strong> ({legalName})</span>
             <span class="meta-dot">·</span>
-            <time datetime="2026-10-28">Última atualização: Outubro de 2026</time>
+            <time datetime="2026-11-10">Última atualização: Novembro de 2026</time>
             <span class="meta-dot">·</span>
             <span class="article-reading-time">Manaus, AM, Brasil</span>
           </div>
@@ -103,7 +104,7 @@ const pageDescription = "Política de Privacidade e conformidade técnica (LGPD)
             <section id="principios">
               <h2>2. Princípios e Arquitetura Estática (Privacy by Design)</h2>
               <p>
-                O website <code>flaviosolon.com</code> foi concebido sob a filosofia de engenharia de software estática (Zero-JS por padrão), minimização técnica e <em>Privacy by Design</em>. Não mantemos bancos de dados relacionais que rastreiem o comportamento pessoal de visitantes comuns, nem perfis de consumo publicitário comportamental.
+                O website <code>flaviosolon.com</code> foi concebido sob a filosofia de engenharia de software estática (Zero-JS por padrão), minimização técnica e <em>Privacy by Design</em>. Não mantemos bancos de dados relacionais que rastreiem o comportamento pessoal de visitantes comuns, não comercializamos dados e não utilizamos remarketing ou públicos de anúncios baseados em perfis de consumo. A única medição publicitária existente (Google Ads, descrita na seção 4) depende do seu consentimento e se limita a contabilizar solicitações de contato originadas de anúncios.
               </p>
               <p>
                 O tráfego de leitura de artigos técnicos e a consulta a projetos do portfólio são totalmente livres e não exigem autenticação, cadastro prévio ou fornecimento forçado de documentos de identificação civil.
@@ -140,9 +141,12 @@ const pageDescription = "Política de Privacidade e conformidade técnica (LGPD)
                 <li>
                   <strong>Google Notícias &amp; Reader Revenue Manager (Open Access):</strong> Integração técnica com a infraestrutura editorial do Google Notícias e Google Publisher Center (identificador institucional de publicação <code>CAowk5XiCw:openaccess</code>). Essa integração opera sob a modalidade de <strong>Acesso Aberto e Gratuito</strong> (<em>Open Access</em>), sincronizando metadados estruturados de artigos de engenharia de software (<code>NewsArticle</code> e <code>TechArticle</code>) e permitindo a identificação institucional sem bloquear a leitura nem coletar dados confidenciais dos visitantes.
                 </li>
+                <li>
+                  <strong>Google Ads — Medição de Conversões (mediante consentimento):</strong> Quando você chega ao site por um anúncio, a tag do Google (<code>gtag.js</code>) pode registrar, de forma agregada, se houve uma solicitação de contato (clique em WhatsApp, e-mail ou telefone). Isso serve exclusivamente para avaliar quais anúncios funcionam. Operamos com o <em>Google Consent Mode v2</em>: enquanto você não aceitar, nenhum cookie publicitário é gravado e o Google recebe apenas sinais sem identificadores e sem cookies. O conteúdo das conversas no WhatsApp ou por e-mail <strong>nunca</strong> é enviado ao Google. Base legal: consentimento (LGPD Art. 7º, I), revogável a qualquer momento. Saiba mais em <a href="https://policies.google.com/technologies/partner-sites?hl=pt-BR" target="_blank" rel="noopener noreferrer">Como o Google usa informações de sites parceiros</a>.
+                </li>
               </ul>
               <p>
-                O visitante pode desativar o armazenamento de cookies nas configurações de privacidade do seu navegador a qualquer momento, sem prejuízo à navegação ou à leitura dos artigos e casos de estudo publicados.
+                O visitante pode desativar o armazenamento de cookies nas configurações de privacidade do seu navegador a qualquer momento, sem prejuízo à navegação ou à leitura dos artigos e casos de estudo publicados.{adsEnabled && (<> Você também pode <a href="#cookies-terceiros" data-consent-open>revisar suas preferências de cookies</a> diretamente neste site.</>)}
               </p>
             </section>
 
@@ -176,7 +180,7 @@ const pageDescription = "Política de Privacidade e conformidade técnica (LGPD)
             <section id="contato-dpo">
               <h2>7. Canal de Atendimento e Atualizações</h2>
               <p>
-                Esta Política de Privacidade foi atualizada em <strong>Outubro de 2026</strong> e pode ser revista ocasionalmente para incorporar aprimoramentos técnicos ou novas orientações da Autoridade Nacional de Proteção de Dados (ANPD).
+                Esta Política de Privacidade foi atualizada em <strong>Novembro de 2026</strong> e pode ser revista ocasionalmente para incorporar aprimoramentos técnicos ou novas orientações da Autoridade Nacional de Proteção de Dados (ANPD).
               </p>
               <p>
                 Caso tenha dúvidas adicionais, sugestões ou necessite de suporte específico sobre o tratamento de dados no domínio <code>flaviosolon.com</code>, entre em contato diretamente com o titular:
